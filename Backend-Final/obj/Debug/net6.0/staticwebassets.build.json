@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "crhuT8J6SaFOGW4OmlTT/QegbZdenI3wzpsIPiutlRc=",
+  "Source": "Backend-Final",
+  "BasePath": "_content/Backend-Final",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Backend-Final\\wwwroot",
+      "Source": "Backend-Final",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\",
+      "BasePath": "_content/Backend-Final",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
