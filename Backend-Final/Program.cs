@@ -1,6 +1,14 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Backend_Final;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
+builder.Services.Register(config);
+var app = builder.Build();
+app.UseStaticFiles();
+
+app.MapControllerRoute(
+    "default",
+    "{controller=home}/{action=index}/{id?}"
+    );
 
 app.Run();

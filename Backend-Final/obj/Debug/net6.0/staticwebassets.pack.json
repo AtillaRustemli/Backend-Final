@@ -1,0 +1,517 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\animate.css",
+      "PackagePath": "staticwebassets\\css\\animate.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\et-line-icon.css",
+      "PackagePath": "staticwebassets\\css\\et-line-icon.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\ionicons.min.css",
+      "PackagePath": "staticwebassets\\css\\ionicons.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\magnific-popup.css",
+      "PackagePath": "staticwebassets\\css\\magnific-popup.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\material-design-iconic-font.min.css",
+      "PackagePath": "staticwebassets\\css\\material-design-iconic-font.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\meanmenu.css",
+      "PackagePath": "staticwebassets\\css\\meanmenu.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\css\\owl.carousel.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\owl.video.play.png",
+      "PackagePath": "staticwebassets\\css\\owl.video.play.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\reset.css",
+      "PackagePath": "staticwebassets\\css\\reset.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\responsive.css",
+      "PackagePath": "staticwebassets\\css\\responsive.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\Material-Design-Iconic-Fontd1f1.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Material-Design-Iconic-Fontd1f1.ttf"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\Material-Design-Iconic-Fontd1f1.woff",
+      "PackagePath": "staticwebassets\\fonts\\Material-Design-Iconic-Fontd1f1.woff"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\Material-Design-Iconic-Fontd1f1.woff2",
+      "PackagePath": "staticwebassets\\fonts\\Material-Design-Iconic-Fontd1f1.woff2"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\et-line.eot",
+      "PackagePath": "staticwebassets\\fonts\\et-line.eot"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\et-line.svg",
+      "PackagePath": "staticwebassets\\fonts\\et-line.svg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\et-line.ttf",
+      "PackagePath": "staticwebassets\\fonts\\et-line.ttf"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\et-line.woff",
+      "PackagePath": "staticwebassets\\fonts\\et-line.woff"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\et-lined41d.eot",
+      "PackagePath": "staticwebassets\\fonts\\et-lined41d.eot"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\fontawesome-webfont3e6e.eot",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont3e6e.eot"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\fontawesome-webfont3e6e.svg",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont3e6e.svg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\fontawesome-webfont3e6e.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont3e6e.ttf"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\fontawesome-webfont3e6e.woff",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont3e6e.woff"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\fontawesome-webfont3e6e.woff2",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont3e6e.woff2"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\fontawesome-webfontd41d.eot",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfontd41d.eot"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\glyphicons-halflings-regular.eot",
+      "PackagePath": "staticwebassets\\fonts\\glyphicons-halflings-regular.eot"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\glyphicons-halflings-regular.svg",
+      "PackagePath": "staticwebassets\\fonts\\glyphicons-halflings-regular.svg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\glyphicons-halflings-regular.ttf",
+      "PackagePath": "staticwebassets\\fonts\\glyphicons-halflings-regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\glyphicons-halflings-regular.woff",
+      "PackagePath": "staticwebassets\\fonts\\glyphicons-halflings-regular.woff"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\glyphicons-halflings-regular.woff2",
+      "PackagePath": "staticwebassets\\fonts\\glyphicons-halflings-regular.woff2"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\glyphicons-halflings-regulard41d.eot",
+      "PackagePath": "staticwebassets\\fonts\\glyphicons-halflings-regulard41d.eot"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\ionicons28b5.eot",
+      "PackagePath": "staticwebassets\\fonts\\ionicons28b5.eot"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\ionicons28b5.svg",
+      "PackagePath": "staticwebassets\\fonts\\ionicons28b5.svg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\ionicons28b5.ttf",
+      "PackagePath": "staticwebassets\\fonts\\ionicons28b5.ttf"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\fonts\\ionicons28b5.woff",
+      "PackagePath": "staticwebassets\\fonts\\ionicons28b5.woff"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\about\\about.png",
+      "PackagePath": "staticwebassets\\img\\about\\about.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\banner\\banner.jpg",
+      "PackagePath": "staticwebassets\\img\\banner\\banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\blog\\blog-detail.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-detail.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\blog\\blog-img.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog-img.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\blog\\blog1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\blog\\blog2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\blog\\blog3.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\blog\\blog4.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\blog\\blog5.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\blog\\blog6.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\blog\\blog7.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\blog\\blog8.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\blog\\blog9.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\blog9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\choose\\choose-bd.jpg",
+      "PackagePath": "staticwebassets\\img\\choose\\choose-bd.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\choose\\choose.png",
+      "PackagePath": "staticwebassets\\img\\choose\\choose.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\contact\\contact1.png",
+      "PackagePath": "staticwebassets\\img\\contact\\contact1.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\contact\\contact2.png",
+      "PackagePath": "staticwebassets\\img\\contact\\contact2.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\contact\\contact3.png",
+      "PackagePath": "staticwebassets\\img\\contact\\contact3.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\course-bg.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\course-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\course1.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\course1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\course2.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\course2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\course3.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\course3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\course4.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\course4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\course5.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\course5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\course6.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\course6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\course7.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\course7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\course8.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\course8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\course9.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\course9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\courses-details.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\courses-details.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event-details.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event-details.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event1.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event10.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event11.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event12.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event13.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event2.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event3.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event5.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event6.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event7.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event8.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event9.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\event9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\speaker1.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\speaker1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\speaker2.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\speaker2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\footer\\footer1.jpg",
+      "PackagePath": "staticwebassets\\img\\footer\\footer1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\footer\\footer2.jpg",
+      "PackagePath": "staticwebassets\\img\\footer\\footer2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\footer\\footer3.jpg",
+      "PackagePath": "staticwebassets\\img\\footer\\footer3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\footer\\footer4.jpg",
+      "PackagePath": "staticwebassets\\img\\footer\\footer4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\icon\\section.png",
+      "PackagePath": "staticwebassets\\img\\icon\\section.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\icon\\section1.png",
+      "PackagePath": "staticwebassets\\img\\icon\\section1.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\logo\\footer-logo.png",
+      "PackagePath": "staticwebassets\\img\\logo\\footer-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\logo\\logo.png",
+      "PackagePath": "staticwebassets\\img\\logo\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\logo\\logo2.png",
+      "PackagePath": "staticwebassets\\img\\logo\\logo2.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\notice\\video.jpg",
+      "PackagePath": "staticwebassets\\img\\notice\\video.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\post\\post1.jpg",
+      "PackagePath": "staticwebassets\\img\\post\\post1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\post\\post2.jpg",
+      "PackagePath": "staticwebassets\\img\\post\\post2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\post\\post3.jpg",
+      "PackagePath": "staticwebassets\\img\\post\\post3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\slider\\home.png",
+      "PackagePath": "staticwebassets\\img\\slider\\home.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\slider\\slider1.jpg",
+      "PackagePath": "staticwebassets\\img\\slider\\slider1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\slider\\slider2.jpg",
+      "PackagePath": "staticwebassets\\img\\slider\\slider2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\slider\\slider3.jpg",
+      "PackagePath": "staticwebassets\\img\\slider\\slider3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher-details.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher-details.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher1.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher10.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher11.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher12.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher2.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher3.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher4.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher5.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher6.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher7.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher8.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher9.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\teacher9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\testimonial\\testimonial-bg.jpg",
+      "PackagePath": "staticwebassets\\img\\testimonial\\testimonial-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\testimonial\\testimonial.jpg",
+      "PackagePath": "staticwebassets\\img\\testimonial\\testimonial.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\js\\ajax-mail.js",
+      "PackagePath": "staticwebassets\\js\\ajax-mail.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\js\\jquery.magnific-popup.js",
+      "PackagePath": "staticwebassets\\js\\jquery.magnific-popup.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\js\\jquery.mb.YTPlayer.js",
+      "PackagePath": "staticwebassets\\js\\jquery.mb.YTPlayer.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\js\\jquery.meanmenu.js",
+      "PackagePath": "staticwebassets\\js\\jquery.meanmenu.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\js\\jquery.nicescroll.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.nicescroll.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\js\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\js\\owl.carousel.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\js\\plugins.js",
+      "PackagePath": "staticwebassets\\js\\plugins.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\js\\vendor\\jquery-1.12.0.min.js",
+      "PackagePath": "staticwebassets\\js\\vendor\\jquery-1.12.0.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\js\\vendor\\modernizr-2.8.3.min.js",
+      "PackagePath": "staticwebassets\\js\\vendor\\modernizr-2.8.3.min.js"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Backend-Final.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Backend-Final.props",
+      "PackagePath": "build\\Backend-Final.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Backend-Final.props",
+      "PackagePath": "buildMultiTargeting\\Backend-Final.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Backend-Final.props",
+      "PackagePath": "buildTransitive\\Backend-Final.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
