@@ -1,6 +1,7 @@
 ﻿using Backend_Final.DAL;
 using Backend_Final.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend_Final.Controllers
 {
@@ -16,7 +17,7 @@ namespace Backend_Final.Controllers
         public IActionResult Index()
         {
             HomeVM vm = new();
-            vm.Slider=_context.Slider.ToList();
+            vm.Slider=_context.Slider.Include(si=>si.SliderImgae).ToList();
             return View(vm);
         }
     }

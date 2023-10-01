@@ -1,0 +1,29 @@
+﻿@model Comments
+@{
+    ViewData["Title"] = "Default";
+}
+
+<div class="reply-area">
+    <h3>LEAVE A REPLY</h3>
+    <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
+    <form id="contact-form" action="http://demo.devitems.com/eduhome/mail.php" method="post">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Name</p>
+                <input asp-for="Name">
+            </div>
+            <div class="col-md-12">
+                <p>Email</p>
+                <input asp-for="Email">
+            </div>
+            <div class="col-md-12">
+                <p>Subject</p>
+                <input asp-for="Subject">
+                <p>Massage</p>
+                <textarea asp-for="Message" cols="15" rows="10"></textarea>
+            </div>
+        </div>
+        <a class="reply-btn" href="#" data-text="send"><span>send message</span></a>
+        <p class="form-messege"></p>
+    </form>
+</div>
