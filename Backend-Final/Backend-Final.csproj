@@ -22,4 +22,8 @@
     <PackageReference Include="Newtonsoft.Json" Version="5.0.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Partial\" />
+  </ItemGroup>
+
 </Project>

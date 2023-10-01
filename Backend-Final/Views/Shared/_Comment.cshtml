@@ -1,7 +1,5 @@
 ﻿@model Comments
-@{
-    ViewData["Title"] = "Default";
-}
+
 
 <div class="reply-area">
     <h3>LEAVE A REPLY</h3>
@@ -14,7 +12,7 @@
             </div>
             <div class="col-md-12">
                 <p>Email</p>
-                <input asp-for="Email">
+                <input asp-for ="Email">
             </div>
             <div class="col-md-12">
                 <p>Subject</p>
@@ -23,7 +21,7 @@
                 <textarea asp-for="Message" cols="15" rows="10"></textarea>
             </div>
         </div>
-        <a class="reply-btn" href="#" data-text="send"><span>send message</span></a>
+        <button class="reply-btn" type="submit" data-text="send">send message</button>
         <p class="form-messege"></p>
     </form>
 </div>
