@@ -17,16 +17,15 @@ namespace Backend_Final.Controllers
             _context = context;
         }
         #region Comment
-        public IActionResult Comment()
-        {
-         
-            return PartialView("_Comment");
-        }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Comment(CommentVM commentVM)
+        public async Task<IActionResult> Comment(CommentVM commentVM,string? currentUrl)
         {
-            var currentPage = Request.GetDisplayUrl;
+
+            if(!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Bosh qoymayin!");
+            }
             Comments comments = new Comments();
             comments.Name = commentVM.Name;
             comments.Email = commentVM.Email;
@@ -35,7 +34,7 @@ namespace Backend_Final.Controllers
             _context.Comments.Add(comments);
             _context.SaveChanges();
 
-            return Redirect(currentPage.ToString());
+            return Redirect(currentUrl);
         }
         #endregion
 

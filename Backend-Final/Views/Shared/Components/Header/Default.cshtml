@@ -17,7 +17,7 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        <a asp-controller="home">Home</a>
+                                        <a asp-controller="home" asp-action="index">Home</a>
                                         <ul>
                                             <li><a href="index.html">Home One</a></li>
                                             <li><a href="index-2.html">Home Two</a></li>
@@ -35,10 +35,10 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a asp-controller="event">event</a>
+                                        <a asp-controller="event" asp-action="index">event</a>
                                         <ul>
-                                            <li><a href="event.html">event</a></li>
-                                            <li><a href="event-details.html">event details</a></li>
+                                            <li><a asp-controller="event" asp-action="index">event</a></li>
+                                            <li><a asp-controller="event" asp-action="index" asp-route-id="">event details</a></li>
                                         </ul>
                                     </li>
                                     <li class="hidden-sm">

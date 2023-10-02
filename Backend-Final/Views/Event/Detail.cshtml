@@ -1,0 +1,151 @@
+﻿@model Event
+@{
+    ViewData["Title"] = "Detail";
+   
+}
+<div class="banner-area-wrapper">
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>event / details</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Area End -->
+<!-- Event Details Start -->
+<div class="event-details-area blog-area pt-150 pb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="event-details">
+                    <div class="event-details-img">
+                        <img src="~/img/event/@Model.EventDetailImage.ImgUrl" alt="event-details">
+                        <div class="event-date">
+                            <h3>20 <span>jun</span></h3>
+                        </div>
+                    </div>
+                    <div class="event-details-content">
+                        <h2>ADVANCE WED DEVELOPMENT WORKSHOP</h2>
+                        <ul>
+                            <li><span>time:</span> @Model.OpenTime.Hour.ToString() : @Model.OpenTime.Minute.ToString() @Model.OpenTime.ToString().Substring(Model.OpenTime.ToString().Length-2,2) - @Model.CloseTime.Hour.ToString() : @Model.CloseTime.Minute.ToString() @Model.CloseTime.ToString().Substring(Model.CloseTime.ToString().Length-2,2)</li>
+                            <li><span>venue</span> @Model.Venue.Substring(0,14)</li>
+                        </ul>
+                        @Html.Raw(Model.Desc)
+                        <div class="speakers-area fix">
+                            <h4>speakers</h4>
+                            @foreach (var speaker in Model.Speakers.Where(s=>s.EventId==Model.Id))
+                            {
+                            <div class="single-speaker">
+                                <div class="speaker-img">
+                                    <img src="~/img/event/@speaker.ImgUrl" alt="speaker">
+                                </div>
+                                <div class="speaker-name">
+                                    <h5>@speaker.Name</h5>
+                                    <p>@speaker.Specilty</p>
+                                </div>
+                            </div>
+                            }
+                          
+                        </div>
+                    </div>
+                   @await Html.PartialAsync("_Comment",new CommentVM())
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right">
+                    <div class="single-blog-widget mb-50">
+                        <h3>search</h3>
+                        <div class="blog-search">
+                            <form id="search" action="#">
+                                <input type="search" placeholder="Search..." name="search" />
+                                <button type="submit">
+                                    <span><i class="fa fa-search"></i></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>categories</h3>
+                        <ul>
+                            <li><a href="#">CSS Engineering (10)</a></li>
+                            <li><a href="#">Political Science (12)</a></li>
+                            <li><a href="#">Micro Biology (08)</a></li>
+                            <li><a href="#">HTML5 &amp; CSS3 (15)</a></li>
+                            <li><a href="#">Web Design (20)</a></li>
+                            <li><a href="#">PHP (23)</a></li>
+                        </ul>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <div class="single-blog-banner">
+                            <a href="blog-details.html" id="blog"><img src="~/img/blog/blog-img.jpg" alt="blog"></a>
+                            <h2>best<br> eductaion<br> theme</h2>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>latest post</h3>
+                        <div class="single-post mb-30">
+                            <div class="single-post-img">
+                                <a href="blog-details.html">
+                                    <img src="~/img/post/post1.jpg" alt="post">
+                                    <div class="blog-hover">
+                                        <i class="fa fa-link"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="single-post-content">
+                                <h4><a href="blog-details.html">English Language Course for you</a></h4>
+                                <p>By Alex  /  June 20, 2017</p>
+                            </div>
+                        </div>
+                        <div class="single-post mb-30">
+                            <div class="single-post-img">
+                                <a href="blog-details.html">
+                                    <img src="~/img/post/post2.jpg" alt="post">
+                                    <div class="blog-hover">
+                                        <i class="fa fa-link"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="single-post-content">
+                                <h4><a href="blog-details.html">Advance Web Design and Develop</a></h4>
+                                <p>By Alex  /  June 20, 2017</p>
+                            </div>
+                        </div>
+                        <div class="single-post">
+                            <div class="single-post-img">
+                                <a href="blog-details.html">
+                                    <img src="~/img/post/post3.jpg" alt="post">
+                                    <div class="blog-hover">
+                                        <i class="fa fa-link"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="single-post-content">
+                                <h4><a href="blog-details.html">English Language Course for you</a></h4>
+                                <p>By Alex  /  June 20, 2017</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget">
+                        <h3>tags</h3>
+                        <div class="single-tag">
+                            <a href="blog-details.html" class="mr-10 mb-10">course</a>
+                            <a href="blog-details.html" class="mr-10 mb-10">education</a>
+                            <a href="blog-details.html" class="mb-10">teachers</a>
+                            <a href="blog-details.html" class="mr-10">learning</a>
+                            <a href="blog-details.html" class="mr-10">university</a>
+                            <a href="blog-details.html">events</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

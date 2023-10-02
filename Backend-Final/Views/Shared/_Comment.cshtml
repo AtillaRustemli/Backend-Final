@@ -1,27 +1,34 @@
-﻿@model Comments
-
+﻿@model CommentVM
+@using Microsoft.AspNetCore.Http.Extensions
+@{
+    string currentUrl = Context.Request.GetDisplayUrl();
+}
 
 <div class="reply-area">
     <h3>LEAVE A REPLY</h3>
     <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
-    <form id="contact-form" action="http://demo.devitems.com/eduhome/mail.php" method="post">
+    <form id="contact-form" method="post">
         <div class="row">
             <div class="col-md-12">
                 <p>Name</p>
                 <input asp-for="Name">
+                <span asp-validation-for="Name"></span>
             </div>
             <div class="col-md-12">
                 <p>Email</p>
                 <input asp-for ="Email">
+                <span asp-validation-for="Email"></span>
             </div>
             <div class="col-md-12">
                 <p>Subject</p>
                 <input asp-for="Subject">
+                <span asp-validation-for="Subject"></span>
                 <p>Massage</p>
                 <textarea asp-for="Message" cols="15" rows="10"></textarea>
+                <span asp-validation-for="Message"></span>
             </div>
         </div>
-        <button class="reply-btn" type="submit" data-text="send">send message</button>
-        <p class="form-messege"></p>
+        <button type="submit" name="commit" asp-controller="partial" asp-action="Comment" asp-route-currentUrl="@currentUrl">Send Message</button>
+        
     </form>
 </div>

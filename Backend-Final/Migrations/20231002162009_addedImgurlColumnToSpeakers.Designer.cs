@@ -4,6 +4,7 @@ using Backend_Final.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend_Final.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231002162009_addedImgurlColumnToSpeakers")]
+    partial class addedImgurlColumnToSpeakers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,6 +91,9 @@ namespace Backend_Final.Migrations
                     b.Property<string>("Desc")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EventDetailImage")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImgUrl")
                         .IsRequired()
@@ -254,7 +259,7 @@ namespace Backend_Final.Migrations
             modelBuilder.Entity("Backend_Final.Models.EventDetailImage", b =>
                 {
                     b.HasOne("Backend_Final.Models.Event", "Event")
-                        .WithOne("EventDetailImage")
+                        .WithOne("EventImage")
                         .HasForeignKey("Backend_Final.Models.EventDetailImage", "EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -284,7 +289,7 @@ namespace Backend_Final.Migrations
 
             modelBuilder.Entity("Backend_Final.Models.Event", b =>
                 {
-                    b.Navigation("EventDetailImage")
+                    b.Navigation("EventImage")
                         .IsRequired();
 
                     b.Navigation("Speakers");

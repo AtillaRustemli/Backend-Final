@@ -14,6 +14,7 @@ namespace Backend_Final.DAL
         public DbSet<Subscribers> Subscribers { get; set; }
         public DbSet<SettingsKeyValue> SettingsKeyValue { get; set; }
         public DbSet<Event> Event { get; set; }
+        public DbSet<EventDetailImage> EventDetailImage { get; set; }
         public DbSet<Speaker> Speakers { get; set; }
 
 

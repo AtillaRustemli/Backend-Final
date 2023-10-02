@@ -1,6 +1,6 @@
 ﻿@model SubscribeVM
 @{
-    string currentUrl = Url.Action(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString());
+    string currentUrl = Url.Action().ToString();
 }
 <div class="subscribe-area pt-60 pb-70">
     <div class="container">

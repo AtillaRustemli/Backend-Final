@@ -1,13 +1,10 @@
 ﻿namespace Backend_Final.Models
 {
-    public class Speaker
+    public class EventDetailImage
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Specilty { get; set; }
         public string ImgUrl { get; set; }
-        public int? EventId { get; set; }
+        public int EventId { get; set; }
         public Event Event { get; set; }
-
     }
 }
