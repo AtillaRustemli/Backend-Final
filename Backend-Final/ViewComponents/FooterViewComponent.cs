@@ -15,9 +15,10 @@ namespace Backend_Final.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            
             HomeVM vm = new();
+            vm.SettingsKeyValue = _context.SettingsKeyValue.ToDictionary(k=>k.Key,v=>v.Value);
             return View(await Task.FromResult(vm));
-           var socialMedia=_context.SocialMedia.ToDictionary(k=>k.Socialmedia,v=>v.ScialMediasURl);
         }
     }
 }

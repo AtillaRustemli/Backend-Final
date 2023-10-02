@@ -13,7 +13,8 @@ namespace Backend_Final.DAL
         public DbSet<CommentTitle> CommentTitle { get; set; }
         public DbSet<Subscribers> Subscribers { get; set; }
         public DbSet<SettingsKeyValue> SettingsKeyValue { get; set; }
-        public DbSet<SocialMedia> SocialMedia { get; set; }
+        public DbSet<Event> Event { get; set; }
+        public DbSet<Speaker> Speakers { get; set; }
 
 
     }
