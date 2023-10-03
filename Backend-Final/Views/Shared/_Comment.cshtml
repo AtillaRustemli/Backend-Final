@@ -1,7 +1,7 @@
 ﻿@model CommentVM
 @using Microsoft.AspNetCore.Http.Extensions
 @{
-    string currentUrl = Context.Request.GetDisplayUrl();
+    ViewBag.currentUrl = Context.Request.GetDisplayUrl().ToString();
 }
 
 <div class="reply-area">
@@ -28,7 +28,7 @@
                 <span asp-validation-for="Message"></span>
             </div>
         </div>
-        <button type="submit" name="commit" asp-controller="partial" asp-action="Comment" asp-route-currentUrl="@currentUrl">Send Message</button>
+        <button type="submit">Send Message</button>
         
     </form>
 </div>

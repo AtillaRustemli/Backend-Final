@@ -16,6 +16,13 @@ namespace Backend_Final.DAL
         public DbSet<Event> Event { get; set; }
         public DbSet<EventDetailImage> EventDetailImage { get; set; }
         public DbSet<Speaker> Speakers { get; set; }
+        public DbSet<Blog> Blog { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Course> Course { get; set; }
+        public DbSet<CourseFeature> CourseFeature { get; set; }
+        public DbSet<CourseDetail> CourseDetail { get; set; }
+        public DbSet<Post> Post { get; set; }
+        public DbSet<Tag> Tag { get; set; }
 
 
     }

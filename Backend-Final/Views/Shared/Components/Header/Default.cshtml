@@ -18,19 +18,13 @@
                                 <ul>
                                     <li>
                                         <a asp-controller="home" asp-action="index">Home</a>
-                                        <ul>
-                                            <li><a href="index.html">Home One</a></li>
-                                            <li><a href="index-2.html">Home Two</a></li>
-                                            <li><a href="index-3.html">Home Three</a></li>
-                                            <li><a href="index-4.html">Home Four</a></li>
-                                            <li><a href="index-5.html">Home Five</a></li>
-                                        </ul>
+                                   
                                     </li>
-                                    <li><a asp-controller="about">About</a></li>
+                                    <li><a asp-controller="about" asp-action="index">About</a></li>
                                     <li>
-                                        <a href="course.html">courses</a>
+                                        <a asp-controller="course" asp-action="index">courses</a>
                                         <ul>
-                                            <li><a href="course.html">courses</a></li>
+                                            <li><a asp-controller="course" asp-action="index">courses</a></li>
                                             <li><a href="course-details.html">courses details</a></li>
                                         </ul>
                                     </li>
@@ -42,21 +36,20 @@
                                         </ul>
                                     </li>
                                     <li class="hidden-sm">
-                                        <a asp-controller="teacher">teacher</a>
+                                        <a asp-controller="teacher" asp-action="index">teacher</a>
                                         <ul>
-                                            <li><a href="teacher.html">teacher</a></li>
+                                            <li><a asp-controller="teacher" asp-action="index">teacher</a></li>
                                             <li><a href="teacher-details.html">teacher details</a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a asp-controller="blog">blog</a>
+                                        <a asp-controller="blog" asp-action="index">blog</a>
                                         <ul>
-                                            <li><a href="blog.html">blog</a></li>
+                                            <li><a asp-controller="blog" asp-action="index">blog</a></li>
                                             <li><a asp-controller="blog" asp-action="detail" asp-route-id="">blog details</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="#">Buy Now</a>
+                                   
                                 </ul>
                             </nav>
                         </div>

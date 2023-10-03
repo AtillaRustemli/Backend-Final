@@ -4,25 +4,29 @@ using Backend_Final.ViewModels;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Hosting.Internal;
 using System.Linq;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Backend_Final.Controllers
 {
     public class PartialController : Controller
     {
           private readonly AppDbContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public PartialController(AppDbContext context)
+        public PartialController(AppDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
         #region Comment
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Comment(CommentVM commentVM,string? currentUrl)
+        public async Task<IActionResult> Comment(CommentVM commentVM)
         {
-
-            if(!ModelState.IsValid)
+            string rootPath = _hostingEnvironment.ContentRootPath;
+            if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Bosh qoymayin!");
             }
@@ -34,7 +38,7 @@ namespace Backend_Final.Controllers
             _context.Comments.Add(comments);
             _context.SaveChanges();
 
-            return Redirect(currentUrl);
+            return Redirect(rootPath);
         }
         #endregion
 

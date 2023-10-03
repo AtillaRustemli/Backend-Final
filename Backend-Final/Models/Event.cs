@@ -12,5 +12,9 @@
         public string ImgUrl { get; set; }
         public List<Speaker> Speakers { get; set; }
         public EventDetailImage EventDetailImage { get; set; }
+        public List<Post> Post { get; set; }
+        public List<Tag> Tag { get; set; }
+        public int? CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

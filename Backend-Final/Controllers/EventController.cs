@@ -23,10 +23,13 @@ namespace Backend_Final.Controllers
         }
         public IActionResult Detail(int? id)
         {
+            ViewBag.Categories=_context.Category.ToList();
+            ViewBag.Events=_context.Event.ToList();
             if (id == null) return NotFound();
             var events= _context.Event
                 .Include(e=>e.EventDetailImage)
                 .Include(e=>e.Speakers)
+                .Include(e=>e.Category)
                 .FirstOrDefault(e=>e.Id==id);
             if(events == null) return NotFound();
             return View(events);
