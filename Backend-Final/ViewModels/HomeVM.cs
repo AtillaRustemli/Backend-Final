@@ -5,6 +5,9 @@ namespace Backend_Final.ViewModels
     public class HomeVM
     {
         public List<Slider> Slider { get; set; }
+        public List<Event> Event { get; set; }
+        public List<Blog> Blog { get; set; }
+        public List<Course> Course { get; set; }
         public Dictionary<string,string> SettingsKeyValue { get; set; }
     }
 }

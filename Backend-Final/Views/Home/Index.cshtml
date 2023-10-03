@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    int count = 0;
 }
 
 <section id="slider-container" class="slider-area">
@@ -43,42 +44,16 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="notice-left">
                     <h3>notice board</h3>
-                    <div class="single-notice-left mb-25 pb-25">
-                        <h4>5, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
+                    @foreach (var events in Model.Event)
+                    {
+                     count++;
+                        <div class="single-notice-left @(count%3==0?"pb-75":"mb-25 pb-25")">
+                            <h4>@events.Date.Day @(new DateTime(DateTime.Now.Year, events.Date.Month, 1).ToString("MMMM"))</h4>
+                            <p>@Html.Raw(events.Desc.Substring(0,100)+"</p>") </p>
+                           
                     </div>
-                    <div class="single-notice-left mb-25 pb-25">
-                        <h4>4, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left pb-75">
-                        <h4>3, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left mb-25 pb-25">
-                        <h4>5, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left mb-25 pb-25">
-                        <h4>4, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left pb-70">
-                        <h4>3, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left mb-25 pb-25">
-                        <h4>5, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left mb-25 pb-25">
-                        <h4>4, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left pb-70">
-                        <h4>3, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
+
+                    }
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -129,57 +104,30 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
+            @{
+                count = 0;
+            }
+            @foreach (var item in Model.Course)
+            {
+                count++;
+                <div class="col-md-4 @(count==Model.Course.Count?"hidden-sm":"col-sm-6")  col-sm-6 col-xs-12">
                 <div class="single-course">
                     <div class="course-img">
                         <a href="course-details.html">
-                            <img src="img//course/course1.jpg" alt="course">
+                            <img src="~/img//course/@item.ImgUrl" alt="course">
                             <div class="course-hover">
                                 <i class="fa fa-link"></i>
                             </div>
                         </a>
                     </div>
                     <div class="course-content">
-                        <h3><a href="course-details.html">CSE ENGINEERING</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
+                        <h3><a href="course-details.html">@item.Name</a></h3>
+                        <p>@item.Description.Substring(0,110)</p>
                         <a class="default-btn" href="course-details.html">read more</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html">
-                            <img src="img//course/course2.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="course-details.html">CSE ENGINEERING</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a class="default-btn" href="course-details.html">read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 hidden-sm col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html">
-                            <img src="img//course/course3.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="course-details.html">CSE ENGINEERING</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a class="default-btn" href="course-details.html">read more</a>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>

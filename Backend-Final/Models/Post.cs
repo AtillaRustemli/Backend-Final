@@ -9,12 +9,5 @@ namespace Backend_Final.Models
         public string Title { get; set; }
         public string Author { get; set; }
         public DateTime Date { get; set; }
-        public int EventId { get; set; }
-        public Event Event { get; set; }
-        public int BlogId { get; set; }
-        public Blog Blog { get; set; }
-        public int CourseId { get; set; }
-        [ForeignKey(nameof(CourseId))]
-        public Course Course { get; set; }
     }
 }

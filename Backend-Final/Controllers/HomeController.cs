@@ -18,6 +18,9 @@ namespace Backend_Final.Controllers
         {
             HomeVM vm = new();
             vm.Slider=_context.Slider.Include(si=>si.SliderImgae).ToList();
+            vm.Blog=_context.Blog.ToList();
+            vm.Course=_context.Course.ToList();
+            vm.Event=_context.Event.ToList();
             return View(vm);
         }
     }
