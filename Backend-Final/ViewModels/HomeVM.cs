@@ -9,5 +9,8 @@ namespace Backend_Final.ViewModels
         public List<Blog> Blog { get; set; }
         public List<Course> Course { get; set; }
         public Dictionary<string,string> SettingsKeyValue { get; set; }
+        public List<Testimonial> Testimonial { get; set; }
+        public List<NoticeAreaRight> NoticeAreaRight { get; set; }
+        public WhyChooseUs WhyChooseUs { get; set; }
     }
 }

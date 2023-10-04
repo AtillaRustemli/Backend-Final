@@ -23,6 +23,10 @@ namespace Backend_Final.DAL
         public DbSet<CourseDetail> CourseDetail { get; set; }
         public DbSet<Post> Post { get; set; }
         public DbSet<Tag> Tag { get; set; }
+        public DbSet<Testimonial> Testimonial { get; set; }
+        public DbSet<NoticeAreaRight> NoticeAreaRight { get; set; }
+        public DbSet<WhyChooseUs> WhyChooseUs { get; set; }
+        public DbSet<CourseDetaiIImage> CourseDetaiIImage { get; set; }
 
 
     }

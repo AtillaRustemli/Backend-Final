@@ -1,7 +1,7 @@
 ﻿@model Event
 @{
     ViewData["Title"] = "Detail";
-    int coureCount = 0;
+    int courseCount = 0;
 }
 <div class="banner-area-wrapper">
     <div class="banner-area text-center">
@@ -78,11 +78,11 @@
                             {
                                 foreach (var events in ViewBag.Events)
                                 {
-                                    if (category.Id == events.CategoryId) coureCount++;
+                                    if (category.Id == events.CategoryId) courseCount++;
                                 }
-                                <li><a href="#">@category.Name (@coureCount)</a></li>
+                                <li><a href="#">@category.Name (@courseCount)</a></li>
 
-                                coureCount = 0;
+                                courseCount = 0;
 
                             
                             }

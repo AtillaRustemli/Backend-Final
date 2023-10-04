@@ -58,18 +58,17 @@
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="notice-right">
-                    <div class="single-notice-right mb-25 pb-25">
-                        <h3>PROFESSIONAL TEACHER</h3>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings </p>
+                    @foreach (var item in Model.NoticeAreaRight)
+                    {
+                    <div class="single-notice-right  @(count==Model.NoticeAreaRight.Count?"":"mb-25 pb-25") ">
+                        <h3>@item.Title</h3>
+                        <p>@item.Desc</p>
                     </div>
-                    <div class="single-notice-right mb-25 pb-25">
-                        <h3>Online courses</h3>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings </p>
-                    </div>
-                    <div class="single-notice-right">
-                        <h3>easy to addmission</h3>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings </p>
-                    </div>
+                        
+                    }
+                    @{
+                        count = 0;
+                    }
                 </div>
             </div>
         </div>
@@ -82,10 +81,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-left-4 col-sm-8 col-md-offset-left-4">
                 <div class="choose-content text-left">
-                    <h2>WHY YOU CHOOSE EDUHOME ?</h2>
-                    <p>I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings  the master-builder of humanit happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because. </p>
-                    <p class="choose-option">I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings  the master-builder. </p>
-                    <a class="default-btn" href="course-details.html">view courses</a>
+                    <h2>@Model.WhyChooseUs.Title</h2>
+                    <p>@Html.Raw(Model.WhyChooseUs.Description) </p>
+                    <a class="default-btn" asp-controller="course" asp-action="index">view courses</a>
                 </div>
             </div>
         </div>
@@ -104,29 +102,29 @@
             </div>
         </div>
         <div class="row">
-            @{
-                count = 0;
-            }
-            @foreach (var item in Model.Course)
+            @foreach (var course in Model.Course)
             {
                 count++;
-                <div class="col-md-4 @(count==Model.Course.Count?"hidden-sm":"col-sm-6")  col-sm-6 col-xs-12">
+                <div class="col-md-4 @(count==Model.Course.Count?"hidden-sm":"col-sm-6") col-xs-12">
                 <div class="single-course">
                     <div class="course-img">
                         <a href="course-details.html">
-                            <img src="~/img//course/@item.ImgUrl" alt="course">
+                                <img src="~/img//course/@course.ImgUrl" alt="course">
                             <div class="course-hover">
                                 <i class="fa fa-link"></i>
                             </div>
                         </a>
                     </div>
                     <div class="course-content">
-                        <h3><a href="course-details.html">@item.Name</a></h3>
-                        <p>@item.Description.Substring(0,110)</p>
+                            <h3><a asp-controller="course" asp-action="detail" asp-route-id="@course.Id">@course.Name</a></h3>
+                            <p>@course.Description.Substring(0,110)</p>
                         <a class="default-btn" href="course-details.html">read more</a>
                     </div>
                 </div>
             </div>
+            }
+            @{
+                count = 0;
             }
         </div>
     </div>
@@ -145,144 +143,62 @@
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="single-event mb-35">
+                @foreach (var events in Model.Event)
+                {
+                    count++;
+                    <div class="single-event mb-35">
                     <div class="event-date">
-                        <h3><a href="event-details.html">20 <span>June</span></a></h3>
+                            <h3><a href="event-details.html">@events.Date.Day <span>@(new DateTime(DateTime.Now.Year, events.Date.Month, 1).ToString("MMMM"))</span></a></h3>
                     </div>
                     <div class="event-content text-left">
                         <div class="event-content-left">
-                            <h4><a href="event-details.html">MICRO BIOLOGICAL WORKSHOP</a></h4>
+                            <h4><a href="event-details.html">@events.Title</a></h4>
                             <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
+                                    <li><i class="fa fa-clock-o"></i>@events.OpenTime.Hour.ToString() : @events.OpenTime.Minute.ToString() @events.OpenTime.ToString().Substring(events.OpenTime.ToString().Length-2,2) - @events.CloseTime.Hour.ToString() : @events.CloseTime.Minute.ToString() @events.CloseTime.ToString().Substring(events.CloseTime.ToString().Length-2,2)</li>
+                                    <li><i class="fa fa-map-marker"></i>@events.Venue.Substring(0,14)</li>
                             </ul>
                         </div>
                         <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
+                            <a class="default-btn" asp-controller="event" asp-action="detail" asp-route-id="@events.Id">join now</a>
                         </div>
                     </div>
                 </div>
-                <div class="single-event mb-35">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">18 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">ADVANCE PHP WORKSHOP</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-event mb-35">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">16 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">LEARN ENGLISH HISTORY</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-event">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">14 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">GLOBAL ECONOMIC CONFERENCE</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
+                    if (count == Math.Round((decimal)Model.Event.Count / 2))
+                    {
+                        break;
+                    }
+                }
+                @{
+                    count = 0;
+                }
             </div>
             <div class="col-md-6 hidden-sm hidden-xs">
-                <div class="single-event mb-35">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">12 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">MATHEMATICAL WORKSHOP</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
+                @foreach (var events in Model.Event)
+                {
+                    count++;
+                    if (count <= Math.Round((decimal)Model.Event.Count / 2))
+                    {
+                        continue;
+                    }
+                    <div class="single-event @(count==Model.Event.Count?"":"mb-35")">
+                        <div class="event-date">
+                            <h3><a href="event-details.html">@events.Date.Day <span>@(new DateTime(DateTime.Now.Year, events.Date.Month, 1).ToString("MMMM"))</span></a></h3>
                         </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-event mb-35">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">10 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">WORDPRESS AUTHOR MEET UP</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
+                        <div class="event-content text-left">
+                            <div class="event-content-left">
+                                <h4><a href="event-details.html">@events.Title</a></h4>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i>@events.OpenTime.Hour.ToString() : @events.OpenTime.Minute.ToString() @events.OpenTime.ToString().Substring(events.OpenTime.ToString().Length-2,2) - @events.CloseTime.Hour.ToString() : @events.CloseTime.Minute.ToString() @events.CloseTime.ToString().Substring(events.CloseTime.ToString().Length-2,2)</li>
+                                    <li><i class="fa fa-map-marker"></i>@events.Venue.Substring(0,14)</li>
+                                </ul>
+                            </div>
+                            <div class="event-content-right">
+                                <a class="default-btn" href="event-details.html">join now</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="single-event mb-35">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">08 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">DIGITAL MARKETING ANALYSIS</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-event">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">06 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">WROKSHOP ON UI &amp; UX</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
+                }
+            
             </div>
         </div>
     </div>
@@ -293,20 +209,24 @@
     <div class="container">
         <div class="row">
             <div class="testimonial-owl owl-theme owl-carousel">
+                    @foreach (var item in Model.Testimonial)
+                    {
                 <div class="col-md-8 col-md-offset-2 col-sm-12">
                     <div class="single-testimonial">
                         <div class="testimonial-info">
                             <div class="testimonial-img">
-                                <img src="img//testimonial/testimonial.jpg" alt="testimonial">
+                                <img src="img//testimonial/@item.ImgUrl" alt="testimonial">
                             </div>
                             <div class="testimonial-content">
-                                <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and I will give you a coete account of the system, and expound the actual</p>
-                                <h4>David Morgan</h4>
-                                <h5>Student, CSE</h5>
+                                <p>@item.Desc</p>
+                                <h4>@item.Name</h4>
+                                <h5>@item.Position</h5>
                             </div>
                         </div>
                     </div>
-                </div>
+                      
+                </div>  
+                    }
             </div>
         </div>
     </div>
@@ -324,63 +244,29 @@
             </div>
         </div>
         <div class="row">
+            @foreach (var blog in Model.Blog)
+            {
+                
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="single-blog">
                     <div class="blog-img">
-                        <a href="blog-details.html"><img src="img//blog/blog1.jpg" alt="blog"></a>
+                        <a href="blog-details.html"><img src="img//blog/@blog.ImgUrl" alt="blog"></a>
                         <div class="blog-hover">
                             <a href="blog-details.html"><i class="fa fa-link"></i></a>
                         </div>
                     </div>
                     <div class="blog-content">
                         <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
+                                <p>By @blog.Author  /  @(new DateTime(DateTime.Now.Year, blog.Date.Month, 1).ToString("MMMM")) @blog.Date.Day,@blog.Date.Year /  <i class="fa fa-comments-o"></i> 4</p>
                         </div>
                         <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
+                            <h2><a href="blog-details.html">@Html.Raw(blog.Description.Substring(0,45)) </a></h2>
+                            <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">read more</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="img//blog/blog2.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 hidden-sm col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="img//blog/blog3.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>

@@ -4,6 +4,7 @@ using Backend_Final.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend_Final.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231004152643_addedTestemonialTable")]
+    partial class addedTestemonialTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,10 +43,6 @@ namespace Backend_Final.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImgUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -156,23 +154,6 @@ namespace Backend_Final.Migrations
                     b.ToTable("Course");
                 });
 
-            modelBuilder.Entity("Backend_Final.Models.CourseDetaiIImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ImgUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CourseDetaiIImage");
-                });
-
             modelBuilder.Entity("Backend_Final.Models.CourseDetail", b =>
                 {
                     b.Property<int>("Id")
@@ -221,9 +202,6 @@ namespace Backend_Final.Migrations
                     b.Property<string>("Duration")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Fee")
-                        .HasColumnType("float");
 
                     b.Property<string>("Language")
                         .IsRequired()
@@ -312,27 +290,6 @@ namespace Backend_Final.Migrations
                         .IsUnique();
 
                     b.ToTable("EventDetailImage");
-                });
-
-            modelBuilder.Entity("Backend_Final.Models.NoticeAreaRight", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
-
-                    b.Property<string>("Desc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("NoticeAreaRight");
                 });
 
             modelBuilder.Entity("Backend_Final.Models.Post", b =>
@@ -555,27 +512,6 @@ namespace Backend_Final.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Testimonial");
-                });
-
-            modelBuilder.Entity("Backend_Final.Models.WhyChooseUs", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WhyChooseUs");
                 });
 
             modelBuilder.Entity("Backend_Final.Models.Blog", b =>

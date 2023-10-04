@@ -21,6 +21,9 @@ namespace Backend_Final.Controllers
             vm.Blog=_context.Blog.ToList();
             vm.Course=_context.Course.ToList();
             vm.Event=_context.Event.ToList();
+            vm.Testimonial=_context.Testimonial.ToList();
+            vm.NoticeAreaRight=_context.NoticeAreaRight.ToList();
+            vm.WhyChooseUs=_context.WhyChooseUs.FirstOrDefault();
             return View(vm);
         }
     }

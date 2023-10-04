@@ -1,5 +1,7 @@
-﻿@{
+﻿@model List<Course>
+@{
     ViewData["Title"] = "Index";
+    int count = 0;
 }
 <div class="banner-area-wrapper">
     <div class="banner-area text-center">
@@ -8,7 +10,7 @@
                 <div class="col-xs-12">
                     <div class="banner-content-wrapper">
                         <div class="banner-content">
-                            <h2>contact</h2>
+                            <h2>courses</h2>
                         </div>
                     </div>
                 </div>
@@ -17,79 +19,48 @@
     </div>
 </div>
 <!-- Banner Area End -->
-<!-- Contact Start -->
-<div class="map-area">
-    <!-- google-map-area start -->
-    <div class="google-map-area">
-        <!--  Map Section -->
-        <div id="contacts" class="map-area">
-            <div id="googleMap" style="width:100%;height:440px;"></div>
-        </div>
-    </div>
-</div>
-<div class="contact-area pt-150 pb-140">
+<!-- Course Start -->
+<div class="course-area pt-150 pb-150">
     <div class="container">
         <div class="row">
-            <div class="col-md-5 col-sm-5 col-xs-12">
-                <div class="contact-contents text-center">
-                    <div class="single-contact mb-65">
-                        <div class="contact-icon">
-                            <img src="img/contact/contact1.png" alt="contact">
-                        </div>
-                        <div class="contact-add">
-                            <h3>address</h3>
-                            <p>135, First Lane, City Street</p>
-                            <p>New Yourk City, USA</p>
-                        </div>
-                    </div>
-                    <div class="single-contact mb-65">
-                        <div class="contact-icon">
-                            <img src="img/contact/contact2.png" alt="contact">
-                        </div>
-                        <div class="contact-add">
-                            <h3>address</h3>
-                            <p>135, First Lane, City Street</p>
-                            <p>New Yourk City, USA</p>
-                        </div>
-                    </div>
-                    <div class="single-contact">
-                        <div class="contact-icon">
-                            <img src="img/contact/contact3.png" alt="contact">
-                        </div>
-                        <div class="contact-add">
-                            <h3>address</h3>
-                            <p>135, First Lane, City Street</p>
-                            <p>New Yourk City, USA</p>
-                        </div>
-                    </div>
+            <div class="col-xs-12">
+                <div class="course-title">
+                    <h3>search courses</h3>
                 </div>
-            </div>
-            <div class="col-md-7 col-sm-7 col-xs-12">
-                <div class="reply-area">
-                    <h3>LEAVE A message</h3>
-                    <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
-                    <form id="contact-form" action="http://demo.devitems.com/eduhome/mail.php" method="post">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>Name</p>
-                                <input type="text" name="name" id="name">
-                            </div>
-                            <div class="col-md-12">
-                                <p>Email</p>
-                                <input type="text" name="email" id="email">
-                            </div>
-                            <div class="col-md-12">
-                                <p>Subject</p>
-                                <input type="text" name="subject" id="subject">
-                                <p>Massage</p>
-                                <textarea name="message" id="message" cols="15" rows="10"></textarea>
-                            </div>
-                        </div>
-                        <a class="reply-btn" href="#" data-text="send"><span>send message</span></a>
-                        <p class="form-messege"></p>
+                <div class="course-form">
+                    <form id="search" method="post" action="#">
+                        <input type="search" placeholder="Search..." name="search" />
+                        <button type="submit">search</button>
                     </form>
                 </div>
             </div>
         </div>
+        <div class="row">
+            @foreach (var course in Model)
+            {
+                count++;
+                <div class="col-md-4 @(count==Model.Count?"hidden-sm":"col-sm-6") col-xs-12">
+                <div class="single-course mb-70">
+                    <div class="course-img">
+                        <a asp-controller="course" asp-action="detail" asp-route-id="@course.Id">
+                            <img src="img/course/@course.ImgUrl" alt="course">
+                            <div class="course-hover">
+                                <i class="fa fa-link"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="course-content">
+                        <h3><a href="course-details.html">@course.Name</a></h3>
+                        <p>@course.Description.Substring(0,100)</p>
+                        <a class="default-btn" asp-controller="course" asp-action="detail" asp-route-id="@course.Id">read more</a>
+                    </div>
+                </div>
+            </div>
+            }
+            @{
+                count = 0;
+            }
+        </div>
     </div>
-</div>
+</div>   
+@await Html.PartialAsync("_Subscribe",new SubscribeVM())

@@ -10,6 +10,7 @@
         public string Language { get; set; }
         public string Students { get; set; }
         public string Assesment { get; set; }
+        public double Fee { get; set; }
         public int CourseId { get; set; }
         public Course Course { get; set; }
     }
