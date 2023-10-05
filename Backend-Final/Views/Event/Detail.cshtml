@@ -98,7 +98,8 @@
                         <h3>latest post</h3>
                         @foreach (var item in ViewBag.Posts)
                         {
-                        <div class="single-post mb-30">
+                            courseCount++;
+                            <div class="single-post @(courseCount==Model.Post.Count?"":" mb-30")">
                             <div class="single-post-img">
                                 <a href="blog-details.html">
                                     <img src="~/img/post/@item.ImgUrl" alt="post">

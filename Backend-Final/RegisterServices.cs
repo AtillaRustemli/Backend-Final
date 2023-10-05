@@ -8,6 +8,8 @@ namespace Backend_Final
         public static void Register(this IServiceCollection services,IConfiguration config)
         {
             services.AddControllersWithViews();
+
+            services.AddHttpContextAccessor();
             services.AddDbContext<AppDbContext>(opt =>
             {
                 opt.UseSqlServer(config.GetConnectionString("DefaultConnection"));

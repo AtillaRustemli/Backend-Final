@@ -22,6 +22,35 @@ namespace Backend_Final.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Backend_Final.Models.About", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImgUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VideoLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("About");
+                });
+
             modelBuilder.Entity("Backend_Final.Models.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -528,6 +557,180 @@ namespace Backend_Final.Migrations
                     b.ToTable("Tag");
                 });
 
+            modelBuilder.Entity("Backend_Final.Models.Teacher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AboutMe")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImgUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Specilty")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teacher");
+                });
+
+            modelBuilder.Entity("Backend_Final.Models.TeacherContactInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Skype")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeacherId")
+                        .IsUnique();
+
+                    b.ToTable("TeacherContactInfo");
+                });
+
+            modelBuilder.Entity("Backend_Final.Models.TeacherDetailImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ImgUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeacherId")
+                        .IsUnique()
+                        .HasFilter("[TeacherId] IS NOT NULL");
+
+                    b.ToTable("TeacherDetailImage");
+                });
+
+            modelBuilder.Entity("Backend_Final.Models.TeacherPersonInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Degree")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Experience")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Faculty")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Hobbies")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeacherId")
+                        .IsUnique();
+
+                    b.ToTable("TeacherPersonInfo");
+                });
+
+            modelBuilder.Entity("Backend_Final.Models.TeacherSkill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<double>("Percent")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Skill")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("TeacherSkill");
+                });
+
+            modelBuilder.Entity("Backend_Final.Models.TeacherSocialMedia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("TeacherSocialMedia");
+                });
+
             modelBuilder.Entity("Backend_Final.Models.Testimonial", b =>
                 {
                     b.Property<int>("Id")
@@ -692,6 +895,59 @@ namespace Backend_Final.Migrations
                         .HasForeignKey("EventId");
                 });
 
+            modelBuilder.Entity("Backend_Final.Models.TeacherContactInfo", b =>
+                {
+                    b.HasOne("Backend_Final.Models.Teacher", "Teacher")
+                        .WithOne("TeacherContactInfo")
+                        .HasForeignKey("Backend_Final.Models.TeacherContactInfo", "TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("Backend_Final.Models.TeacherDetailImage", b =>
+                {
+                    b.HasOne("Backend_Final.Models.Teacher", "Teacher")
+                        .WithOne("TeacherDetailImage")
+                        .HasForeignKey("Backend_Final.Models.TeacherDetailImage", "TeacherId");
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("Backend_Final.Models.TeacherPersonInfo", b =>
+                {
+                    b.HasOne("Backend_Final.Models.Teacher", "Teacher")
+                        .WithOne("TeacherPersonInfo")
+                        .HasForeignKey("Backend_Final.Models.TeacherPersonInfo", "TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("Backend_Final.Models.TeacherSkill", b =>
+                {
+                    b.HasOne("Backend_Final.Models.Teacher", "Teacher")
+                        .WithMany("TeacherSkill")
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("Backend_Final.Models.TeacherSocialMedia", b =>
+                {
+                    b.HasOne("Backend_Final.Models.Teacher", "Teacher")
+                        .WithMany("TeacherSocialMedia")
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Teacher");
+                });
+
             modelBuilder.Entity("Backend_Final.Models.Blog", b =>
                 {
                     b.Navigation("Post");
@@ -735,6 +991,22 @@ namespace Backend_Final.Migrations
             modelBuilder.Entity("Backend_Final.Models.Slider", b =>
                 {
                     b.Navigation("SliderImgae");
+                });
+
+            modelBuilder.Entity("Backend_Final.Models.Teacher", b =>
+                {
+                    b.Navigation("TeacherContactInfo")
+                        .IsRequired();
+
+                    b.Navigation("TeacherDetailImage")
+                        .IsRequired();
+
+                    b.Navigation("TeacherPersonInfo")
+                        .IsRequired();
+
+                    b.Navigation("TeacherSkill");
+
+                    b.Navigation("TeacherSocialMedia");
                 });
 #pragma warning restore 612, 618
         }

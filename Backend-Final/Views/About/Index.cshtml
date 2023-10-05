@@ -1,5 +1,7 @@
-﻿@{
+﻿@model AboutVM
+@{
     ViewData["Title"]="Index";
+    int count = 0;
 }
 <div class="banner-area-wrapper">
     <div class="banner-area text-center">
@@ -23,15 +25,14 @@
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <div class="about-content">
-                    <h2>WELCOME TO <span>EDUHOME</span></h2>
-                    <p>I must explain to you how all this mistaken idea of denouncing pleure and prsing pain was born and I will give you a complete account of the system, and expound the actual teachings  the master-builder of humanit happiness</p>
-                    <p class="hidden-sm">I must explain to you how all this mistaken idea of denouncing pleure and prsing pain was born and I will give you a complete account of the system</p>
+                    <h2>@Model.About.Title.Substring(0,Model.About.Title.Length-7) <span>@Model.About.Title.Substring(Model.About.Title.Length-7,7)</span></h2>
+                    <p>@Html.Raw(Model.About.Title)</p>
                     <a class="default-btn" href="#">view courses</a>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
                 <div class="about-img">
-                    <img src="img/about/about.png" alt="about">
+                    <img src="img/about/@Model.About.ImgUrl" alt="about">
                 </div>
             </div>
         </div>
@@ -50,74 +51,27 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 col-sm-4 col-xs-12">
+            @foreach (var teacher in Model.Teacher)
+            {
+                count++;
+                <div class="col-md-3 @(count==Model.Teacher.Count?"hidden-sm":"col-sm-4") col-xs-12">
                 <div class="single-teacher">
                     <div class="single-teacher-img">
-                        <a href="teacher-details.html"><img src="img/teacher/teacher1.jpg" alt="teacher"></a>
+                        <a href="teacher-details.html"><img src="img/teacher/@teacher.ImgUrl" alt="teacher"></a>
                     </div>
                     <div class="single-teacher-content text-center">
-                        <h2><a href="teacher-details.html">STUART KELVIN</a></h2>
-                        <h4>Associate Professor</h4>
+                        <h2><a href="teacher-details.html">@teacher.Name</a></h2>
+                        <h4>@teacher.Specilty</h4>
                         <ul>
-                            <li><a href="https://www.facebook.com/devitems/?ref=bookmarks"><i class="zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="https://www.pinterest.com/devitemsllc/"><i class="zmdi zmdi-pinterest"></i></a></li>
-                            <li><a href="#"><i class="zmdi zmdi-vimeo"></i></a></li>
-                            <li><a href="https://twitter.com/devitemsllc"><i class="zmdi zmdi-twitter"></i></a></li>
+                            @foreach (var socialMedia in teacher.TeacherSocialMedia)
+                            {
+                            <li><a href="@socialMedia.NameUrl">@Html.Raw(socialMedia.Icon)</a></li>
+                            }
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="single-teacher">
-                    <div class="single-teacher-img">
-                        <a href="teacher-details.html"><img src="img/teacher/teacher2.jpg" alt="teacher"></a>
-                    </div>
-                    <div class="single-teacher-content text-center">
-                        <h2><a href="teacher-details.html">eamily cristian</a></h2>
-                        <h4>Associate Professor</h4>
-                        <ul>
-                            <li><a href="https://www.facebook.com/devitems/?ref=bookmarks"><i class="zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="https://www.pinterest.com/devitemsllc/"><i class="zmdi zmdi-pinterest"></i></a></li>
-                            <li><a href="#"><i class="zmdi zmdi-vimeo"></i></a></li>
-                            <li><a href="https://twitter.com/devitemsllc"><i class="zmdi zmdi-twitter"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="single-teacher">
-                    <div class="single-teacher-img">
-                        <a href="teacher-details.html"><img src="img/teacher/teacher3.jpg" alt="teacher"></a>
-                    </div>
-                    <div class="single-teacher-content text-center">
-                        <h2><a href="teacher-details.html">kevin williams</a></h2>
-                        <h4>Associate Professor</h4>
-                        <ul>
-                            <li><a href="https://www.facebook.com/devitems/?ref=bookmarks"><i class="zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="https://www.pinterest.com/devitemsllc/"><i class="zmdi zmdi-pinterest"></i></a></li>
-                            <li><a href="#"><i class="zmdi zmdi-vimeo"></i></a></li>
-                            <li><a href="https://twitter.com/devitemsllc"><i class="zmdi zmdi-twitter"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 hidden-sm col-xs-12">
-                <div class="single-teacher">
-                    <div class="single-teacher-img">
-                        <a href="teacher-details.html"><img src="img/teacher/teacher4.jpg" alt="teacher"></a>
-                    </div>
-                    <div class="single-teacher-content text-center">
-                        <h2><a href="teacher-details.html">salina gomaze</a></h2>
-                        <h4>Associate Professor</h4>
-                        <ul>
-                            <li><a href="https://www.facebook.com/devitems/?ref=bookmarks"><i class="zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="https://www.pinterest.com/devitemsllc/"><i class="zmdi zmdi-pinterest"></i></a></li>
-                            <li><a href="#"><i class="zmdi zmdi-vimeo"></i></a></li>
-                            <li><a href="https://twitter.com/devitemsllc"><i class="zmdi zmdi-twitter"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>
@@ -127,20 +81,23 @@
     <div class="container">
         <div class="row">
             <div class="testimonial-owl owl-theme owl-carousel">
-                <div class="col-md-8 col-md-offset-2 col-sm-12">
+                    @foreach (var item in Model.Testimonial)
+                    {                
+                <div class="col-md-8 col-md-offset-2 col-sm-12">  
                     <div class="single-testimonial">
                         <div class="testimonial-info">
                             <div class="testimonial-img">
-                                <img src="img/testimonial/testimonial.jpg" alt="testimonial">
+                                <img src="img/testimonial/@item.ImgUrl" alt="testimonial">
                             </div>
                             <div class="testimonial-content">
-                                <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and I will give you a coete account of the system, and expound the actual</p>
-                                <h4>David Morgan</h4>
-                                <h5>Student, CSE</h5>
+                                <p>@item.Desc</p>
+                                <h4>@item.Name</h4>
+                                <h5>@item.Position</h5>
                             </div>
                         </div>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
     </div>
@@ -155,7 +112,7 @@
                     <h3>TAKE A VIDEO TOUR</h3>
                     <div class="notice-video">
                         <div class="video-icon video-hover">
-                            <a class="video-popup" href="https://www.youtube.com/watch?v=to6Ghf8UL7o">
+                            <a class="video-popup" href="@Model.About.VideoLink">
                                 <i class="zmdi zmdi-play"></i>
                             </a>
                         </div>
@@ -166,6 +123,17 @@
                 <div class="notice-left-wrapper">
                     <h3>notice board</h3>
                     <div class="notice-left">
+                        
+                        @foreach (var events in Model.Event)
+                        {
+                            <div class="single-notice-left @(count%3==0?"pb-70":"mb-23 pb-20")">
+                                <h4>@events.Date.Day @(new DateTime(DateTime.Now.Year, events.Date.Month, 1).ToString("MMMM"))</h4>
+                                <p>@Html.Raw(events.Desc.Substring(0,100)+"</p>") </p>
+
+                            </div>
+                            count++;
+
+                        }
                         <div class="single-notice-left mb-23 pb-20">
                             <h4>5, June 2017</h4>
                             <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
@@ -195,4 +163,5 @@
             </div>
         </div>
     </div>
-</section>B
+</section>
+@await Html.PartialAsync("_Subscribe",new SubscribeVM())

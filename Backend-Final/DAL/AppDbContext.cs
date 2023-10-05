@@ -27,6 +27,13 @@ namespace Backend_Final.DAL
         public DbSet<NoticeAreaRight> NoticeAreaRight { get; set; }
         public DbSet<WhyChooseUs> WhyChooseUs { get; set; }
         public DbSet<CourseDetaiIImage> CourseDetaiIImage { get; set; }
+        public DbSet<Teacher> Teacher { get; set; }
+        public DbSet<TeacherSkill> TeacherSkill { get; set; }
+        public DbSet<TeacherContactInfo> TeacherContactInfo { get; set; }
+        public DbSet<TeacherSocialMedia> TeacherSocialMedia { get; set; }
+        public DbSet<TeacherPersonInfo> TeacherPersonInfo { get; set; }
+        public DbSet<TeacherDetailImage> TeacherDetailImage { get; set; }
+        public DbSet<About> About { get; set; }
 
 
     }
