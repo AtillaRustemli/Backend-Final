@@ -63,12 +63,16 @@
                     <div class="single-blog-widget mb-50">
                         <h3>search</h3>
                         <div class="blog-search">
-                            <form id="search" action="#">
-                                <input type="search" placeholder="Search..." name="search" />
+                            <form method="post" id="search" action="#">
+                                <input id="input-search" type="search" placeholder="Search..." name="search" />
                                 <button type="submit">
                                     <span><i class="fa fa-search"></i></span>
                                 </button>
+                            <ul id="searchList" class="list-group list-group-flush">
+                                
+                              </ul>
                             </form>
+
                         </div>
                     </div>
                     <div class="single-blog-widget mb-50">
@@ -134,3 +138,27 @@
     </div>
 </div>
 @await Html.PartialAsync("_Subscribe",new SubscribeVM())
+
+<script>
+     $(document).on("keyup", "#input-search", function () {
+
+        var search = $("#input-search").val().trim();
+        if (search != null) {
+
+            $("#searchList li").slice(1).remove();
+
+            
+
+            $.ajax({
+                method: "get",
+                url: "/event/detail?search=" + search,
+                success: function(data) {
+                    $("#search-list").append(data);
+                }
+            })
+        }
+    })
+    
+
+</script>
+

@@ -21,7 +21,7 @@ namespace Backend_Final.Controllers
             vm.Speaker = _context.Speakers.ToList();
             return View(vm);
         }
-        public IActionResult Detail(int? id)
+        public IActionResult Detail(int? id,string? search)
         {
             ViewBag.Categories=_context.Category.ToList();
             ViewBag.Events=_context.Event.ToList();
