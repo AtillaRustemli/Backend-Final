@@ -1,4 +1,7 @@
 ﻿using Backend_Final.DAL;
+using Backend_Final.Helper;
+using Backend_Final.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend_Final
@@ -14,8 +17,26 @@ namespace Backend_Final
             {
                 opt.UseSqlServer(config.GetConnectionString("DefaultConnection"));
             });
-            
-         
+
+            services.AddIdentity<AppUser, IdentityRole>(identityOptions =>
+            {
+                identityOptions.SignIn.RequireConfirmedEmail = true;
+                identityOptions.Password.RequireNonAlphanumeric = true;
+                identityOptions.Password.RequiredLength = 8;
+                identityOptions.Password.RequireDigit = true;
+                identityOptions.Password.RequireLowercase = true;
+                identityOptions.Password.RequireUppercase = true;
+
+                identityOptions.User.RequireUniqueEmail = true;
+                identityOptions.Lockout.MaxFailedAccessAttempts = 5;
+                identityOptions.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(20);
+                identityOptions.Lockout.AllowedForNewUsers = true;
+            })
+               .AddDefaultTokenProviders()
+               .AddEntityFrameworkStores<AppDbContext>()
+               .AddErrorDescriber<CustomIdentityErrorDescriber>();
+
+
         }
     }
 }

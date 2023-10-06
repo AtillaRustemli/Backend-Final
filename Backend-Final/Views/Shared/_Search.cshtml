@@ -1,1 +1,28 @@
-﻿
+﻿@model SearchVM
+@{
+    int count = 0;
+}
+@if (Model.Event != null)
+{
+@foreach (var products in Model.Event)
+{
+        <li><a asp-controller="event" asp-action="detail" asp-route-id="@products.Id">@products.Title.Substring(0,10)</a></li>
+} 
+}
+    @if (Model.Blog != null)
+    {
+@foreach (var products in Model.Blog)
+{
+       
+        <li><a asp-controller="blog" asp-action="detail" asp-route-id="@products.Id">@products.Title.Substring(0,20)</a></li>
+}
+        
+    }
+@if (Model.Course != null)
+{
+@foreach (var products in Model.Course)
+{
+        <li><a asp-controller="course" asp-action="detail" asp-route-id="@products.Id">@products.Name</a></li>
+}
+    
+}

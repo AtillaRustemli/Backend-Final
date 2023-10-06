@@ -6,8 +6,7 @@
         public string Name { get; set; }
         public string Specilty { get; set; }
         public string ImgUrl { get; set; }
-        public int? EventId { get; set; }
-        public Event Event { get; set; }
+        public List<SpeakerEvent> SpeakerEvent { get; set; }
 
     }
 }

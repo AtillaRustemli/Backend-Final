@@ -42,7 +42,7 @@
                                 <p>By @item.Author /  @(new DateTime(DateTime.Now.Year, item.Date.Month, 1).ToString("MMMM")) @item.Date.Day, @item.Date.Year  /  <i class="fa fa-comments-o"></i> 4</p>
                             </div>
                             <div class="blog-bottom">
-                                <h2><a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">@Html.Raw(item.Description.Substring(0,40)) </a></h2>
+                                <h2><a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">@Html.Raw(item.Title.Substring(0,40)) </a></h2>
                                 <a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">read more</a>
                             </div>
                     </div>

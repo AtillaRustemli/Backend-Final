@@ -1,5 +1,6 @@
 ﻿using Backend_Final.DAL;
 using Backend_Final.Models;
+using Backend_Final.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +26,7 @@ namespace Backend_Final.Controllers
             ViewBag.Course = _context.Course.ToList();
             ViewBag.Tags = _context.Tag.ToList();
             ViewBag.Posts = _context.Post.ToList();
-            ViewBag.CourseDetaiIImage = _context.CourseDetaiIImage.FirstOrDefault();
+            ViewBag.CourseDetaiIImage = _context.CourseDetaiIImage.FirstOrDefault().ImgUrl;
             ViewBag.CourseFeature = _context.CourseFeature.FirstOrDefault();
             var course=_context.Course
                 .Include(c=>c.CourseDetail)
@@ -36,6 +37,16 @@ namespace Backend_Final.Controllers
                 .FirstOrDefault(c=>c.Id==id);
             return View(course);
         }
-        
+        public IActionResult Search(string? search)
+        {
+            var course = _context.Course
+                    .Where(p => p.Name.ToLower().Contains(search.ToLower()))
+                    .OrderBy(p => p.Id)
+                    .Take(5)
+                    .ToList();
+
+            return PartialView("_Search", new SearchVM(null, null, course));
+        }
+
     }
 }

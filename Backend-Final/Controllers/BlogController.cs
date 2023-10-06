@@ -1,4 +1,5 @@
 ﻿using Backend_Final.DAL;
+using Backend_Final.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,5 +32,16 @@ namespace Backend_Final.Controllers
                 .FirstOrDefault(b=>b.Id == id);
             return View(blog);
         }
+        public IActionResult Search(string? search)
+        {
+            var blogs = _context.Blog
+                    .Where(p => p.Title.ToLower().Contains(search.ToLower()))
+                    .OrderBy(p => p.Id)
+                    .Take(5)
+                    .ToList();
+
+            return PartialView("_Search", new SearchVM(blogs,null,null));
+        }
+      
     }
 }

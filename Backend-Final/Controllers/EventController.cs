@@ -29,8 +29,8 @@ namespace Backend_Final.Controllers
             ViewBag.Posts=_context.Post.ToList();
             if (id == null) return NotFound();
             var events= _context.Event
-                .Include(e=>e.EventDetailImage)
-                .Include(e=>e.Speakers)
+                .Include(e=>e.SpeakerEvent)
+                .ThenInclude(e=>e.Speaker)
                 .Include(e=>e.Category)
                 .Include(e=>e.Post)
                 .Include(e=>e.Tag)
@@ -39,6 +39,16 @@ namespace Backend_Final.Controllers
             return View(events);
 
          }
+        public IActionResult Search(string? search)
+        {
+            var events = _context.Event
+                    .Where(p => p.Title.ToLower().Contains(search.ToLower()))
+                    .OrderByDescending(p => p.Id)
+                    .Take(5)
+                    .ToList();
+
+            return PartialView("_Search", new SearchVM(null,events,null));
+        }
     }
 
 }

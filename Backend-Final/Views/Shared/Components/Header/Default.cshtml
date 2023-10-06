@@ -15,8 +15,21 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="header-top-right text-right">
                         <ul>
-                            <li><a asp-controller="account" asp-action="login">login</a></li>
-                            <li><a asp-controller="account" asp-action="register">signup</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @if (User.Identity.Name != null)
+                                {
+                                    <li> <a class="nav-link" href="#">@User.Identity.Name</a></li>
+                                }
+
+                                 <li> <a asp-controller="account" asp-action="logout">Logout</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-controller="account" asp-action="login">login</a></li>
+                                <li><a asp-controller="account" asp-action="registers">signup</a></li>
+                            }
+                           
                         </ul>
                     </div>
                 </div>
@@ -72,6 +85,13 @@
                                             <li><a asp-controller="blog" asp-action="detail" asp-route-id="">blog details</a></li>
                                         </ul>
                                     </li>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                    <li>
+                                        <a asp-area="adminarea" asp-controller="dashboard" asp-action="index">AdminPanel</a>
+                                        
+                                    </li>
+                                    }
                                    
                                 </ul>
                             </nav>

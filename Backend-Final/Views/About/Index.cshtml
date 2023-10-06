@@ -26,7 +26,7 @@
             <div class="col-md-6 col-sm-6">
                 <div class="about-content">
                     <h2>@Model.About.Title.Substring(0,Model.About.Title.Length-7) <span>@Model.About.Title.Substring(Model.About.Title.Length-7,7)</span></h2>
-                    <p>@Html.Raw(Model.About.Title)</p>
+                    <p>@Html.Raw(Model.About.Description)</p>
                     <a class="default-btn" href="#">view courses</a>
                 </div>
             </div>
@@ -127,8 +127,8 @@
                         @foreach (var events in Model.Event)
                         {
                             <div class="single-notice-left @(count%3==0?"pb-70":"mb-23 pb-20")">
-                                <h4>@events.Date.Day @(new DateTime(DateTime.Now.Year, events.Date.Month, 1).ToString("MMMM"))</h4>
-                                <p>@Html.Raw(events.Desc.Substring(0,100)+"</p>") </p>
+                                <h4>@events.OpenTime.Day @(new DateTime(DateTime.Now.Year, events.OpenTime.Month, 1).ToString("MMMM"))</h4>
+                                <p>@Html.Raw(events.Desc.Substring(0,events.Desc.Length/10)) </p>
 
                             </div>
                             count++;

@@ -26,29 +26,29 @@
             <div class="col-md-8">
                 <div class="event-details">
                     <div class="event-details-img">
-                        <img src="~/img/event/@Model.EventDetailImage.ImgUrl" alt="event-details">
+                        <img src="~/img/event/@Model.ImgUrl" alt="event-details">
                         <div class="event-date">
                             <h3>20 <span>jun</span></h3>
                         </div>
                     </div>
                     <div class="event-details-content">
-                        <h2>ADVANCE WED DEVELOPMENT WORKSHOP</h2>
+                        <h2>@Model.Title</h2>
                         <ul>
-                            <li><span>time:</span> @Model.OpenTime.Hour.ToString() : @Model.OpenTime.Minute.ToString() @Model.OpenTime.ToString().Substring(Model.OpenTime.ToString().Length-2,2) - @Model.CloseTime.Hour.ToString() : @Model.CloseTime.Minute.ToString() @Model.CloseTime.ToString().Substring(Model.CloseTime.ToString().Length-2,2)</li>
+                           @* <li><span>time:</span> @Model.OpenTime.Hour.ToString() : @Model.OpenTime.Minute.ToString() @Model.OpenTime.ToString().Substring(Model.OpenTime.ToString().Length-2,2) - @Model.CloseTime.Hour.ToString() : @Model.CloseTime.Minute.ToString() @Model.CloseTime.ToString().Substring(Model.CloseTime.ToString().Length-2,2)</li>*@
                             <li><span>venue</span> @Model.Venue.Substring(0,14)</li>
                         </ul>
                         @Html.Raw(Model.Desc)
                         <div class="speakers-area fix">
                             <h4>speakers</h4>
-                            @foreach (var speaker in Model.Speakers.Where(s=>s.EventId==Model.Id))
+                            @foreach (var speaker in Model.SpeakerEvent.Where(s=>s.EventId==Model.Id))
                             {
                             <div class="single-speaker">
                                 <div class="speaker-img">
-                                    <img src="~/img/event/@speaker.ImgUrl" alt="speaker">
+                                    <img src="~/img/event/@speaker.Speaker.ImgUrl" alt="speaker">
                                 </div>
                                 <div class="speaker-name">
-                                    <h5>@speaker.Name</h5>
-                                    <p>@speaker.Specilty</p>
+                                        <h5>@speaker.Speaker.Name</h5>
+                                        <p>@speaker.Speaker.Specilty</p>
                                 </div>
                             </div>
                             }
@@ -63,14 +63,13 @@
                     <div class="single-blog-widget mb-50">
                         <h3>search</h3>
                         <div class="blog-search">
-                            <form method="post" id="search" action="#">
+                            <form id="search" action="#">
                                 <input id="input-search" type="search" placeholder="Search..." name="search" />
                                 <button type="submit">
                                     <span><i class="fa fa-search"></i></span>
                                 </button>
-                            <ul id="searchList" class="list-group list-group-flush">
-                                
-                              </ul>
+                                <ul id="searchList" class="list-group list-group-flush">
+                                </ul>
                             </form>
 
                         </div>
@@ -138,27 +137,25 @@
     </div>
 </div>
 @await Html.PartialAsync("_Subscribe",new SubscribeVM())
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
-     $(document).on("keyup", "#input-search", function () {
-
+    $(document).on("keyup", "#input-search", function () {
+        console.log("salam");
         var search = $("#input-search").val().trim();
+
+        $("#searchList li").remove();
         if (search != null) {
-
-            $("#searchList li").slice(1).remove();
-
-            
 
             $.ajax({
                 method: "get",
-                url: "/event/detail?search=" + search,
-                success: function(data) {
-                    $("#search-list").append(data);
+                url: "/event/search?search=" + search,
+                success: function (data) {
+                    $("#searchList").append(data);
                 }
             })
         }
     })
-    
+
 
 </script>
 

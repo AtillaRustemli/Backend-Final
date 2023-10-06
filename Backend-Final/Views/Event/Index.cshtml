@@ -39,13 +39,13 @@
                                 </div>
                             </a>
                             <div class="event-date">
-                                <h3>@item.Date.Day <span>@(new DateTime(DateTime.Now.Year, item.Date.Month, 1).ToString("MMMM"))</span> </h3>
+                                <h3>@item.OpenTime.Day <span>@(new DateTime(DateTime.Now.Year, item.OpenTime.Month, 1).ToString("MMMM"))</span> </h3>
                             </div>
                         </div>
                         <div class="event-content text-left">
                             <h4><a asp-action="detail">@item.Title</a></h4>
                             <ul>
-                                <li><span>time:</span> @item.OpenTime.Hour.ToString() : @item.OpenTime.Minute.ToString() @item.OpenTime.ToString().Substring(item.OpenTime.ToString().Length-2,2) - @item.CloseTime.Hour.ToString() : @item.CloseTime.Minute.ToString() @item.CloseTime.ToString().Substring(item.CloseTime.ToString().Length-2,2)</li>
+                                <li><span>time:</span>@item.OpenTime - @item.CloseTime </li>
                                 <li><span>venue</span> @item.Venue.Substring(0,14)</li>
                             </ul>
                             <div class="event-content-right">

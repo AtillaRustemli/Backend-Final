@@ -48,8 +48,8 @@
                     {
                      count++;
                         <div class="single-notice-left @(count%3==0?"pb-75":"mb-25 pb-25")">
-                            <h4>@events.Date.Day @(new DateTime(DateTime.Now.Year, events.Date.Month, 1).ToString("MMMM"))</h4>
-                            <p>@Html.Raw(events.Desc.Substring(0,100)+"</p>") </p>
+                            <h4>@events.OpenTime.Day @(new DateTime(DateTime.Now.Year, events.OpenTime.Month, 1).ToString("MMMM"))</h4>
+                            <p>@Html.Raw(events.Desc.Substring(0,events.Desc.Length/10)) </p>
                            
                     </div>
 
@@ -148,14 +148,14 @@
                     count++;
                     <div class="single-event mb-35">
                     <div class="event-date">
-                            <h3><a href="event-details.html">@events.Date.Day <span>@(new DateTime(DateTime.Now.Year, events.Date.Month, 1).ToString("MMMM"))</span></a></h3>
+                            <h3><a href="event-details.html">@events.OpenTime.Day <span>@(new DateTime(DateTime.Now.Year, events.OpenTime.Month, 1).ToString("MMMM"))</span></a></h3>
                     </div>
                     <div class="event-content text-left">
                         <div class="event-content-left">
-                            <h4><a href="event-details.html">@events.Title</a></h4>
+                                <h4><a asp-controller="event" asp-action="detail" asp-route-id="@events.Id">@events.Title</a></h4>
                             <ul>
-                                    <li><i class="fa fa-clock-o"></i>@events.OpenTime.Hour.ToString() : @events.OpenTime.Minute.ToString() @events.OpenTime.ToString().Substring(events.OpenTime.ToString().Length-2,2) - @events.CloseTime.Hour.ToString() : @events.CloseTime.Minute.ToString() @events.CloseTime.ToString().Substring(events.CloseTime.ToString().Length-2,2)</li>
-                                    <li><i class="fa fa-map-marker"></i>@events.Venue.Substring(0,14)</li>
+                                    @*<li>@events.Date.Hour:@events.Date.Minute  - @events.CloseTime</li>*@
+                                    <li><i class="fa fa-map-marker"></i>@events.Venue</li>
                             </ul>
                         </div>
                         <div class="event-content-right">
@@ -182,18 +182,18 @@
                     }
                     <div class="single-event @(count==Model.Event.Count?"":"mb-35")">
                         <div class="event-date">
-                            <h3><a href="event-details.html">@events.Date.Day <span>@(new DateTime(DateTime.Now.Year, events.Date.Month, 1).ToString("MMMM"))</span></a></h3>
+                            <h3><a asp-controller="event" asp-action="detail" asp-route-id="@events.Id">@events.OpenTime.Day <span>@(new DateTime(DateTime.Now.Year, events.OpenTime.Month, 1).ToString("MMMM"))</span></a></h3>
                         </div>
                         <div class="event-content text-left">
                             <div class="event-content-left">
                                 <h4><a href="event-details.html">@events.Title</a></h4>
                                 <ul>
-                                    <li><i class="fa fa-clock-o"></i>@events.OpenTime.Hour.ToString() : @events.OpenTime.Minute.ToString() @events.OpenTime.ToString().Substring(events.OpenTime.ToString().Length-2,2) - @events.CloseTime.Hour.ToString() : @events.CloseTime.Minute.ToString() @events.CloseTime.ToString().Substring(events.CloseTime.ToString().Length-2,2)</li>
-                                    <li><i class="fa fa-map-marker"></i>@events.Venue.Substring(0,14)</li>
+                                   @*<li> @events.OpenTime : @events.CloseTime</li>*@
+                                    <li><i class="fa fa-map-marker"></i>@events.Venue</li>
                                 </ul>
                             </div>
                             <div class="event-content-right">
-                                <a class="default-btn" href="event-details.html">join now</a>
+                                <a class="default-btn" asp-controller="event" asp-action="detail" asp-route-id="@events.Id">join now</a>
                             </div>
                         </div>
                     </div>

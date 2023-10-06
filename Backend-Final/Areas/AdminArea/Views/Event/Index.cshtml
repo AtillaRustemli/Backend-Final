@@ -1,0 +1,38 @@
+﻿@model List<Event>
+@{
+    ViewData["Title"] = "Index";
+}
+<a asp-controller="event" asp-action="Create"  class="btn btn-outline-success"><i class="fa-solid fa-plus"></i></a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Title</th>
+            <th scope="col">Open time</th>
+            <th scope="col">Venue</th>
+            <th scope="col">Date</th>
+            <th scope="col">Category</th>
+            <th scope="col">Setting</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+            @foreach (var events in Model)
+            {
+            <tr>
+                <td><img style="width:50px;height:50px;" src="~/img/event/@events.ImgUrl" /></td>
+                <td>@events.Title</td>
+                @*<td>@events.OpenTime.Hour.ToString() : @events.OpenTime.Minute.ToString() @events.OpenTime.ToString().Substring(events.OpenTime.ToString().Length-2,2) - @events.CloseTime.Hour.ToString() : @events.CloseTime.Minute.ToString() @events.CloseTime.ToString().Substring(events.CloseTime.ToString().Length-2,2)</td>*@
+                <td>@events.Venue.Substring(0,14)</td>
+                <td>@events.OpenTime.Day @(new DateTime(DateTime.Now.Year, events.OpenTime.Month, 1).ToString("MMMM"))</td>
+                <td>@events.Category.Name</td>
+                <td>
+                   
+                    <a asp-controller="event" asp-action="Delete" asp-route-id="@events.Id" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a asp-controller="event" asp-action="Update" asp-route-id="@events.Id" class="btn btn-outline-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a asp-area="" asp-controller="event" asp-action="detail" asp-route-id="@events.Id" class="btn btn-outline-info"><i class="fa-solid fa-info"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
