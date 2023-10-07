@@ -1,0 +1,9 @@
+﻿@model Post
+@{
+    ViewData["Title"] = "Detail";
+}
+<img src="~/img/post/@Model.ImgUrl" />
+<h2>Title: @Model.Title</h2>
+<h3>Date: @Model.Date.Day @(new DateTime(DateTime.Now.Year, Model.Date.Month, 1).ToString("MMMM"))</h3>
+<h4>Author: @Model.Author</h4>
+<a asp-controller="post" asp-action="index">Go Back</a>

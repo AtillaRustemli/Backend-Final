@@ -26,9 +26,7 @@ namespace Backend_Final.Controllers
             ViewBag.Tags=_context.Tag.ToList();
             ViewBag.Posts=_context.Post.ToList();
            var blog = _context.Blog
-                .Include(b => b.Tag)
                 .Include(b => b.Category)
-                .Include(b => b.Post)
                 .FirstOrDefault(b=>b.Id == id);
             return View(blog);
         }

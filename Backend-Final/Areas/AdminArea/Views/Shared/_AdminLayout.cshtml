@@ -83,6 +83,13 @@
                 </a>
 
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-controller="post" asp-action="index">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Post</span>
+                </a>
+
+            </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
@@ -94,9 +101,9 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" asp-controller="blog" asp-action="index">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span>
+                    <span>Blog</span>
                 </a>
             </li>
 

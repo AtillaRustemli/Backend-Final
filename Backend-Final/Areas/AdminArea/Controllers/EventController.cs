@@ -39,14 +39,14 @@ namespace Backend_Final.Areas.AdminArea.Controllers
 
         }
         //Create
-        public ActionResult Create() {
+        public IActionResult Create() {
             ViewBag.Categories = _context.Category.ToList();
             ViewBag.Speakers = _context.Speakers.ToList();
             return View();
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public ActionResult Create(EventCreateVM eventCreateVM,int?id,List<int>? speakerIds)
+        public IActionResult Create(EventCreateVM eventCreateVM,int?id,List<int>? speakerIds)
         {
             ViewBag.Categories = _context.Category.ToList();
             ViewBag.Speakers = _context.Speakers.ToList();
@@ -94,7 +94,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         }
 
         //Update
-        public ActionResult Update(int?id) {
+        public IActionResult Update(int?id) {
             var events=_context.Event.FirstOrDefault(e => e.Id == id);  
             EventUpdateVM vm = new();
             vm.Title = events.Title;
@@ -106,19 +106,20 @@ namespace Backend_Final.Areas.AdminArea.Controllers
             ViewBag.Categories = _context.Category.ToList();
             ViewBag.Speakers = _context.Speakers.ToList();
             ViewBag.Event = _context.Event.Where(e=>e.Id==id).ToList();
-
+            ViewBag.CategoryWithEvent=_context.Event.FirstOrDefault(e=>e.Id==id);
             ViewBag.SpeakerEvent = _context.SpeakerEvent.Where(se => se.EventId == id).ToList();
             return View(vm);
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public ActionResult Update(EventUpdateVM eventUpdateVM,int id,int? categoryId, List<int>? speakerIds)
+        public IActionResult Update(EventUpdateVM eventUpdateVM,int id,int? categoryId, List<int>? speakerIds)
         {
             var events = _context.Event.FirstOrDefault(e => e.Id == id);
             ViewBag.Categories = _context.Category.ToList();
             ViewBag.Speakers = _context.Speakers.ToList();
             ViewBag.SpeakerEvent = _context.SpeakerEvent.Where(se=>se.EventId==id).ToList();
             ViewBag.Event = _context.Event.ToList();
+            ViewBag.CategoryWithEvent = _context.Event.FirstOrDefault(e => e.Id == id);
             if (!ModelState.IsValid) {
                 ModelState.AddModelError("", "required!");
                 return View(); 

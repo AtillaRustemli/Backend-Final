@@ -1,0 +1,34 @@
+﻿@model CreatePostVM
+@{
+    ViewData["Title"] = "Create";
+}
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" placeholder="Title">
+        <span asp-validation-for="Title" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Author" class="form-label"></label>
+        <input asp-for="Author" class="form-control" placeholder="Title">
+        <span asp-validation-for="Author" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Image" class="form-label"></label>
+        <input asp-for="Image" class="form-control" placeholder="Title">
+        <span asp-validation-for="Image" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Date" class="form-label"></label>
+        <input asp-for="Date" class="form-control" placeholder="Title">
+        <span asp-validation-for="Date" style="color:red;"></span>
+    </div>
+    
+    <br />
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a asp-controller="post" asp-action="index">Go Back</a>
+</form>
+<script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    </script>

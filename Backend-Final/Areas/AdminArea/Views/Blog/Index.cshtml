@@ -1,0 +1,38 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "Index";
+}
+<a asp-controller="blog" asp-action="Create" class="btn btn-outline-success"><i class="fa-solid fa-plus"></i></a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Title</th>
+            <th scope="col">Desc</th>
+            <th scope="col">Date</th>
+            <th scope="col">Author</th>
+            <th scope="col">Category</th>
+            <th scope="col">Setting</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var blogs in Model)
+        {
+            <tr>
+                <td><img style="width:50px;height:50px;" src="~/img/blog/@blogs.ImgUrl" /></td>
+                <td>@blogs.Title.Substring(0,blogs.Title.Length/2)</td>
+                <td>@blogs.Description.Substring(0,blogs.Description.Length/10)</td>
+                <td>@blogs.Date.Day @(new DateTime(DateTime.Now.Year, blogs.Date.Month, 1).ToString("MMMM"))</td>
+                <td>@blogs.Author</td>
+                <td>@(blogs.Category.Name!= null ? blogs.Category.Name : "No Category")</td>
+                <td>
+
+                    <a asp-controller="blog" asp-action="Delete" asp-route-id="@blogs.Id" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a asp-controller="blog" asp-action="Update" asp-route-id="@blogs.Id" class="btn btn-outline-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a asp-area="" asp-controller="blog" asp-action="detail" asp-route-id="@blogs.Id" class="btn btn-outline-info"><i class="fa-solid fa-info"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

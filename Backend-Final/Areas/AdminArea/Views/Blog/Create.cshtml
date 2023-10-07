@@ -1,0 +1,51 @@
+﻿@model CreateBlogVM
+@{
+    ViewData["Title"] = "Create";
+}
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" placeholder="Title">
+        <span asp-validation-for="Title" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Desc" class="form-label"></label>
+        <input asp-for="Desc" class="form-control" placeholder="Description">
+        <span asp-validation-for="Desc" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Date" class="form-label"></label>
+        <input asp-for="Date" class="form-control" >
+        <span asp-validation-for="Date" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Author" class="form-label"></label>
+        <input asp-for="Author" class="form-control" >
+        <span asp-validation-for="Author" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Image" class="form-label"></label>
+        <input asp-for="Image" class="form-control" placeholder="Venue">
+        <span asp-validation-for="Image" style="color:red;"></span>
+    </div>
+
+    <h2>Categories</h2>
+    <div class="btn-group" data-toggle="buttons">
+        @foreach (var category in ViewBag.Categories)
+        {
+            <label class="btn btn-primary">
+                <input type="radio" name="id" value="@category.Id"> @category.Name
+            </label>
+
+        }
+
+
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a asp-controller="blog" asp-action="index">Go Back</a>
+</form>
+<script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    </script>

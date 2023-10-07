@@ -40,18 +40,7 @@
         @foreach (var category in ViewBag.Categories)
         {
             <label class="btn btn-primary">
-                <input type="radio" name="categoryId" value="@category.Id" @foreach (var item in ViewBag.Event)
-                {
-                    if (item.CategoryId == category.Id)
-                    {
-                        @("checked")
-                        break;
-                    }
-                    else
-                    {
-                        @("")
-                    }
-                } > @category.Name
+                <input type="radio" name="categoryId" value="@category.Id" @(ViewBag.CategoryWithEvent.CategoryId==category.Id?"checked":"")> @category.Name
             </label>
 
         }

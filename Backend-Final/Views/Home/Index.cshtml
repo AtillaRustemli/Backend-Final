@@ -117,7 +117,7 @@
                     </div>
                     <div class="course-content">
                             <h3><a asp-controller="course" asp-action="detail" asp-route-id="@course.Id">@course.Name</a></h3>
-                            <p>@course.Description.Substring(0,110)</p>
+                            <p>@course.Description.Substring(0,course.Description.Length/3)</p>
                         <a class="default-btn" href="course-details.html">read more</a>
                     </div>
                 </div>
@@ -260,7 +260,7 @@
                                 <p>By @blog.Author  /  @(new DateTime(DateTime.Now.Year, blog.Date.Month, 1).ToString("MMMM")) @blog.Date.Day,@blog.Date.Year /  <i class="fa fa-comments-o"></i> 4</p>
                         </div>
                         <div class="blog-bottom">
-                            <h2><a href="blog-details.html">@Html.Raw(blog.Description.Substring(0,45)) </a></h2>
+                                <h2><a href="blog-details.html">@Html.Raw(blog.Description.Substring(0,blog.Description.Length/3)) </a></h2>
                             <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">read more</a>
                         </div>
                     </div>
