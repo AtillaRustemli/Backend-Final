@@ -45,7 +45,7 @@
                         <div class="event-content text-left">
                             <h4><a asp-action="detail">@item.Title</a></h4>
                             <ul>
-                                <li><span>time:</span>@item.OpenTime - @item.CloseTime </li>
+                                <li><span>time: </span>@item.OpenTime.Hour.ToString("D2"):@item.OpenTime.Minute.ToString("D2") - @item.CloseTime.Hour.ToString("D2"):@item.CloseTime.Minute.ToString("D2") </li>
                                 <li><span>venue</span> @item.Venue.Substring(0,14)</li>
                             </ul>
                             <div class="event-content-right">

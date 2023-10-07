@@ -1,0 +1,29 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+<a asp-controller="category" asp-action="Create" class="btn btn-outline-success"><i class="fa-solid fa-plus"></i></a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Settings</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.Name</td>
+                <td>
+
+                    <a asp-controller="category" asp-action="Delete" asp-route-id="@category.Id" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a asp-controller="category" asp-action="Update" asp-route-id="@category.Id" class="btn btn-outline-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a asp-controller="category" asp-action="detail" asp-route-id="@category.Id" class="btn btn-outline-info"><i class="fa-solid fa-info"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

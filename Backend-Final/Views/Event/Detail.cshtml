@@ -34,7 +34,7 @@
                     <div class="event-details-content">
                         <h2>@Model.Title</h2>
                         <ul>
-                           @* <li><span>time:</span> @Model.OpenTime.Hour.ToString() : @Model.OpenTime.Minute.ToString() @Model.OpenTime.ToString().Substring(Model.OpenTime.ToString().Length-2,2) - @Model.CloseTime.Hour.ToString() : @Model.CloseTime.Minute.ToString() @Model.CloseTime.ToString().Substring(Model.CloseTime.ToString().Length-2,2)</li>*@
+                            <li><span>time:</span> @Model.OpenTime.Day @(new DateTime(DateTime.Now.Year, Model.OpenTime.Month, 1).ToString("MMMM"))</li>
                             <li><span>venue</span> @Model.Venue.Substring(0,14)</li>
                         </ul>
                         @Html.Raw(Model.Desc)

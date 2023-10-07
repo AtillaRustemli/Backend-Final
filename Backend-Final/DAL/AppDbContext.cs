@@ -35,6 +35,7 @@ namespace Backend_Final.DAL
         public DbSet<TeacherPersonInfo> TeacherPersonInfo { get; set; }
         public DbSet<TeacherDetailImage> TeacherDetailImage { get; set; }
         public DbSet<About> About { get; set; }
+        public DbSet<SpeakerEvent> SpeakerEvent { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

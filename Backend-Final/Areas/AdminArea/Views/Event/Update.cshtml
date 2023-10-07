@@ -1,7 +1,8 @@
-﻿@model EventCreateVM
+﻿@model EventUpdateVM
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Index";
 }
+
 <form method="post" enctype="multipart/form-data">
     <div class="mb-3">
         <label asp-for="Title" class="form-label"></label>
@@ -36,26 +37,48 @@
 
     <h2>Categories</h2>
     <div class="btn-group" data-toggle="buttons">
-    @foreach (var category in ViewBag.Categories)
-    {
-        <label class="btn btn-primary">
-                <input type="radio" name="id" value="@category.Id"  > @category.Name
-        </label>
+        @foreach (var category in ViewBag.Categories)
+        {
+            <label class="btn btn-primary">
+                <input type="radio" name="categoryId" value="@category.Id" @foreach (var item in ViewBag.Event)
+                {
+                    if (item.CategoryId == category.Id)
+                    {
+                        @("checked")
+                        break;
+                    }
+                    else
+                    {
+                        @("")
+                    }
+                } > @category.Name
+            </label>
 
-    }
+        }
 
-        
+
     </div>
     <br />
     <h2>Speakers</h2>
     @foreach (var speaker in ViewBag.Speakers)
     {
         <label class="btn btn-primary">
-            <input type="checkbox" name="speakerIds" value="@speaker.Id"> @speaker.Name
+            <input type="checkbox" name="speakerIds" value="@speaker.Id" @foreach (var item in ViewBag.SpeakerEvent)
+            {
+                if (item.SpeakerId == speaker.Id)
+                {
+                    @("checked")
+                }
+                else
+                {
+                    @("")
+                }
+            }
+            > @speaker.Name
         </label>
 
     }
-    <br/>
+    <br />
     <button type="submit" class="btn btn-success">Submit</button>
     <a asp-controller="event" asp-action="index">Go Back</a>
 </form>
@@ -63,3 +86,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
     </script>
+

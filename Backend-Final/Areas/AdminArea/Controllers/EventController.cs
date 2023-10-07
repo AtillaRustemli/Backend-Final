@@ -4,6 +4,7 @@ using Backend_Final.Models;
 using Backend_Final.ViewModels.AdminEvent;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Backend_Final.Areas.AdminArea.Controllers
 {
@@ -39,7 +40,6 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         }
         //Create
         public ActionResult Create() {
-
             ViewBag.Categories = _context.Category.ToList();
             ViewBag.Speakers = _context.Speakers.ToList();
             return View();
@@ -52,8 +52,14 @@ namespace Backend_Final.Areas.AdminArea.Controllers
             ViewBag.Speakers = _context.Speakers.ToList();
             if (!ModelState.IsValid) {
                 ModelState.AddModelError("", "required!");
-                return View(); }
+                return View(); 
+            }
             Event events=new();
+            if(_context.Event.Any(s=>s.Title== eventCreateVM.Title))
+            {
+                ModelState.AddModelError("Title", "Bu adli evnet artiq var!");
+                return View();
+            }
             events.Title = eventCreateVM.Title;
             events.Desc = eventCreateVM.Desc;
             events.OpenTime = eventCreateVM.OpenTime;
@@ -76,19 +82,86 @@ namespace Backend_Final.Areas.AdminArea.Controllers
             Speaker speaker;
             foreach (var speakerId in speakerIds)
             {
-            speaker=_context.Speakers.FirstOrDefault(s=>s.Id==speakerId);
-                Speaker newSpeaker = new();
-                newSpeaker.Name = speaker.Name;
-                newSpeaker.Specilty = speaker.Specilty;
-                newSpeaker.ImgUrl = speaker.ImgUrl;
-                //newSpeaker = events.Id;
+              SpeakerEvent speakerEvent = new();
+                speakerEvent.SpeakerId = speakerId;
+                speakerEvent.EventId = events.Id;
 
 
-            _context.Speakers.Add(newSpeaker);
+            _context.SpeakerEvent.Add(speakerEvent);
                 _context.SaveChanges();
             }
             return RedirectToAction("index");
         }
+
+        //Update
+        public ActionResult Update(int?id) {
+            var events=_context.Event.FirstOrDefault(e => e.Id == id);  
+            EventUpdateVM vm = new();
+            vm.Title = events.Title;
+            vm.Desc = events.Desc;
+            vm.OpenTime = events.OpenTime;
+            vm.CloseTime = events.CloseTime;
+            vm.Venue = events.Venue;
+            
+            ViewBag.Categories = _context.Category.ToList();
+            ViewBag.Speakers = _context.Speakers.ToList();
+            ViewBag.Event = _context.Event.Where(e=>e.Id==id).ToList();
+
+            ViewBag.SpeakerEvent = _context.SpeakerEvent.Where(se => se.EventId == id).ToList();
+            return View(vm);
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public ActionResult Update(EventUpdateVM eventUpdateVM,int id,int? categoryId, List<int>? speakerIds)
+        {
+            var events = _context.Event.FirstOrDefault(e => e.Id == id);
+            ViewBag.Categories = _context.Category.ToList();
+            ViewBag.Speakers = _context.Speakers.ToList();
+            ViewBag.SpeakerEvent = _context.SpeakerEvent.Where(se=>se.EventId==id).ToList();
+            ViewBag.Event = _context.Event.ToList();
+            if (!ModelState.IsValid) {
+                ModelState.AddModelError("", "required!");
+                return View(); 
+            }
+            if(_context.Event.Any(s=>s.Title== eventUpdateVM.Title))
+            {
+                ModelState.AddModelError("Title", "Bu adli evnet artiq var!");
+                return View();
+            }
+            events.Title = eventUpdateVM.Title;
+            events.Desc = eventUpdateVM.Desc;
+            events.OpenTime = eventUpdateVM.OpenTime;
+            events.CloseTime = eventUpdateVM.CloseTime;
+            events.Venue = eventUpdateVM.Venue;
+            events.CategoryId = categoryId;
+            if (eventUpdateVM.Image.CheckSize(10000))
+            {
+                ModelState.AddModelError("Image", "Sheklin olcusu cox boyukdur!");
+                return View();
+            }
+            if (!eventUpdateVM.Image.CheckImage())
+            {
+                ModelState.AddModelError("Image", "Yalniz shekil!");
+                return View();
+            }
+            events.ImgUrl= eventUpdateVM.Image.SaveImage("img/event", _webHostEnvironment);
+            _context.SaveChanges();
+            var speakerEvent = _context.SpeakerEvent.Where(se=>se.EventId==id).ToList();
+            foreach (var speakerId in speakerIds)
+            {
+                foreach (var speaker in speakerEvent)
+                {
+                    speaker.EventId = id;
+                    speaker.SpeakerId = speakerId;
+                }
+                _context.SaveChanges();
+            }
+            return RedirectToAction("index");
+        }
+
+
+
+
 
     }
 }

@@ -17,7 +17,7 @@ namespace Backend_Final.Controllers
         public IActionResult Index()
         {
             EventVM vm = new();
-            vm.Event = _context.Event.ToList();
+            vm.Event = _context.Event.OrderByDescending(s=>s.Id).ToList();
             vm.Speaker = _context.Speakers.ToList();
             return View(vm);
         }

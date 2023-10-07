@@ -1,9 +1,8 @@
-﻿using Backend_Final.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Backend_Final.ViewModels.AdminEvent
 {
-    public class EventCreateVM
+    public class EventUpdateVM
     {
         [Required]
         public string Title { get; set; }
