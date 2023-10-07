@@ -10,8 +10,8 @@
         public string Description { get; set; }
         public TeacherContactInfo TeacherContactInfo { get; set; }
         public TeacherPersonInfo TeacherPersonInfo { get; set; }
-        public List<TeacherSkill> TeacherSkill { get; set; }
-        public List<TeacherSocialMedia> TeacherSocialMedia { get; set; }
+        public TeacherSkill TeacherSkill { get; set; }
+        public TeacherSocialMedia TeacherSocialMedia { get; set; }
         public TeacherDetailImage TeacherDetailImage { get; set; }
 
 

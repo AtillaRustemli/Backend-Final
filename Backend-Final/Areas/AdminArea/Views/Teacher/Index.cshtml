@@ -1,0 +1,32 @@
+﻿@model List<Teacher>
+@{
+    ViewData["Title"] = "Index";
+}
+<a asp-controller="teacher" asp-action="Create" class="btn btn-outline-success"><i class="fa-solid fa-plus"></i></a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Specilty</th>
+            <th scope="col">Setting</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var teacher in Model)
+        {
+            <tr>
+                <td><img style="width:50px;height:50px;" src="~/img/teacher/@teacher.ImgUrl" /></td>
+                <td>@teacher.Name</td>
+                <td>@teacher.Specilty</td>
+                <td>
+
+                    <a asp-controller="teacher" asp-action="Delete" asp-route-id="@teacher.Id" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a asp-controller="teacher" asp-action="Update" asp-route-id="@teacher.Id" class="btn btn-outline-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a asp-area="" asp-controller="teacher" asp-action="detail" asp-route-id="@teacher.Id" class="btn btn-outline-info"><i class="fa-solid fa-info"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

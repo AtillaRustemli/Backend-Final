@@ -23,13 +23,12 @@ namespace Backend_Final.Controllers
         #region Comment
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Comment(CommentVM commentVM)
+        public IActionResult Comment(CommentVM commentVM,string currentUrl)
         {
-            string rootPath = _hostingEnvironment.ContentRootPath;
-            if (!ModelState.IsValid)
-            {
-                ModelState.AddModelError("", "Bosh qoymayin!");
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return View();
+            //}
             Comments comments = new Comments();
             comments.Name = commentVM.Name;
             comments.Email = commentVM.Email;
@@ -38,7 +37,7 @@ namespace Backend_Final.Controllers
             _context.Comments.Add(comments);
             _context.SaveChanges();
 
-            return Redirect(rootPath);
+            return Redirect(currentUrl);
         }
         #endregion
 
@@ -47,6 +46,10 @@ namespace Backend_Final.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult Subscribe(SubscribeVM subscribeVM,string currentUrl)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             var subscribedEmails = _context.Subscribers.Any(s=>s.Email==subscribeVM.Email);
             if (subscribedEmails)
             {

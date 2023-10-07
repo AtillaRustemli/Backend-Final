@@ -1,0 +1,28 @@
+﻿@model List<Tag>
+@{
+    ViewData["Title"] = "Index";
+}
+<a asp-controller="tag" asp-action="Create" class="btn btn-outline-success"><i class="fa-solid fa-plus"></i></a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Settings</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var tags in Model)
+        {
+            <tr>
+                <td>@tags.Name</td>
+                <td>
+
+                    <a asp-controller="tag" asp-action="Delete" asp-route-id="@tags.Id" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a asp-controller="tag" asp-action="Update" asp-route-id="@tags.Id" class="btn btn-outline-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a asp-controller="tag" asp-action="detail" asp-route-id="@tags.Id" class="btn btn-outline-info"><i class="fa-solid fa-info"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

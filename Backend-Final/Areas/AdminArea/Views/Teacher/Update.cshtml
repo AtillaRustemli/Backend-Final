@@ -1,0 +1,144 @@
+﻿@model UpdateTeacherVM
+@{
+    ViewData["Title"] = "Update";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" placeholder="Title">
+        <span asp-validation-for="Name" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Desc" class="form-label"></label>
+        <input asp-for="Desc" class="form-control" placeholder="Description">
+        <span asp-validation-for="Desc" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Specilty" class="form-label"></label>
+        <input asp-for="Specilty" class="form-control" >
+        <span asp-validation-for="Specilty" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="AboutMe" class="form-label"></label>
+        <input asp-for="AboutMe" class="form-control" >
+        <span asp-validation-for="AboutMe" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Image" class="form-label"></label>
+        <input asp-for="Image" class="form-control" >
+        <span asp-validation-for="Image" style="color:red;"></span>
+    </div>
+
+
+    <h2>Contact Info:</h2>
+    <div class="mb-3">
+        <label asp-for="TeacherContactInfo.Email" class="form-label"></label>
+        <input asp-for="TeacherContactInfo.Email" class="form-control">
+        <span asp-validation-for="TeacherContactInfo.Email" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherContactInfo.Number" class="form-label"></label>
+        <input asp-for="TeacherContactInfo.Number" class="form-control">
+        <span asp-validation-for="TeacherContactInfo.Number" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherContactInfo.Skype" class="form-label"></label>
+        <input asp-for="TeacherContactInfo.Skype" class="form-control">
+        <span asp-validation-for="TeacherContactInfo.Skype" style="color:red;"></span>
+    </div>
+    <br />
+
+
+    <h2>Social Medias: </h2>
+    <div class="mb-3">
+        <label asp-for="TeacherSocialMedia.Facebook" class="form-label"></label>
+        <input asp-for="TeacherSocialMedia.Facebook" class="form-control">
+        <span asp-validation-for="TeacherSocialMedia.Facebook" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherSocialMedia.Pinterest" class="form-label"></label>
+        <input asp-for="TeacherSocialMedia.Pinterest" class="form-control">
+        <span asp-validation-for="TeacherSocialMedia.Pinterest" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherSocialMedia.Vimeo" class="form-label"></label>
+        <input asp-for="TeacherSocialMedia.Vimeo" class="form-control">
+        <span asp-validation-for="TeacherSocialMedia.Vimeo" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherSocialMedia.Twitter" class="form-label"></label>
+        <input asp-for="TeacherSocialMedia.Twitter" class="form-control">
+        <span asp-validation-for="TeacherSocialMedia.Twitter" style="color:red;"></span>
+    </div>
+
+
+
+    <h2>Skills: </h2>
+
+    <div class="mb-3">
+        <label asp-for="TeacherSkill.Language" class="form-label">Language skills in percents</label>
+        <input asp-for="TeacherSkill.Language" class="form-control">
+        <span asp-validation-for="TeacherSkill.Language" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherSkill.TeamLeader" class="form-label">Team Leader skills in percents</label>
+        <input asp-for="TeacherSkill.TeamLeader" class="form-control" >
+        <span asp-validation-for="TeacherSkill.TeamLeader" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherSkill.Communication" class="form-label">Communication skills in percents</label>
+        <input asp-for="TeacherSkill.Communication" class="form-control" >
+        <span asp-validation-for="TeacherSkill.Communication" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherSkill.Design" class="form-label">Design skills in percents</label>
+        <input asp-for="TeacherSkill.Design" class="form-control" >
+        <span asp-validation-for="TeacherSkill.Design" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherSkill.Development" class="form-label">Development skills in percents</label>
+        <input asp-for="TeacherSkill.Development" class="form-control" >
+        <span asp-validation-for="TeacherSkill.Development" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherSkill.Innovation" class="form-label">Innovation skills in percents</label>
+        <input asp-for="TeacherSkill.Innovation" class="form-control">
+        <span asp-validation-for="TeacherSkill.Innovation" style="color:red;"></span>
+    </div>
+
+
+
+
+
+    <h2>Personal Info: </h2>
+    <div class="mb-3">
+        <label asp-for="TeacherPersonInfo.Degree" class="form-label"></label>
+        <input asp-for="TeacherPersonInfo.Degree" class="form-control">
+        <span asp-validation-for="TeacherPersonInfo.Degree" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherPersonInfo.Hobbies" class="form-label"></label>
+        <input asp-for="TeacherPersonInfo.Hobbies" class="form-control">
+        <span asp-validation-for="TeacherPersonInfo.Hobbies" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherPersonInfo.Experience" class="form-label"></label>
+        <input asp-for="TeacherPersonInfo.Experience" class="form-control">
+        <span asp-validation-for="TeacherPersonInfo.Experience" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherPersonInfo.Faculty" class="form-label"></label>
+        <input asp-for="TeacherPersonInfo.Faculty" class="form-control">
+        <span asp-validation-for="TeacherPersonInfo.Faculty" style="color:red;"></span>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a asp-controller="teacher" asp-action="index">Go Back</a>
+</form>
+<script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    </script>
+

@@ -4,6 +4,7 @@ using Backend_Final.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend_Final.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231007154029_changedTeacherSkillTable")]
+    partial class changedTeacherSkillTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -783,29 +785,20 @@ namespace Backend_Final.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Facebook")
+                    b.Property<string>("Icon")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Pinterest")
+                    b.Property<string>("NameUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Twitter")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Vimeo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("TeacherId")
-                        .IsUnique();
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("TeacherSocialMedia");
                 });
@@ -890,21 +883,21 @@ namespace Backend_Final.Migrations
                         new
                         {
                             Id = "AdminRoleId",
-                            ConcurrencyStamp = "6105c220-a2dd-4ba2-a948-0a5fd38daaaf",
+                            ConcurrencyStamp = "8c823498-5fc0-4a49-9db1-43a75920a9c0",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "SuperAdminRoleId",
-                            ConcurrencyStamp = "7dc55b5b-c05c-4c63-a151-67922459ab4b",
+                            ConcurrencyStamp = "b9136d62-27d1-4b21-8e62-e7fa89284328",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = "MemberRoleId",
-                            ConcurrencyStamp = "d9d89f76-940a-4f1e-ad08-d133e6d1880e",
+                            ConcurrencyStamp = "48243fe4-e204-42b9-9547-725e17d4c6de",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         });
@@ -1174,8 +1167,8 @@ namespace Backend_Final.Migrations
             modelBuilder.Entity("Backend_Final.Models.TeacherSocialMedia", b =>
                 {
                     b.HasOne("Backend_Final.Models.Teacher", "Teacher")
-                        .WithOne("TeacherSocialMedia")
-                        .HasForeignKey("Backend_Final.Models.TeacherSocialMedia", "TeacherId")
+                        .WithMany("TeacherSocialMedia")
+                        .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1294,8 +1287,7 @@ namespace Backend_Final.Migrations
                     b.Navigation("TeacherSkill")
                         .IsRequired();
 
-                    b.Navigation("TeacherSocialMedia")
-                        .IsRequired();
+                    b.Navigation("TeacherSocialMedia");
                 });
 #pragma warning restore 612, 618
         }
