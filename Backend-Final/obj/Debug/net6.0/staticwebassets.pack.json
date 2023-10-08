@@ -7653,6 +7653,10 @@
       "PackagePath": "staticwebassets\\img\\contact\\contact3.png"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\474ee636-f3ea-4b64-8fd6-1b2f0ac4d7f2course6.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\474ee636-f3ea-4b64-8fd6-1b2f0ac4d7f2course6.jpg"
+    },
+    {
       "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\5a774797-1dd3-4084-bc1a-bd384cc0decbcourse3.jpg",
       "PackagePath": "staticwebassets\\img\\course\\5a774797-1dd3-4084-bc1a-bd384cc0decbcourse3.jpg"
     },
@@ -7663,6 +7667,10 @@
     {
       "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\6ed90ef1-11b4-4dcb-ae56-714930bf4230course3.jpg",
       "PackagePath": "staticwebassets\\img\\course\\6ed90ef1-11b4-4dcb-ae56-714930bf4230course3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\91f4e377-7897-48f6-b22f-90a5143bd280course4.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\91f4e377-7897-48f6-b22f-90a5143bd280course4.jpg"
     },
     {
       "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\course-bg.jpg",
@@ -7921,6 +7929,18 @@
       "PackagePath": "staticwebassets\\img\\slider\\slider3.jpg"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\0f5a2e0c-ce23-4402-a10c-9f6ebe06d3edteacher11.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\0f5a2e0c-ce23-4402-a10c-9f6ebe06d3edteacher11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\22c660bb-6795-4d58-87a1-daac4f6229bfteacher11.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\22c660bb-6795-4d58-87a1-daac4f6229bfteacher11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\3101b35d-3645-40ae-a9db-4a4059b79c73teacher11.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\3101b35d-3645-40ae-a9db-4a4059b79c73teacher11.jpg"
+    },
+    {
       "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\4654d3ee-a476-4be2-a6bf-2a0e269eab63teacher11.jpg",
       "PackagePath": "staticwebassets\\img\\teacher\\4654d3ee-a476-4be2-a6bf-2a0e269eab63teacher11.jpg"
     },
@@ -7933,8 +7953,16 @@
       "PackagePath": "staticwebassets\\img\\teacher\\a61ede48-692e-4209-96ed-5b7627d66220teacher4.jpg"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\aa13cf78-6508-406d-a9a1-98a11fa59da6teacher11.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\aa13cf78-6508-406d-a9a1-98a11fa59da6teacher11.jpg"
+    },
+    {
       "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\bbeeb8a0-1187-4073-a557-3e982e5a25dcteacher4.jpg",
       "PackagePath": "staticwebassets\\img\\teacher\\bbeeb8a0-1187-4073-a557-3e982e5a25dcteacher4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\ff350680-2af1-4811-b2ae-ddaeb9b1c016teacher11.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\ff350680-2af1-4811-b2ae-ddaeb9b1c016teacher11.jpg"
     },
     {
       "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\teacher\\teacher-details.jpg",

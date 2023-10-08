@@ -1,8 +1,6 @@
-﻿@model CreateCourseVM
+﻿@model UpdateCourseVM
 @{
-    ViewData["Title"] = "Create";
-    int count = 0;
-    int a = 3;
+    ViewData["Title"] = "Update";
 }
 <form method="post" enctype="multipart/form-data">
     <div class="mb-3">
@@ -71,24 +69,24 @@
 
     <h2>Course Details</h2>
 
-        <div class="mb-3">
+    <div class="mb-3">
         <label asp-for="@Model.CourseDetail.Title" class="form-label">Title</label>
-            <input asp-for="@Model.CourseDetail.Title" class="form-control">
+        <input asp-for="@Model.CourseDetail.Title" class="form-control">
         <span asp-validation-for="@Model.CourseDetail.Title" style="color:red;"></span>
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Desc</label>
-            <input asp-for="@Model.CourseDetail.Description" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Desc</label>
+        <input asp-for="@Model.CourseDetail.Description" class="form-control">
         <span asp-validation-for="@Model.CourseDetail.Description" style="color:red;"></span>
-        </div>
-       
+    </div>
+
 
     <h2>Categories</h2>
     <div class="btn-group" data-toggle="buttons">
         @foreach (var category in ViewBag.Categories)
         {
             <label class="btn btn-primary">
-                <input type="radio" name="categoryId" value="@category.Id"> @category.Name
+                <input type="radio" name="categoryId" value="@category.Id" @(ViewBag.Course == category.Id ? "checked" : "")> @category.Name
             </label>
         }
 
@@ -98,8 +96,7 @@
     <a asp-controller="course" asp-action="index">Go Back</a>
 </form>
 <script>
-    var a=3;
-<script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" ></script>
+    <script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
     </script>

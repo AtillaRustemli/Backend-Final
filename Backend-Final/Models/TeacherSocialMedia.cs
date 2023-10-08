@@ -8,7 +8,7 @@
         public string? Vimeo { get; set; }
         public string? Twitter { get; set; }
         public int TeacherId { get; set; }
-        public Teacher Teacher { get; set; }
+        public Teacher? Teacher { get; set; }
 
     }
 }

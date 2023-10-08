@@ -3,8 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Backend_Final.ViewModels.AdminCourse
 {
-    public class CreateCourseVM
+    public class UpdateCourseVM
     {
+
         [Required]
         public IFormFile Image { get; set; }
         [Required]

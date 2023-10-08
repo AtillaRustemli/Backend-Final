@@ -27,12 +27,9 @@ namespace Backend_Final.Controllers
             ViewBag.Tags = _context.Tag.ToList();
             ViewBag.Posts = _context.Post.ToList();
             ViewBag.CourseDetaiIImage = _context.CourseDetaiIImage.FirstOrDefault().ImgUrl;
-            ViewBag.CourseFeature = _context.CourseFeature.FirstOrDefault();
             var course=_context.Course
                 .Include(c=>c.CourseDetail)
                 .Include(c=>c.CourseFeature)
-                .Include(c=>c.Tag)
-                .Include(c=>c.Post)
                 .Include(c=>c.Category)
                 .FirstOrDefault(c=>c.Id==id);
             return View(course);

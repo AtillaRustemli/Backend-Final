@@ -45,15 +45,15 @@
                         <div class="course-details-right">
                             <h3>COURSE FEATURES</h3>
                             <ul>
-                                <li>starts <span>@ViewBag.CourseFeature.Starts.Day @(new DateTime(DateTime.Now.Year, ViewBag.CourseFeature.Starts.Month, 1).ToString("MMMM")), @ViewBag.CourseFeature.Starts.Year</span></li>
-                                <li>duration <span>@ViewBag.CourseFeature.Duration</span></li>
-                                <li>class duration <span>@ViewBag.CourseFeature.ClassDuration</span></li>
-                                <li>skill level <span>@ViewBag.CourseFeature.SkillLevel</span></li>
-                                <li>language <span>@ViewBag.CourseFeature.Language</span></li>
-                                <li>students <span>@ViewBag.CourseFeature.Students</span></li>
-                                <li>assesments <span>@ViewBag.CourseFeature.Assesment</span></li>
+                                <li>starts <span>@Model.CourseFeature.Starts.Day @(new DateTime(DateTime.Now.Year, Model.CourseFeature.Starts.Month, 1).ToString("MMMM")), @Model.CourseFeature.Starts.Year</span></li>
+                                <li>duration <span>@Model.CourseFeature.Duration</span></li>
+                                <li>class duration <span>@Model.CourseFeature.ClassDuration</span></li>
+                                <li>skill level <span>@Model.CourseFeature.SkillLevel</span></li>
+                                <li>language <span>@Model.CourseFeature.Language</span></li>
+                                <li>students <span>@Model.CourseFeature.Students</span></li>
+                                <li>assesments <span>@Model.CourseFeature.Assesment</span></li>
                             </ul>
-                            <h3 class="red">course fee $@ViewBag.CourseFeature.Fee</h3>
+                            <h3 class="red">course fee $@Model.CourseFeature.Fee</h3>
                         </div>
                     </div>
                     @await Html.PartialAsync("_Comment",new CommentVM())

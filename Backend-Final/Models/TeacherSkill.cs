@@ -10,6 +10,6 @@
         public double Innovation { get; set; }
         public double Communication { get; set; }
         public int TeacherId { get; set; }
-        public Teacher Teacher { get; set; }
+        public Teacher? Teacher { get; set; }
     }
 }

@@ -6,10 +6,10 @@ namespace Backend_Final.Models
     {
         public int Id { get; set; }
         public string Skype { get; set; }
-        [Required]
+        [Required,DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public string Number { get; set; }
         public int TeacherId { get; set; }
-        public Teacher Teacher { get; set; }
+        public Teacher? Teacher { get; set; }
     }
 }

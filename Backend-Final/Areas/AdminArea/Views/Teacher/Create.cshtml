@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Create";
 }
-<form method="post" enctype="multipart/form-data">
+<form asp-area="adminarea" asp-controller="teacher" asp-action="create" method="post" enctype="multipart/form-data">
     <div class="mb-3">
         <label asp-for="Name" class="form-label"></label>
         <input asp-for="Name" class="form-control" placeholder="Title">
@@ -15,12 +15,12 @@
     </div>
     <div class="mb-3">
         <label asp-for="Specilty" class="form-label"></label>
-        <input asp-for="Specilty" class="form-control" placeholder="Opening Time">
+        <input asp-for="Specilty" class="form-control">
         <span asp-validation-for="Specilty" style="color:red;"></span>
     </div>
     <div class="mb-3">
         <label asp-for="AboutMe" class="form-label"></label>
-        <input asp-for="AboutMe" class="form-control" placeholder="Closing Time">
+        <input asp-for="AboutMe" class="form-control" >
         <span asp-validation-for="AboutMe" style="color:red;"></span>
     </div>
     <div class="mb-3">

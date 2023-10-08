@@ -33,8 +33,10 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult Create(CreateTeacherVM createTeacherVM)
         {
-            if(ModelState.IsValid)
+
+            if (!ModelState.IsValid)
             {
+                ModelState.AddModelError("", "Salam");
                 return View();
             }
             Teacher teacher = new();
@@ -42,6 +44,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
             teacher.Specilty=createTeacherVM.Specilty;
             teacher.AboutMe = createTeacherVM.AboutMe;
             teacher.Description = createTeacherVM.Desc;
+           
             if (!createTeacherVM.Image.CheckImage())
             {
                 ModelState.AddModelError("Image", "Yalniz Shekil!!!");
@@ -55,6 +58,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
             teacher.ImgUrl = createTeacherVM.Image.SaveImage("img/teacher", _webHostEnvironment);
             _context.Teacher.Add(teacher);
             _context.SaveChanges();
+
 
             TeacherContactInfo contactInfo = new()
             {
@@ -102,6 +106,8 @@ namespace Backend_Final.Areas.AdminArea.Controllers
 
             };
             _context.TeacherPersonInfo.Add(personInfo);
+
+          
             _context.SaveChanges();
 
             return RedirectToAction("index");
