@@ -1,0 +1,108 @@
+﻿@model CreateCourseVM
+@{
+    ViewData["Title"] = "Create";
+    int count = 0;
+    int a = 3;
+}
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" placeholder="Title">
+        <span asp-validation-for="Name" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Desc" class="form-label"></label>
+        <input asp-for="Desc" class="form-control" placeholder="Title">
+        <span asp-validation-for="Desc" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Image" class="form-label"></label>
+        <input asp-for="Image" class="form-control">
+        <span asp-validation-for="Image" style="color:red;"></span>
+    </div>
+
+
+
+    <h2>Course Details</h2>
+
+    <div class="mb-3">
+        <label asp-for="@Model.CourseFeature.Duration" class="form-label"></label>
+        <input asp-for="@Model.CourseFeature.Duration" class="form-control">
+        <span asp-validation-for="@Model.CourseFeature.Duration" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.CourseFeature.Starts" class="form-label"></label>
+        <input asp-for="@Model.CourseFeature.Starts" class="form-control">
+        <span asp-validation-for="@Model.CourseFeature.Starts" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.CourseFeature.ClassDuration" class="form-label"></label>
+        <input asp-for="@Model.CourseFeature.ClassDuration" class="form-control">
+        <span asp-validation-for="@Model.CourseFeature.ClassDuration" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.CourseFeature.SkillLevel" class="form-label"></label>
+        <input asp-for="@Model.CourseFeature.SkillLevel" class="form-control">
+        <span asp-validation-for="@Model.CourseFeature.SkillLevel" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.CourseFeature.Language" class="form-label"></label>
+        <input asp-for="@Model.CourseFeature.Language" class="form-control">
+        <span asp-validation-for="@Model.CourseFeature.Language" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.CourseFeature.Students" class="form-label"></label>
+        <input asp-for="@Model.CourseFeature.Students" class="form-control">
+        <span asp-validation-for="@Model.CourseFeature.Students" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.CourseFeature.Assesment" class="form-label"></label>
+        <input asp-for="@Model.CourseFeature.Assesment" class="form-control">
+        <span asp-validation-for="@Model.CourseFeature.Assesment" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.CourseFeature.Fee" class="form-label"></label>
+        <input asp-for="@Model.CourseFeature.Fee" class="form-control">
+        <span asp-validation-for="@Model.CourseFeature.Fee" style="color:red;"></span>
+    </div>
+    <br />
+
+
+
+    <h2>Course Details</h2>
+
+        count++;
+        <div class="mb-3">
+        <label asp-for="@Model.CourseDetail.Title" class="form-label">Title</label>
+            <input asp-for="@Model.CourseDetail.Title" class="form-control">
+        <span asp-validation-for="@Model.CourseDetail.Title" style="color:red;"></span>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Desc</label>
+            <input asp-for="@Model.CourseDetail.Description" class="form-control">
+        <span asp-validation-for="@Model.CourseDetail.Description" style="color:red;"></span>
+        </div>
+       
+
+    <h2>Categories</h2>
+    <div class="btn-group" data-toggle="buttons">
+        @foreach (var category in ViewBag.Categories)
+        {
+            <label class="btn btn-primary">
+                <input type="radio" name="id" value="@category.Id"> @category.Name
+            </label>
+
+        }
+
+
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a asp-controller="event" asp-action="index">Go Back</a>
+</form>
+<script>
+    var a=3;
+<script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    </script>
