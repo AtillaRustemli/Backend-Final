@@ -105,10 +105,10 @@
             @foreach (var course in Model.Course)
             {
                 count++;
-                <div class="col-md-4 @(count==Model.Course.Count?"hidden-sm":"col-sm-6") col-xs-12">
+                <div style="margin-bottom:30px;" class="col-md-4 @(count==Model.Course.Count?"hidden-sm":"col-sm-6") col-xs-12">
                 <div class="single-course">
                     <div class="course-img">
-                        <a href="course-details.html">
+                            <a asp-controller="course" asp-action="detail" asp-route-id="@course.Id">
                                 <img src="~/img//course/@course.ImgUrl" alt="course">
                             <div class="course-hover">
                                 <i class="fa fa-link"></i>
@@ -117,8 +117,17 @@
                     </div>
                     <div class="course-content">
                             <h3><a asp-controller="course" asp-action="detail" asp-route-id="@course.Id">@course.Name</a></h3>
-                            <p>@course.Description.Substring(0,course.Description.Length/3)</p>
-                        <a class="default-btn" href="course-details.html">read more</a>
+                            <p>@if (course.Description.Length >= 50)
+                                {
+                                    @course.Description.Substring(0, 50)
+                                }
+                                else
+                                {
+                                    @course.Description
+                                }
+                            </p>
+
+                            <a class="default-btn" asp-controller="course" asp-action="detail" asp-route-id="@course.Id">read more</a>
                     </div>
                 </div>
             </div>

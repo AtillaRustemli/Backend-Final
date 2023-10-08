@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NMUubyhi48YBrbhkd/wzQxhtweQmF2nzFIqYx2PZxoQ=",
+  "Hash": "nfXJfTiC/9uN3s+JPiHMOXerm2cQhXCuLywbm7Vg1m8=",
   "Source": "Backend-Final",
   "BasePath": "_content/Backend-Final",
   "Mode": "Default",
@@ -33403,6 +33403,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\icon\\section1.png"
+    },
+    {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\logo\\16faeb21-f71e-486f-8e59-0858e693df5efooter-logo.png",
+      "SourceId": "Backend-Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\",
+      "BasePath": "_content/Backend-Final",
+      "RelativePath": "img/logo/16faeb21-f71e-486f-8e59-0858e693df5efooter-logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\logo\\16faeb21-f71e-486f-8e59-0858e693df5efooter-logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\logo\\8f4dbe5a-0e0e-4ae4-8ab2-422fd20bb340logo2.png",
+      "SourceId": "Backend-Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\",
+      "BasePath": "_content/Backend-Final",
+      "RelativePath": "img/logo/8f4dbe5a-0e0e-4ae4-8ab2-422fd20bb340logo2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\logo\\8f4dbe5a-0e0e-4ae4-8ab2-422fd20bb340logo2.png"
     },
     {
       "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\logo\\footer-logo.png",

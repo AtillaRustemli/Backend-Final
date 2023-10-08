@@ -1,0 +1,38 @@
+﻿@model List<SettingsKeyValue>
+@{
+    ViewData["Title"] = "Index";
+}
+<a asp-controller="settingkeyvalue" asp-action="Create" class="btn btn-outline-success"><i class="fa-solid fa-plus"></i></a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Key</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var keysValues in Model)
+        {
+            <tr>
+                <td>@keysValues.Key</td>
+                <td>@if (keysValues.Value.Contains("png") || keysValues.Value.Contains("jpg"))
+                    {
+                        <img src="~/img/logo/@keysValues.Value" />
+                    }
+                    else
+                    {
+                        @keysValues.Value
+                    }
+                </td>
+
+                <td>
+                    <a asp-controller="settingkeyvalue" asp-action="Delete" asp-route-id="@keysValues.Id" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a asp-controller="settingkeyvalue" asp-action="Update" asp-route-id="@keysValues.Id" class="btn btn-outline-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a asp-area="" asp-controller="settingkeyvalue" asp-action="detail" asp-route-id="@keysValues.Id" class="btn btn-outline-info"><i class="fa-solid fa-info"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

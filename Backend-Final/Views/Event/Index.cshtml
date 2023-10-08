@@ -46,10 +46,19 @@
                             <h4><a asp-action="detail">@item.Title</a></h4>
                             <ul>
                                 <li><span>time: </span>@item.OpenTime.Hour.ToString("D2"):@item.OpenTime.Minute.ToString("D2") - @item.CloseTime.Hour.ToString("D2"):@item.CloseTime.Minute.ToString("D2") </li>
-                                <li><span>venue</span> @item.Venue.Substring(0,14)</li>
+                                <li><span>venue</span> @if (item.Venue.Length >= 14)
+                                    {
+                                        @item.Venue.Substring(0, 14)
+                                    }
+                                    else
+                                    {
+                                        @item.Venue
+                                     }
+                                </li>
+
                             </ul>
                             <div class="event-content-right">
-                                <a class="default-btn" href="event-details.html">join now</a>
+                                <a class="default-btn" asp-controller="event" asp-action="detail" asp-route-id="@item.Id">join now</a>
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,29 @@
+﻿@model UpdateSettingVM
+@{
+    ViewData["Title"] = "Create";
+}
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Key" class="form-label"></label>
+        <input asp-for="Key" class="form-control" placeholder="Title">
+        <span asp-validation-for="Key" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Value" class="form-label"></label>
+        <input asp-for="Value" class="form-control" placeholder="Description">
+        <span asp-validation-for="Value" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ImgValue" class="form-label"></label>
+        <input asp-for="ImgValue" class="form-control" placeholder="Opening Time">
+        <span asp-validation-for="ImgValue" style="color:red;"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a asp-controller="event" asp-action="index">Go Back</a>
+</form>
+<script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    </script>
+

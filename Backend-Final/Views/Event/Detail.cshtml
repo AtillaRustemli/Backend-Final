@@ -125,8 +125,8 @@
                         <div class="single-tag">
                             @foreach (var tag in ViewBag.Tags)
                             {
-                            <a href="blog-details.html" class="mr-10 mb-10">@tag.Name</a>
-                                
+                                <a asp-controller="event" asp-action="detail" asp-route-id="@Model.Id" class="mr-10 mb-10">@tag.Name</a>
+
                             }
                            
                         </div>

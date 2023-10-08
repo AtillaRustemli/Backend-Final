@@ -51,7 +51,7 @@
                     </div>
                     <div class="course-content">
                         <h3><a href="course-details.html">@course.Name</a></h3>
-                        <p>@course.Description.Substring(0,100)</p>
+                        <p>@course.Description.Substring(0,course.Description.Length/4)</p>
                         <a class="default-btn" asp-controller="course" asp-action="detail" asp-route-id="@course.Id">read more</a>
                     </div>
                 </div>

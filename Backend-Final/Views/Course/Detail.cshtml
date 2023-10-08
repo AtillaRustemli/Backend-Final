@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Deatil";
     int courseCount = 0;
+    //string parentViewUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}{HttpContext.Request.Path}{HttpContext.Request.QueryString}";
 }
 <div class="banner-area-wrapper">
     <div class="banner-area text-center">
@@ -121,7 +122,7 @@
                         <div class="single-tag">
                             @foreach (var tag in ViewBag.Tags)
                             {
-                                <a href="blog-details.html" class="mr-10 mb-10">@tag.Name</a>
+                                <a asp-controller="course" asp-action="detail" asp-route-id="@Model.Id" class="mr-10 mb-10">@tag.Name</a>
 
                             }
                         </div>

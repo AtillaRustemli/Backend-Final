@@ -7857,6 +7857,14 @@
       "PackagePath": "staticwebassets\\img\\icon\\section1.png"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\logo\\16faeb21-f71e-486f-8e59-0858e693df5efooter-logo.png",
+      "PackagePath": "staticwebassets\\img\\logo\\16faeb21-f71e-486f-8e59-0858e693df5efooter-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\logo\\8f4dbe5a-0e0e-4ae4-8ab2-422fd20bb340logo2.png",
+      "PackagePath": "staticwebassets\\img\\logo\\8f4dbe5a-0e0e-4ae4-8ab2-422fd20bb340logo2.png"
+    },
+    {
       "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\logo\\footer-logo.png",
       "PackagePath": "staticwebassets\\img\\logo\\footer-logo.png"
     },
