@@ -71,7 +71,6 @@
 
     <h2>Course Details</h2>
 
-        count++;
         <div class="mb-3">
         <label asp-for="@Model.CourseDetail.Title" class="form-label">Title</label>
             <input asp-for="@Model.CourseDetail.Title" class="form-control">
@@ -98,7 +97,7 @@
     </div>
     <br />
     <button type="submit" class="btn btn-success">Submit</button>
-    <a asp-controller="event" asp-action="index">Go Back</a>
+    <a asp-controller="course" asp-action="index">Go Back</a>
 </form>
 <script>
     var a=3;

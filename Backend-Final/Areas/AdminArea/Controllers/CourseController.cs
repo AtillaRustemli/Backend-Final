@@ -56,8 +56,13 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         public IActionResult Create(CreateCourseVM createCourseVM,int id)
         {
             ViewBag.Categories = _context.Category.ToList();
-            if (!ModelState.IsValid)
+            //if (!ModelState.IsValid)
+            //{
+            //    return View();
+            //}
+            if (_context.Course.Any(c=>c.Name== createCourseVM.Name))
             {
+                ModelState.AddModelError("Name", "Bu adli Kurs artiq movcuddur");
                 return View();
             }
             Course course = new();
