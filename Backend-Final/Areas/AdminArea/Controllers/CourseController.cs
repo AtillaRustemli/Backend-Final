@@ -41,6 +41,8 @@ namespace Backend_Final.Areas.AdminArea.Controllers
                 _context.CourseDetail.Remove(courseDetail);
                 _context.SaveChanges();
             }
+            var courseFeature=_context.CourseFeature.FirstOrDefault(cf=>cf.CourseId==id);
+            _context.CourseFeature.Remove(courseFeature);
 
             _context.SaveChanges();
             return View();
@@ -169,7 +171,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
             newCourseFeatur.SkillLevel = updateCourseVM.CourseFeature.SkillLevel;
             newCourseFeatur.Starts = updateCourseVM.CourseFeature.Starts;
             newCourseFeatur.Students = updateCourseVM.CourseFeature.Students;
-            newCourseFeatur.ClassDuration = updateCourseVM.CourseFeature.Language;
+            newCourseFeatur.ClassDuration = updateCourseVM.CourseFeature.ClassDuration;
             newCourseFeatur.Fee = updateCourseVM.CourseFeature.Fee;
             newCourseFeatur.Assesment = updateCourseVM.CourseFeature.Assesment;
             newCourseFeatur.Duration = updateCourseVM.CourseFeature.Duration;

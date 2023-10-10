@@ -20,7 +20,7 @@
                                     <h3>@slide.Definition </h3>
                                     <h2>@slide.Title </h2>
                                     <p>@slide.Description</p>
-                                    <a class="default-btn" href="about.html">Learn more</a>
+                                    <a class="default-btn" asp-controller="about" asp-action="index">Learn more</a>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
                     count++;
                     <div class="single-event mb-35">
                     <div class="event-date">
-                            <h3><a href="event-details.html">@events.OpenTime.Day <span>@(new DateTime(DateTime.Now.Year, events.OpenTime.Month, 1).ToString("MMMM"))</span></a></h3>
+                            <h3><a asp-controller="event" asp-action="detail" asp-route-id="@events.Id">@events.OpenTime.Day <span>@(new DateTime(DateTime.Now.Year, events.OpenTime.Month, 1).ToString("MMMM"))</span></a></h3>
                     </div>
                     <div class="event-content text-left">
                         <div class="event-content-left">
@@ -195,7 +195,7 @@
                         </div>
                         <div class="event-content text-left">
                             <div class="event-content-left">
-                                <h4><a href="event-details.html">@events.Title</a></h4>
+                                <h4><a asp-controller="event" asp-action="detail">@events.Title</a></h4>
                                 <ul>
                                    @*<li> @events.OpenTime : @events.CloseTime</li>*@
                                     <li><i class="fa fa-map-marker"></i>@events.Venue</li>
@@ -227,7 +227,9 @@
                                 <img src="img//testimonial/@item.ImgUrl" alt="testimonial">
                             </div>
                             <div class="testimonial-content">
-                                <p>@item.Desc</p>
+                                    <p>@item.Desc
+                                    </p>
+
                                 <h4>@item.Name</h4>
                                 <h5>@item.Position</h5>
                             </div>
@@ -259,9 +261,9 @@
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="single-blog">
                     <div class="blog-img">
-                        <a href="blog-details.html"><img src="img//blog/@blog.ImgUrl" alt="blog"></a>
+                            <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id"><img src="~/img/blog/@blog.ImgUrl" alt="blog"></a>
                         <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
+                            <a asp-controller="blog" asp-action="detail"><i class="fa fa-link"></i></a>
                         </div>
                     </div>
                     <div class="blog-content">
@@ -269,7 +271,18 @@
                                 <p>By @blog.Author  /  @(new DateTime(DateTime.Now.Year, blog.Date.Month, 1).ToString("MMMM")) @blog.Date.Day,@blog.Date.Year /  <i class="fa fa-comments-o"></i> 4</p>
                         </div>
                         <div class="blog-bottom">
-                                <h2><a href="blog-details.html">@Html.Raw(blog.Description.Substring(0,blog.Description.Length/3)) </a></h2>
+                                <h2>
+                                    <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">
+                                        @if (blog.Description.Length >= 30)
+                                        {
+                                            @blog.Description.Substring(0,30)
+                                        }
+                                        else
+                                        {
+                                            @blog.Description
+                                        }
+                                    </a>
+                                </h2>
                             <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">read more</a>
                         </div>
                     </div>
