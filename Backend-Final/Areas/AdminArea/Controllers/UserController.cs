@@ -1,5 +1,6 @@
 ﻿using Backend_Final.DAL;
 using Backend_Final.Models;
+using Backend_Final.ViewModels.AdminTag;
 using Backend_Final.ViewModels.AdminUser;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         {
          var user= _userManager.Users.ToList();
             return View(user);
+
         }
         //Create
         #region Create
@@ -87,20 +89,29 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Update(UpdateUserVM updateUserVM,List<string> roles,string?id)
         {
-            if(!ModelState.IsValid)
-            {
-                return View();
-            }
             var user =await _userManager.FindByIdAsync(id);
             var oldRoles =await _userManager.GetRolesAsync(user);
             await _userManager.RemoveFromRolesAsync(user,oldRoles);
             await _userManager.AddToRolesAsync(user,roles);
             user.Email = updateUserVM.AppUser.Email;
             user.UserName = updateUserVM.AppUser.UserName;
+            updateUserVM.UserRole=roles;
+            _userManager.UpdateAsync(user);
+            if (!ModelState.IsValid)
+            {
+                return View(updateUserVM);
+            }
 
             return RedirectToAction("Index");
         }
         #endregion
-
+        //Detail
+        #region Detail
+        public async Task<IActionResult> Detail(string id)
+        {
+            var user =await _userManager.FindByIdAsync(id);
+            return View(user);
+        }
+        #endregion
     }
 }

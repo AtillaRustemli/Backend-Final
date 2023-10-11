@@ -23,17 +23,35 @@ namespace Backend_Final.Controllers
         #region Comment
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Comment(CommentVM commentVM,string currentUrl)
+        public IActionResult Comment(CommentVM commentVM,string currentUrl,string controllerName)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View();
-            //}
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             Comments comments = new Comments();
             comments.Name = commentVM.Name;
             comments.Email = commentVM.Email;
             comments.Subject = commentVM.Subject;
             comments.Message = commentVM.Message;
+            if (controllerName.ToLower() == "event")
+            {
+                comments.BlogComment = null;
+                comments.CourseComment = null;
+                comments.EventComment = "Event's comment";
+            }
+            else if (controllerName.ToLower() == "blog")
+            {
+                comments.EventComment = null;
+                comments.CourseComment = null;
+                comments.BlogComment = "Blog's comment";
+            }
+            else if (controllerName.ToLower() == "course")
+            {
+                comments.BlogComment = null;
+                comments.EventComment = null;
+                comments.CourseComment = "Course's comment";
+            }
             _context.Comments.Add(comments);
             _context.SaveChanges();
 

@@ -19,13 +19,19 @@
             <tr>
                 <td>@user.UserName</td>
                 <td>@user.Email</td>
-                <td>@user.</td>
                 
                 <td>
-
-                    <a asp-controller="user" asp-action="Delete" asp-route-id="@user.Id" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                    @if (User.Identity.Name == user.UserName)
+                    {
+                        <span style="cursor:default;" class="btn btn-outline-secondary"><i class="fa-solid fa-trash"></i></span>
+                    }
+                    else
+                    {
+                         <a asp-controller="user" asp-action="Delete" asp-route-id="@user.Id" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                    }
+                   
                     <a asp-controller="user" asp-action="Update" asp-route-id="@user.Id" class="btn btn-outline-warning"><i class="fa-regular fa-pen-to-square"></i></a>
-                    <a asp-area="" asp-controller="user" asp-action="detail" asp-route-id="@user.Id" class="btn btn-outline-info"><i class="fa-solid fa-info"></i></a>
+                    <a asp-controller="user" asp-action="detail" asp-route-id="@user.Id" class="btn btn-outline-info"><i class="fa-solid fa-info"></i></a>
                 </td>
             </tr>
         }

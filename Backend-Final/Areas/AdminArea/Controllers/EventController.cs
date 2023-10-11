@@ -124,7 +124,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
                 ModelState.AddModelError("", "required!");
                 return View(); 
             }
-            if(_context.Event.Any(s=>s.Title== eventUpdateVM.Title))
+            if(_context.Event.Any(s=>s.Title== eventUpdateVM.Title&&s.Id!=id))
             {
                 ModelState.AddModelError("Title", "Bu adli evnet artiq var!");
                 return View();

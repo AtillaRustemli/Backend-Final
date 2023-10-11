@@ -40,7 +40,7 @@ namespace Backend_Final.Controllers
             {
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError("", error.Description.ToString());
+                    ModelState.AddModelError("password", error.Description.ToString());
                 }
                 return View(registerVM);
             }

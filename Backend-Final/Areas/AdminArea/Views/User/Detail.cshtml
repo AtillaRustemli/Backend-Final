@@ -1,0 +1,9 @@
+﻿@model AppUser
+@{
+    ViewData["Title"] = "Index";
+
+}
+<h1>UserName : @Model.UserName</h1>
+<h2>Email : @Model.Email</h2>
+
+<a asp-controller="user" asp-action="index" >Go Back</a>

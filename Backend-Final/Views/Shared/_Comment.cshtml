@@ -1,26 +1,25 @@
-﻿@model CommentVM
+﻿@using Microsoft.AspNetCore.Http.Extensions
+@model CommentVM
 @{
     string currentUrl = Url.Action().ToString();
-}
-@using Microsoft.AspNetCore.Http.Extensions
-@{
-    ViewBag.currentUrl = Context.Request.GetDisplayUrl().ToString();
+    var routeData = ViewContext.RouteData;
+    string controllerName = routeData.Values["controller"].ToString();
 }
 
 <div class="reply-area">
     <h3>LEAVE A REPLY</h3>
     <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
-    <form asp-controller="Partial" asp-action="Comment" id="contact-form" method="post" target="_blank" novalidate>
+    <form asp-controller="Partial" asp-action="Comment" asp-route-currentUrl="@currentUrl" asp-route-controllerName="@controllerName" id="contact-form" method="post" target="_blank" >
         <div class="row">
             <div class="col-md-12">
                 <p>Name</p>
                 <input asp-for="Name">
-                <span asp-validation-for="Name"></span>
+                <span asp-validation-for="Name" style="color:red;"></span>
             </div>
             <div class="col-md-12">
                 <p>Email</p>
                 <input asp-for ="Email">
-                <span asp-validation-for="Email"></span>
+                <span asp-validation-for="Email" style="color:red;"></span>
             </div>
             <div class="col-md-12">
                 <p>Subject</p>
@@ -28,10 +27,10 @@
                 <span asp-validation-for="Subject"></span>
                 <p>Massage</p>
                 <textarea asp-for="Message" cols="15" rows="10"></textarea>
-                <span asp-validation-for="Message"></span>
+                <span asp-validation-for="Message" style="color:red;"></span>
             </div>
         </div>
-        <button type="submit" asp-controller="partial" asp-action="Comment" asp-route-currentUrl="@currentUrl">Send Message</button>
+        <button type="submit" asp-controller="partial" asp-action="Comment" asp-route-currentUrl="@currentUrl" asp-route-controllerName="@controllerName">Send Message</button>
         
     </form>
 </div>

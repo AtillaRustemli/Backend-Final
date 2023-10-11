@@ -8,8 +8,7 @@ namespace Backend_Final.ViewModels.AdminUser
     {
         [Required]
         public AppUser AppUser { get; set; }
-        [Required]
-        public IList<string> UserRole { get; set; }
+        public IList<string>? UserRole { get; set; }
         public List<IdentityRole>? Roles { get; set; }
     }
 }
