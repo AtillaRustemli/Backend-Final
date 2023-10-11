@@ -7653,6 +7653,10 @@
       "PackagePath": "staticwebassets\\img\\contact\\contact3.png"
     },
     {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\13883e8e-e0ee-4399-9c8f-7a27373b6df0course3.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\13883e8e-e0ee-4399-9c8f-7a27373b6df0course3.jpg"
+    },
+    {
       "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\474ee636-f3ea-4b64-8fd6-1b2f0ac4d7f2course6.jpg",
       "PackagePath": "staticwebassets\\img\\course\\474ee636-f3ea-4b64-8fd6-1b2f0ac4d7f2course6.jpg"
     },
@@ -7723,6 +7727,10 @@
     {
       "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\ea1c1bac-6e17-4402-af54-caed756d2a12event13.jpg",
       "PackagePath": "staticwebassets\\img\\ea1c1bac-6e17-4402-af54-caed756d2a12event13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\0d1a571d-8ed0-49a2-971f-508ec7e3fce7event6.jpg",
+      "PackagePath": "staticwebassets\\img\\event\\0d1a571d-8ed0-49a2-971f-508ec7e3fce7event6.jpg"
     },
     {
       "Id": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\0d32ed6e-4c45-46e8-9ba4-5cb3475ba76devent7.jpg",

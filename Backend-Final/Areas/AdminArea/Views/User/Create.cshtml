@@ -1,0 +1,42 @@
+﻿@model CreateUserVM
+@{
+    ViewData["Title"] = "Create";
+}
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Username" class="form-label"></label>
+        <input asp-for="Username" class="form-control">
+        <span asp-validation-for="Username" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control">
+        <span asp-validation-for="Username" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label"></label>
+        <input asp-for="Password" class="form-control">
+        <span asp-validation-for="Password" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="RepeatPassword" class="form-label"></label>
+        <input asp-for="RepeatPassword" class="form-control">
+        <span asp-validation-for="RepeatPassword" style="color:red;"></span>
+    </div>
+    <br />
+    <h2>Roles</h2>
+    @foreach (var role in ViewBag.Roles)
+    {
+        <label class="btn btn-primary">
+            <input type="checkbox" name="roles" value="@role.Name"> @role.Name
+        </label>
+
+    }
+    <br />
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a asp-controller="user" asp-action="index">Go Back</a>
+</form>
+<script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    </script>

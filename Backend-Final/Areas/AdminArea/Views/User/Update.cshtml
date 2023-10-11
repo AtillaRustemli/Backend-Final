@@ -1,0 +1,32 @@
+﻿@model UpdateUserVM
+@{
+    ViewData["Title"] = "Update";
+}
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="@Model.AppUser.UserName" class="form-label"></label>
+        <input asp-for="@Model.AppUser.UserName" class="form-control">
+        <span asp-validation-for="@Model.AppUser.UserName" style="color:red;"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.AppUser.Email" class="form-label"></label>
+        <input asp-for="@Model.AppUser.Email" class="form-control">
+        <span asp-validation-for="@Model.AppUser.Email" style="color:red;"></span>
+    </div>
+    <br />
+    <h2>Roles</h2>
+    @foreach (var role in Model.Roles)
+    {
+        <label class="btn btn-primary">
+            <input type="checkbox" name="roles" value="@role.Name" @(Model.UserRole.Any(ur => ur.ToLower() == role.Name.ToLower()) ? "checked" : "")> @role.Name
+        </label>
+
+    }
+    <br />
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a asp-controller="user" asp-action="index">Go Back</a>
+</form>
+<script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    </script>
