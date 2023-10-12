@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TrQHU6P5S4OjBC0LylkChrXyIu3wbcfoJX4gZTSEFuI=",
+  "Hash": "um/LLlqMzibjRahM1SmMzlmwmEN+hde4Hhq/4eTMs6g=",
   "Source": "Backend-Final",
   "BasePath": "_content/Backend-Final",
   "Mode": "Default",
@@ -33048,6 +33048,23 @@
       "OriginalItemSpec": "wwwroot\\img\\event\\a2e9b1ed-fce2-44c9-a5bb-ff9c15e50baaevent2.jpg"
     },
     {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\a4cbbff4-a105-4494-bfd6-79c319834968event6.jpg",
+      "SourceId": "Backend-Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\",
+      "BasePath": "_content/Backend-Final",
+      "RelativePath": "img/event/a4cbbff4-a105-4494-bfd6-79c319834968event6.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\event\\a4cbbff4-a105-4494-bfd6-79c319834968event6.jpg"
+    },
+    {
       "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\aab61a32-dadf-4578-a3ea-d10ce96d638fevent7.jpg",
       "SourceId": "Backend-Final",
       "SourceType": "Discovered",
@@ -33080,6 +33097,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\event\\ae2a5883-c8ce-466f-b1cb-1e53d6166ce4event12.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\b80d6253-817b-471a-9521-d8b7ea6e41c0event8.jpg",
+      "SourceId": "Backend-Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\",
+      "BasePath": "_content/Backend-Final",
+      "RelativePath": "img/event/b80d6253-817b-471a-9521-d8b7ea6e41c0event8.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\event\\b80d6253-817b-471a-9521-d8b7ea6e41c0event8.jpg"
     },
     {
       "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\cbbeabe3-2849-4081-ac9d-7b97a07dabcdevent12.jpg",

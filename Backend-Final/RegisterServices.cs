@@ -1,6 +1,8 @@
 ﻿using Backend_Final.DAL;
 using Backend_Final.Helper;
 using Backend_Final.Models;
+using Backend_Final.Models.Emails;
+using Backend_Final.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +19,8 @@ namespace Backend_Final
             {
                 opt.UseSqlServer(config.GetConnectionString("DefaultConnection"));
             });
-
+            services.Configure<SMTPConfigModel>(config.GetSection("EmailConfig"));
+            services.AddTransient<IEmailServices,EmailServices>();
             services.AddIdentity<AppUser, IdentityRole>(identityOptions =>
             {
                 identityOptions.SignIn.RequireConfirmedEmail = true;
