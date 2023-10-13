@@ -1,58 +1,76 @@
 ﻿using Backend_Final.Models.Emails;
+using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
+using MimeKit;
+using MimeKit.Encodings;
 using System.Net;
-using System.Net.Mail;
 using System.Text;
 
 namespace Backend_Final.Services
 {
-    public class EmailServices : IEmailServices
+    public class EmailServices
     {
         private const string templatePath = @"Views/shared/{0}.cshtml";
-        private readonly SMTPConfigModel _smtpConfig;
-        public async Task SendTestEmail(UserEmailOptions userEmailOptions)
-        {
-            userEmailOptions.Subject = "This is the test email Subject from Atilla's project";
-            userEmailOptions.Body = GetEmailBody("_Comment");
+        private readonly EmailConfig _smtpConfig;
 
-            await SendEmail(userEmailOptions);
-        }
-        public EmailServices(IOptions<SMTPConfigModel> smtpConfig)
+        public EmailServices(EmailConfig smtpConfig)
         {
-            _smtpConfig = smtpConfig.Value;
+            _smtpConfig = smtpConfig;
         }
-        private async Task SendEmail(UserEmailOptions userEmailOptions)
+        public MimeMessage CreateEmail(string subject,string message,List<string> addresses)
         {
-            MailMessage mail = new()
+            var to=new List<MailboxAddress>();
+            foreach (var address in addresses)
             {
-                Subject = userEmailOptions.Subject,
-                Body = userEmailOptions.Body,
-                From = new MailAddress(_smtpConfig.SendAddress, _smtpConfig.SenderDisplayName),
-                IsBodyHtml = _smtpConfig.isBodyHTML
-            };
-            foreach (var toEmail in userEmailOptions.ToEmails)
-            {
-                mail.To.Add(toEmail);
+            to.Add(new MailboxAddress(string.Empty, address));
             }
-            NetworkCredential networkCredential = new(_smtpConfig.UserName, _smtpConfig.Password);
 
-            SmtpClient smtpClient = new()
+            var emailMessage=new MimeMessage();
+            emailMessage.From.Add(new MailboxAddress(_smtpConfig.UserName, _smtpConfig.From));
+            emailMessage.Subject = subject;
+            emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text)
             {
-                Host = _smtpConfig.Host,
-                Port = _smtpConfig.Port,
-                EnableSsl = _smtpConfig.EnableSSL,
-                UseDefaultCredentials = _smtpConfig.UseDefaultCredentials,
-                Credentials = networkCredential
+                Text = message
             };
-            mail.BodyEncoding = Encoding.Default;
-            await smtpClient.SendMailAsync(mail);
 
+            return emailMessage;
 
         }
-        private string GetEmailBody(string templateName)
+        public void SendEmail(MimeMessage message)
         {
-            var body = File.ReadAllText(string.Format(templatePath, templateName));
-            return body;
+            using(var client=new SmtpClient())
+            {
+                try
+                {
+               
+                client.Connect("smtp.gmail.com", _smtpConfig.Port, true);
+                client.AuthenticationMechanisms.Remove("XOAUTH2");
+                client.Authenticate(_smtpConfig.From, _smtpConfig.Password);
+                client.Send(message);
+
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    client.Disconnect(true);
+                    client.Dispose();
+                }
+                
+            }
+
         }
+
+        //MimeMessage IEmailServices.CreateEmail(string subject, string message, List<string> addresses)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //void IEmailServices.SendEmail(MimeMessage message)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

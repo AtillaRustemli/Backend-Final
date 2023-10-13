@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4RsszrcexA/+3tuDAMKgWMhQjFMqMmBtcUA/Zr5i5OnaeqC82We5zoArZzhnBz9CpiYF9wMg/Wv7khmi3lh5Lg==",
+  "dgSpecHash": "qWokWJ0rWJHOK0VnESaDE8mv3rjCvUESJTBbIGhHo2wpoH+N6dWbQTA/0Bf/AvsTE1evFfL15tGTjf5Dyomm2A==",
   "success": true,
   "projectFilePath": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\Backend-Final.csproj",
   "expectedPackageFiles": [
@@ -55,6 +55,7 @@
     "C:\\Users\\MSI\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\MSI\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\MSI\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\MSI\\.nuget\\packages\\mailkit\\4.2.0\\mailkit.4.2.0.nupkg.sha512",
     "C:\\Users\\MSI\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\MSI\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\MSI\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",

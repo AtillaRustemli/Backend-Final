@@ -10,21 +10,14 @@ namespace Backend_Final.Controllers
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
-        private readonly IEmailServices _emailServices;
 
-        public HomeController(AppDbContext context,IEmailServices emailServices)
+        public HomeController(AppDbContext context)
         {
             _context = context;
-            _emailServices = emailServices;
         }
 
         public async Task<IActionResult> Index()
         {
-            UserEmailOptions options = new()
-            {
-                ToEmails=new List<string> { "rustemliatilla662@gmail.com" }
-            };
-            await _emailServices.SendTestEmail(options);
 
             HomeVM vm = new();
             vm.Slider=_context.Slider.Include(si=>si.SliderImgae).ToList();

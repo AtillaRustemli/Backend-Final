@@ -1,9 +1,12 @@
 ﻿using Backend_Final.DAL;
 using Backend_Final.Extensions;
 using Backend_Final.Models;
+using Backend_Final.Models.Emails;
+using Backend_Final.Services;
 using Backend_Final.ViewModels.AdminEvent;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
 using System.Linq;
 
 namespace Backend_Final.Areas.AdminArea.Controllers
@@ -13,11 +16,13 @@ namespace Backend_Final.Areas.AdminArea.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly EmailConfig _smtpConfig;
 
-        public EventController(AppDbContext context, IWebHostEnvironment webHostEnvironment)
+        public EventController(AppDbContext context, IWebHostEnvironment webHostEnvironment, EmailConfig smtpConfig)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
+            _smtpConfig = smtpConfig;
         }
 
         public IActionResult Index()
@@ -48,6 +53,27 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult Create(EventCreateVM eventCreateVM,int?id,List<int>? speakerIds)
         {
+            //-----------------------------------------------
+            //-----------------------------------------------
+            //-----------------------------------------------
+            var userEmails = _context.Subscribers.ToList();
+            List<string> emails = new List<string>();
+            foreach (var userEmail in userEmails)
+            {
+                emails.Add(userEmail.Email);
+
+            }
+            EmailServices es = new(_smtpConfig);
+            MimeMessage mimeMessage = new();
+
+            var message = es.CreateEmail(
+            eventCreateVM.Title,
+            eventCreateVM.Title,
+             emails);
+            es.SendEmail(message);
+            //-----------------------------------------------
+            //-----------------------------------------------
+            //-----------------------------------------------
             ViewBag.Categories = _context.Category.ToList();
             ViewBag.Speakers = _context.Speakers.ToList();
             if (!ModelState.IsValid) {
@@ -96,6 +122,8 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         //Update
         public IActionResult Update(int?id) {
             var events=_context.Event.FirstOrDefault(e => e.Id == id);  
+            
+
             EventUpdateVM vm = new();
             vm.Title = events.Title;
             vm.Desc = events.Desc;
@@ -108,6 +136,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
             ViewBag.Event = _context.Event.Where(e=>e.Id==id).ToList();
             ViewBag.CategoryWithEvent=_context.Event.FirstOrDefault(e=>e.Id==id);
             ViewBag.SpeakerEvent = _context.SpeakerEvent.Where(se => se.EventId == id).ToList();
+        
             return View(vm);
         }
         [HttpPost]
