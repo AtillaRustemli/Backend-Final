@@ -31,6 +31,9 @@
                         </div>
                         <div class="login-form">
                             <form  method="post">
+                                <p class="text-danger">
+                                    @Html.ValidationMessage("Verify")
+                                </p>
                                 <div>
                                     <input asp-for="UsernameOrEmail" placeholder="Username">
                                     <span asp-validation-for="UsernameOrEmail"></span>

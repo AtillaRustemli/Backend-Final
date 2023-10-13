@@ -16,13 +16,14 @@ namespace Backend_Final.Areas.AdminArea.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly EmailConfig _smtpConfig;
+        private readonly EmailConfig _emailServices;
 
-        public EventController(AppDbContext context, IWebHostEnvironment webHostEnvironment, EmailConfig smtpConfig)
+
+        public EventController(AppDbContext context, IWebHostEnvironment webHostEnvironment, EmailConfig emailServices)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
-            _smtpConfig = smtpConfig;
+            _emailServices = emailServices;
         }
 
         public IActionResult Index()
@@ -63,12 +64,15 @@ namespace Backend_Final.Areas.AdminArea.Controllers
                 emails.Add(userEmail.Email);
 
             }
-            EmailServices es = new(_smtpConfig);
+            EmailServices es = new(_emailServices);
             MimeMessage mimeMessage = new();
 
             var message = es.CreateEmail(
             eventCreateVM.Title,
-            eventCreateVM.Title,
+           @$"There is created new Event in EduHome.The event's name is {eventCreateVM.Title}.
+I'll star in {eventCreateVM.OpenTime} and will end in {eventCreateVM.CloseTime}.
+           Thank you for attention"
+           ,
              emails);
             es.SendEmail(message);
             //-----------------------------------------------

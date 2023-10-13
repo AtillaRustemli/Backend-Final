@@ -1,9 +1,13 @@
 ﻿using Backend_Final.DAL;
 using Backend_Final.Models;
+using Backend_Final.Models.Emails;
 using Backend_Final.ViewModels.AccountVM;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.Net;
+using System.Net.Mail;
 
 namespace Backend_Final.Controllers
 {
@@ -13,13 +17,15 @@ namespace Backend_Final.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly AppDbContext _context;
+        private readonly EmailConfig _emailConfig;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, AppDbContext context)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, AppDbContext context, EmailConfig emailConfig)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _context = context;
+            _emailConfig = emailConfig;
         }
         #region Register
         public IActionResult Registers()
@@ -50,12 +56,35 @@ namespace Backend_Final.Controllers
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
             var url = Url.Action(nameof(VerifyEmail), "Account", new { email = appUser.Email, token }, Request.Scheme, Request.Host.ToString());
+            MailMessage mailMessage = new();
+            mailMessage.From =new MailAddress("atillaproject52@gmail.com","VerifyEmail");
+            mailMessage.To.Add(appUser.Email);
+            mailMessage.Subject="Verify your Email";
+            string body=string.Empty;
+
+            using(StreamReader streamReader = new("wwwroot/Templates/VerifyEmail.html"))
+            {
+                body= streamReader.ReadToEnd();
+            }
+            mailMessage.Body = body.Replace("{{link}}", url);
+            mailMessage.IsBodyHtml = true;
+            SmtpClient smtpClient = new SmtpClient();
+            smtpClient.Port = 587;
+            smtpClient.Host = "smtp.gmail.com";
+            smtpClient.EnableSsl = true;
+            smtpClient.Credentials = new NetworkCredential(_emailConfig.From, _emailConfig.Password);
+            smtpClient.Send(mailMessage);
+
             return RedirectToAction("Login");
         }
         #endregion
-        public IActionResult VerifyEmail()
+        public async Task<IActionResult> VerifyEmail(string email,string token)
         {
-            return View();
+            AppUser user=await _userManager.FindByEmailAsync(email);
+            if(user==null) return NotFound();
+            await _userManager.ConfirmEmailAsync(user,token);
+            await _signInManager.SignInAsync(user,true);
+            return RedirectToAction("index","home");
         }
 
         #region Logout
@@ -103,7 +132,17 @@ namespace Backend_Final.Controllers
             var role=await _userManager.GetRolesAsync(user);
             foreach(var item in role)
             {
-                if (item == "Admin") return RedirectToAction("index","dashboard",new { area="AdminArea" });
+                if (item == "Admin" && user.EmailConfirmed) return RedirectToAction("index", "dashboard", new { area = "AdminArea" });
+                else {
+                    ModelState.AddModelError("Verify", "Hesabiniz Verify olunmayib!");
+                    await _signInManager.SignOutAsync();
+                    return View();
+                }
+            }
+            if(!user.EmailConfirmed)
+            {
+                ModelState.AddModelError("Verify", "Hesabiniz Verify olunmayib!");
+                return View();
             }
             return RedirectToAction("index","home");
         }

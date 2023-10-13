@@ -3,7 +3,7 @@ using Backend_Final.Otions;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
-builder.Services.Register(config,config);
+builder.Services.Register(config);
 builder.Services.AddHttpContextAccessor();
 builder.Services.Configure<EmailConfigureOptions>(builder.Configuration.GetSection(nameof(EmailConfigureOptions)));
 builder.Configuration

@@ -1,10 +1,14 @@
 ﻿using Backend_Final.DAL;
 using Backend_Final.Extensions;
 using Backend_Final.Models;
+using Backend_Final.Models.Emails;
+using Backend_Final.Services;
 using Backend_Final.ViewModels.AdminCategory;
 using Backend_Final.ViewModels.AdminCourse;
+using Backend_Final.ViewModels.AdminEvent;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
 using System.Net;
 
 namespace Backend_Final.Areas.AdminArea.Controllers
@@ -14,11 +18,13 @@ namespace Backend_Final.Areas.AdminArea.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _webHost;
+        private readonly EmailConfig _emailServices;
 
-        public CourseController(AppDbContext context, IWebHostEnvironment webHost)
+        public CourseController(AppDbContext context, IWebHostEnvironment webHost, EmailConfig emailServices)
         {
             _context = context;
             _webHost = webHost;
+            _emailServices = emailServices;
         }
 
         public IActionResult Index()
@@ -57,6 +63,29 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult Create(CreateCourseVM createCourseVM,int categoryId)
         {
+            //---------------------------
+            //---------------------------
+            //---------------------------
+            var userEmails = _context.Subscribers.ToList();
+            List<string> emails = new List<string>();
+            foreach (var userEmail in userEmails)
+            {
+                emails.Add(userEmail.Email);
+
+            }
+            EmailServices es = new(_emailServices);
+            MimeMessage mimeMessage = new();
+            var message = es.CreateEmail(
+            createCourseVM.Name,
+           @$"There is created new Event in EduHome.The event's name is {createCourseVM.Name}.
+It'll star in {createCourseVM.CourseFeature.Starts} and will contunie  {createCourseVM.CourseFeature.Duration}.
+Every lesson will be {createCourseVM.CourseFeature.ClassDuration}.
+Thank you for attention",
+             emails);
+            es.SendEmail(message);
+            //---------------------------
+            //---------------------------
+            //---------------------------
             ViewBag.Categories = _context.Category.ToList();
             if (!ModelState.IsValid)
             {

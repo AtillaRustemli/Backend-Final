@@ -61,30 +61,47 @@
                                         <a asp-controller="course" asp-action="index">courses</a>
                                         <ul>
                                             <li><a asp-controller="course" asp-action="index">courses</a></li>
-                                            <li><a href="course-details.html">courses details</a></li>
                                         </ul>
                                     </li>
                                     <li>
                                         <a asp-controller="event" asp-action="index">event</a>
                                         <ul>
                                             <li><a asp-controller="event" asp-action="index">event</a></li>
-                                            <li><a asp-controller="event" asp-action="index" asp-route-id="">event details</a></li>
                                         </ul>
                                     </li>
                                     <li class="hidden-sm">
                                         <a asp-controller="teacher" asp-action="index">teacher</a>
                                         <ul>
                                             <li><a asp-controller="teacher" asp-action="index">teacher</a></li>
-                                            <li><a href="teacher-details.html">teacher details</a></li>
                                         </ul>
                                     </li>
                                     <li>
                                         <a asp-controller="blog" asp-action="index">blog</a>
                                         <ul>
                                             <li><a asp-controller="blog" asp-action="index">blog</a></li>
-                                            <li><a asp-controller="blog" asp-action="detail" asp-route-id="">blog details</a></li>
                                         </ul>
-                                    </li>
+                                    </li>@if (!User.Identity.IsAuthenticated)
+                                    {
+                                        <li>
+                                            <a asp-controller="account" asp-action="registers">Sign Up</a>
+
+                                        </li>
+                                        <li>
+                                            <a asp-controller="account" asp-action="login">Login</a>
+
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a asp-controller="account" asp-action="logout">Logout</a>
+
+                                        </li>
+                                        <li>
+                                            <a style="cursor:default;" disable>@User.Identity.Name</a>
+
+                                        </li>
+                                    }
                                     @if (User.IsInRole("Admin"))
                                     {
                                     <li>

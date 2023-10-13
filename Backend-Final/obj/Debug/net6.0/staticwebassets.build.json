@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "um/LLlqMzibjRahM1SmMzlmwmEN+hde4Hhq/4eTMs6g=",
+  "Hash": "F4GPlpcDdsoH7ySrT2GVGZ/skUzcBQru3/iub7syOG0=",
   "Source": "Backend-Final",
   "BasePath": "_content/Backend-Final",
   "Mode": "Default",
@@ -32606,6 +32606,23 @@
       "OriginalItemSpec": "wwwroot\\img\\course\\5ff284b6-bd6e-41f5-9274-92eab131c995course3.jpg"
     },
     {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\616408d1-0a1d-4037-8263-4cf3f9aff014blog6.jpg",
+      "SourceId": "Backend-Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\",
+      "BasePath": "_content/Backend-Final",
+      "RelativePath": "img/course/616408d1-0a1d-4037-8263-4cf3f9aff014blog6.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\course\\616408d1-0a1d-4037-8263-4cf3f9aff014blog6.jpg"
+    },
+    {
       "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\6ed90ef1-11b4-4dcb-ae56-714930bf4230course3.jpg",
       "SourceId": "Backend-Final",
       "SourceType": "Discovered",
@@ -32825,6 +32842,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\course\\courses-details.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\f71b317c-d626-4fd1-b319-69ec1eaea070event9.jpg",
+      "SourceId": "Backend-Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\",
+      "BasePath": "_content/Backend-Final",
+      "RelativePath": "img/course/f71b317c-d626-4fd1-b319-69ec1eaea070event9.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\course\\f71b317c-d626-4fd1-b319-69ec1eaea070event9.jpg"
     },
     {
       "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\course\\ff98dd47-aebe-4628-a734-229be3ee86b9course3.jpg",
@@ -33133,6 +33167,23 @@
       "OriginalItemSpec": "wwwroot\\img\\event\\cbbeabe3-2849-4081-ac9d-7b97a07dabcdevent12.jpg"
     },
     {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\cc1615d1-2bce-4afa-9fe9-061ca39ea4b7event9.jpg",
+      "SourceId": "Backend-Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\",
+      "BasePath": "_content/Backend-Final",
+      "RelativePath": "img/event/cc1615d1-2bce-4afa-9fe9-061ca39ea4b7event9.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\event\\cc1615d1-2bce-4afa-9fe9-061ca39ea4b7event9.jpg"
+    },
+    {
       "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\d08b3dcc-8847-4f20-b9d4-61cd833d4642event3.jpg",
       "SourceId": "Backend-Final",
       "SourceType": "Discovered",
@@ -33148,6 +33199,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\event\\d08b3dcc-8847-4f20-b9d4-61cd833d4642event3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\e1583a23-a6bc-46a9-882f-75dab9f0c273event9.jpg",
+      "SourceId": "Backend-Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\",
+      "BasePath": "_content/Backend-Final",
+      "RelativePath": "img/event/e1583a23-a6bc-46a9-882f-75dab9f0c273event9.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\event\\e1583a23-a6bc-46a9-882f-75dab9f0c273event9.jpg"
     },
     {
       "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\img\\event\\event1.jpg",
@@ -34389,6 +34457,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\vendor\\modernizr-2.8.3.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\Templates\\VerifyEmail.html",
+      "SourceId": "Backend-Final",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI\\source\\repos\\Backend-Final\\Backend-Final\\wwwroot\\",
+      "BasePath": "_content/Backend-Final",
+      "RelativePath": "Templates/VerifyEmail.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Templates\\VerifyEmail.html"
     }
   ]
 }

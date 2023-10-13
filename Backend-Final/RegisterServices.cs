@@ -10,7 +10,7 @@ namespace Backend_Final
 {
     public static class RegisterServices
     {
-        public static void Register(this IServiceCollection services,IConfiguration config,IConfigurationBuilder configBuilder)
+        public static void Register(this IServiceCollection services,IConfiguration config)
         {
             services.AddControllersWithViews();
 
@@ -19,10 +19,7 @@ namespace Backend_Final
             {
                 opt.UseSqlServer(config.GetConnectionString("DefaultConnection"));
             });
-            configBuilder
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddEnvironmentVariables();
+
             services.Configure<EmailConfig>(config.GetSection(nameof(EmailConfig)));
             services.AddScoped<EmailConfig>();
             services.AddIdentity<AppUser, IdentityRole>(identityOptions =>

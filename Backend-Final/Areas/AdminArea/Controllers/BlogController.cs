@@ -1,10 +1,13 @@
 ﻿using Backend_Final.DAL;
 using Backend_Final.Extensions;
 using Backend_Final.Models;
+using Backend_Final.Models.Emails;
+using Backend_Final.Services;
 using Backend_Final.ViewModels.AdminBlog;
 using Backend_Final.ViewModels.AdminEvent;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
 
 namespace Backend_Final.Areas.AdminArea.Controllers
 {
@@ -13,11 +16,13 @@ namespace Backend_Final.Areas.AdminArea.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly EmailConfig _emailServices;
 
-        public BlogController(AppDbContext context, IWebHostEnvironment webHostEnvironment)
+        public BlogController(AppDbContext context, IWebHostEnvironment webHostEnvironment, EmailConfig emailServices)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
+            _emailServices = emailServices;
         }
 
         public IActionResult Index()
@@ -38,6 +43,29 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult Create(CreateBlogVM createBlogVM,int id)
         {
+            //-----------------------------------------
+            //-----------------------------------------
+            //-----------------------------------------
+            var userEmails = _context.Subscribers.ToList();
+            List<string> emails = new List<string>();
+            foreach (var userEmail in userEmails)
+            {
+                emails.Add(userEmail.Email);
+
+            }
+            EmailServices es = new(_emailServices);
+            MimeMessage mimeMessage = new();
+
+            var message = es.CreateEmail(
+            createBlogVM.Title,
+           @$"There is created new Blog in EduHome.The blog's name is {createBlogVM.Title}.
+            Blog's Author name is {createBlogVM.Author}.
+           Thank you for attention. ",
+             emails);
+            es.SendEmail(message);
+            //-----------------------------------------
+            //-----------------------------------------
+            //-----------------------------------------
             if (!ModelState.IsValid) return View();
             Blog blog = new();
             blog.Title = createBlogVM.Title;
