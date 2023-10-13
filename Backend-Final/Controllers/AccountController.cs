@@ -133,17 +133,70 @@ namespace Backend_Final.Controllers
             foreach(var item in role)
             {
                 if (item == "Admin" && user.EmailConfirmed) return RedirectToAction("index", "dashboard", new { area = "AdminArea" });
-                else {
-                    ModelState.AddModelError("Verify", "Hesabiniz Verify olunmayib!");
-                    await _signInManager.SignOutAsync();
-                    return View();
-                }
+               
             }
             if(!user.EmailConfirmed)
             {
                 ModelState.AddModelError("Verify", "Hesabiniz Verify olunmayib!");
+                await _signInManager.SignOutAsync();
                 return View();
             }
+            return RedirectToAction("index","home");
+        }
+
+        #endregion
+
+        #region ForgetPassword
+
+        public IActionResult ForgetPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> ForgetPassword(ForgetPasswordVM forgetPasswordVM)
+        {
+            AppUser user= await _userManager.FindByEmailAsync(forgetPasswordVM.appUser.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("Error", "Qeyd etdiyiniz email tapilmadi.");
+                return View();
+            }
+            var token=await _userManager.GeneratePasswordResetTokenAsync(user);
+            var link = Url.Action(nameof(ResetPassword), "Account",new { email = user.Email, token = token },Request.Scheme,Request.Host.ToString());
+
+            MailMessage mailMessage = new();
+            mailMessage.From = new MailAddress(_emailConfig.From, _emailConfig.UserName);
+            mailMessage.IsBodyHtml = true;
+            mailMessage.To.Add(user.Email);
+            mailMessage.Subject = "Reset Password";
+            mailMessage.Body=$"<a href={link}>Click Here to start reseting Password</a>";
+
+            SmtpClient smtpClient = new();
+            smtpClient.Port = 587;
+            smtpClient.Host = "smtp.gmail.com";
+            smtpClient.EnableSsl = true;
+            smtpClient.Credentials = new NetworkCredential(_emailConfig.From, _emailConfig.Password);
+            smtpClient.Send(mailMessage);
+
+            return RedirectToAction("index","home");
+        }
+
+        public IActionResult ResetPassword() 
+        {
+            return View();
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> ResetPassword(ForgetPasswordVM forgetPasswordVM,string token,string email) 
+        {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+            AppUser user=await _userManager.FindByEmailAsync(email);
+            if (user == null)  return NotFound();
+            await _userManager.ResetPasswordAsync(user, token, forgetPasswordVM.Password);
             return RedirectToAction("index","home");
         }
 

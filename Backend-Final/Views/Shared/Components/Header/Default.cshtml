@@ -80,7 +80,10 @@
                                         <ul>
                                             <li><a asp-controller="blog" asp-action="index">blog</a></li>
                                         </ul>
-                                    </li>@if (!User.Identity.IsAuthenticated)
+                                    </li>
+                                    @if (controllerName.ToLower() == "home")
+                                    {
+                                         @if (!User.Identity.IsAuthenticated)
                                     {
                                         <li>
                                             <a asp-controller="account" asp-action="registers">Sign Up</a>
@@ -102,6 +105,8 @@
 
                                         </li>
                                     }
+                                    }
+                                   
                                     @if (User.IsInRole("Admin"))
                                     {
                                     <li>
