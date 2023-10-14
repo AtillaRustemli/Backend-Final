@@ -3,6 +3,7 @@ using Backend_Final.Models;
 using Backend_Final.ViewModels.AdminTeacher;
 using Backend_Final.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend_Final.Areas.AdminArea.Controllers
 {
@@ -117,7 +118,12 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         public IActionResult Update(int?Id)
         {
             UpdateTeacherVM updateTeacherVM = new();
-            var teacher=_context.Teacher.FirstOrDefault(x => x.Id == Id);
+            var teacher=_context.Teacher
+                .Include(t=>t.TeacherSocialMedia)
+                .Include(t=>t.TeacherPersonInfo)
+                .Include(t=>t.TeacherContactInfo)
+                .Include(t=>t.TeacherSkill)
+                .FirstOrDefault(x => x.Id == Id);
             updateTeacherVM.Name = teacher.Name;
             updateTeacherVM.Desc = teacher.Description;
             updateTeacherVM.Specilty = teacher.Specilty;

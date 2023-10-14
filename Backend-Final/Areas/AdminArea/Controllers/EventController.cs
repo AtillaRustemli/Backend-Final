@@ -3,6 +3,7 @@ using Backend_Final.Extensions;
 using Backend_Final.Models;
 using Backend_Final.Models.Emails;
 using Backend_Final.Services;
+using Backend_Final.Services.AdminServices.AdminEventServices;
 using Backend_Final.ViewModels.AdminEvent;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -45,7 +46,9 @@ namespace Backend_Final.Areas.AdminArea.Controllers
 
         }
         //Create
-        public IActionResult Create() {
+        public IActionResult Create()
+        {
+
             ViewBag.Categories = _context.Category.ToList();
             ViewBag.Speakers = _context.Speakers.ToList();
             return View();
@@ -54,73 +57,12 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult Create(EventCreateVM eventCreateVM,int?id,List<int>? speakerIds)
         {
-            //-----------------------------------------------
-            //-----------------------------------------------
-            //-----------------------------------------------
-            var userEmails = _context.Subscribers.ToList();
-            List<string> emails = new List<string>();
-            foreach (var userEmail in userEmails)
-            {
-                emails.Add(userEmail.Email);
-
-            }
-            EmailServices es = new(_emailServices);
-            MimeMessage mimeMessage = new();
-
-            var message = es.CreateEmail(
-            eventCreateVM.Title,
-           @$"There is created new Event in EduHome.The event's name is {eventCreateVM.Title}.
-I'll star in {eventCreateVM.OpenTime} and will end in {eventCreateVM.CloseTime}.
-           Thank you for attention"
-           ,
-             emails);
-            es.SendEmail(message);
-            //-----------------------------------------------
-            //-----------------------------------------------
-            //-----------------------------------------------
             ViewBag.Categories = _context.Category.ToList();
             ViewBag.Speakers = _context.Speakers.ToList();
-            if (!ModelState.IsValid) {
-                ModelState.AddModelError("", "required!");
-                return View(); 
-            }
-            Event events=new();
-            if(_context.Event.Any(s=>s.Title== eventCreateVM.Title))
-            {
-                ModelState.AddModelError("Title", "Bu adli evnet artiq var!");
-                return View();
-            }
-            events.Title = eventCreateVM.Title;
-            events.Desc = eventCreateVM.Desc;
-            events.OpenTime = eventCreateVM.OpenTime;
-            events.CloseTime = eventCreateVM.CloseTime;
-            events.Venue = eventCreateVM.Venue;
-            events.CategoryId = id;
-            if (eventCreateVM.Image.CheckSize(10000))
-            {
-                ModelState.AddModelError("Image", "Sheklin olcusu cox boyukdur!");
-                return View();
-            }
-            if (!eventCreateVM.Image.CheckImage())
-            {
-                ModelState.AddModelError("Image", "Yalniz shekil!");
-                return View();
-            }
-            events.ImgUrl= eventCreateVM.Image.SaveImage("img/event", _webHostEnvironment);
-            _context.Event.Add(events);
-            _context.SaveChanges();
-            Speaker speaker;
-            foreach (var speakerId in speakerIds)
-            {
-              SpeakerEvent speakerEvent = new();
-                speakerEvent.SpeakerId = speakerId;
-                speakerEvent.EventId = events.Id;
-
-
-            _context.SpeakerEvent.Add(speakerEvent);
-                _context.SaveChanges();
-            }
-            return RedirectToAction("index");
+            CreateEventService createEventService = new(_context,_webHostEnvironment,_emailServices,ModelState);
+            var result=createEventService.Create(eventCreateVM,id,speakerIds,this);
+            return result;
+        
         }
 
         //Update
@@ -181,14 +123,21 @@ I'll star in {eventCreateVM.OpenTime} and will end in {eventCreateVM.CloseTime}.
             events.ImgUrl= eventUpdateVM.Image.SaveImage("img/event", _webHostEnvironment);
             _context.SaveChanges();
             var speakerEvent = _context.SpeakerEvent.Where(se=>se.EventId==id).ToList();
+            foreach (var speaker in speakerEvent)
+            {
+                _context.SpeakerEvent.Remove(speaker);
+                _context.SaveChanges();
+            }
+            
             foreach (var speakerId in speakerIds)
             {
-                foreach (var speaker in speakerEvent)
-                {
-                    speaker.EventId = id;
-                    speaker.SpeakerId = speakerId;
-                }
+                SpeakerEvent newSpeakerEvent = new();
+
+                newSpeakerEvent.EventId = id;
+                newSpeakerEvent.SpeakerId = speakerId;
+                _context.SpeakerEvent.Add(newSpeakerEvent);
                 _context.SaveChanges();
+                
             }
             return RedirectToAction("index");
         }

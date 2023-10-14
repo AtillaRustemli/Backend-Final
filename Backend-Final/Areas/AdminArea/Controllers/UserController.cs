@@ -96,7 +96,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
             user.Email = updateUserVM.AppUser.Email;
             user.UserName = updateUserVM.AppUser.UserName;
             updateUserVM.UserRole=roles;
-            _userManager.UpdateAsync(user);
+            await _userManager.UpdateAsync(user);
             if (!ModelState.IsValid)
             {
                 return View(updateUserVM);

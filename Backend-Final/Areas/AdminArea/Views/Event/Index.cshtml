@@ -21,7 +21,16 @@
             <tr>
                 <td><img style="width:50px;height:50px;" src="~/img/event/@events.ImgUrl" /></td>
                 <td>@events.Title</td>
-                <td>@events.Venue.Substring(0,14)</td>
+                <td>@if (events.Venue.Length >= 14)
+                    {
+                        @events.Venue.Substring(0, 14)
+                    }
+                    else
+                    {
+                        @events.Venue
+                    }
+                </td>
+
                 <td>@events.OpenTime.Day @(new DateTime(DateTime.Now.Year, events.OpenTime.Month, 1).ToString("MMMM"))</td>
                 <td>@(events.Category!= null ? events.Category.Name : "No Category")</td>
                 <td>

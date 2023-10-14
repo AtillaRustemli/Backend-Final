@@ -166,7 +166,7 @@ Thank you for attention",
             {
                 return View();
             }
-            if (_context.Course.Any(c => c.Name == updateCourseVM.Name))
+            if (_context.Course.Any(c => c.Name == updateCourseVM.Name&&c.Id!=id))
             {
                 ModelState.AddModelError("Name", "Bu adli Kurs artiq movcuddur");
                 return View();
