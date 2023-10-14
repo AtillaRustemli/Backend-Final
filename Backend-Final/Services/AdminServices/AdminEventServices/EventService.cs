@@ -10,7 +10,7 @@ using MimeKit;
 
 namespace Backend_Final.Services.AdminServices.AdminEventServices
 {
-    public class CreateEventService
+    public class EventService
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -23,7 +23,7 @@ namespace Backend_Final.Services.AdminServices.AdminEventServices
         }
 
 
-        public CreateEventService(AppDbContext context, IWebHostEnvironment webHostEnvironment, EmailConfig emailServices, ModelStateDictionary modelState)
+        public EventService(AppDbContext context, IWebHostEnvironment webHostEnvironment, EmailConfig emailServices, ModelStateDictionary modelState)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
@@ -98,6 +98,69 @@ namespace Backend_Final.Services.AdminServices.AdminEventServices
                 _context.SaveChanges();
             }
             return controller.RedirectToAction("index", "event");
+        }
+
+        public ActionResult Delete(int? id,Controller controller)
+        {
+            if (id == null) return controller.NotFound();
+            var events = _context.Event.FirstOrDefault(e => e.Id == id);
+            if (events == null) return controller.NotFound();
+            _context.Event.Remove(events);
+            _context.SaveChanges();
+            return controller.RedirectToAction("Index","event");
+        }
+
+        public ActionResult Update(EventUpdateVM eventUpdateVM, int id, int? categoryId, List<int>? speakerIds,Controller controller)
+        {
+            if (id == null) return controller.NotFound();
+            var events = _context.Event.FirstOrDefault(e => e.Id == id);
+            if(events == null) return controller.NotFound();
+            if (!_modelState.IsValid)
+            {
+                _modelState.AddModelError("", "required!");
+                return controller.View();
+            }
+            if (_context.Event.Any(s => s.Title == eventUpdateVM.Title && s.Id != id))
+            {
+                _modelState.AddModelError("Title", "Bu adli evnet artiq var!");
+                return controller.View();
+            }
+            events.Title = eventUpdateVM.Title;
+            events.Desc = eventUpdateVM.Desc;
+            events.OpenTime = eventUpdateVM.OpenTime;
+            events.CloseTime = eventUpdateVM.CloseTime;
+            events.Venue = eventUpdateVM.Venue;
+            events.CategoryId = categoryId;
+            if (eventUpdateVM.Image.CheckSize(10000))
+            {
+                _modelState.AddModelError("Image", "Sheklin olcusu cox boyukdur!");
+                return controller.View();
+            }
+            if (!eventUpdateVM.Image.CheckImage())
+            {
+                _modelState.AddModelError("Image", "Yalniz shekil!");
+                return controller.View();
+            }
+            events.ImgUrl = eventUpdateVM.Image.SaveImage("img/event", _webHostEnvironment);
+            _context.SaveChanges();
+            var speakerEvent = _context.SpeakerEvent.Where(se => se.EventId == id).ToList();
+            foreach (var speaker in speakerEvent)
+            {
+                _context.SpeakerEvent.Remove(speaker);
+                _context.SaveChanges();
+            }
+
+            foreach (var speakerId in speakerIds)
+            {
+                SpeakerEvent newSpeakerEvent = new();
+
+                newSpeakerEvent.EventId = id;
+                newSpeakerEvent.SpeakerId = speakerId;
+                _context.SpeakerEvent.Add(newSpeakerEvent);
+                _context.SaveChanges();
+
+            }
+            return controller.RedirectToAction("index");
         }
     }
 }
