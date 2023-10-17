@@ -19,13 +19,14 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly EmailConfig _emailServices;
+        private readonly IEventService _eventServices;
 
-
-        public EventController(AppDbContext context, IWebHostEnvironment webHostEnvironment, EmailConfig emailServices)
+        public EventController(AppDbContext context, IWebHostEnvironment webHostEnvironment, EmailConfig emailServices, IEventService eventServices)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
             _emailServices = emailServices;
+            _eventServices = eventServices;
         }
 
         public IActionResult Index()
@@ -38,8 +39,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         //Delete
         public IActionResult Delete(int? id)
         {
-            EventService deleteEventService = new( _context,  _webHostEnvironment,  _emailServices,ModelState);
-            var result=deleteEventService.Delete(id, this);
+            var result= _eventServices.Delete(id, this);
             return result;
         }
         //Create
@@ -55,10 +55,8 @@ namespace Backend_Final.Areas.AdminArea.Controllers
         {
             ViewBag.Categories = _context.Category.ToList();
             ViewBag.Speakers = _context.Speakers.ToList();
-            EventService createEventService = new(_context,_webHostEnvironment,_emailServices,ModelState);
-            var result=createEventService.Create(eventCreateVM,id,speakerIds,this);
+            var result= _eventServices.Create(eventCreateVM,id,speakerIds,this);
             return result;
-        
         }
 
         //Update
@@ -87,8 +85,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
             ViewBag.SpeakerEvent = _context.SpeakerEvent.Where(se=>se.EventId==id).ToList();
             ViewBag.Event = _context.Event.ToList();
             ViewBag.CategoryWithEvent = _context.Event.FirstOrDefault(e => e.Id == id);
-            EventService updateEventService = new(_context, _webHostEnvironment, _emailServices, ModelState);
-            var result = updateEventService.Update(eventUpdateVM, id, categoryId, speakerIds,this);
+            var result = _eventServices.Update(eventUpdateVM, id, categoryId, speakerIds,this);
             return result;
           
         }

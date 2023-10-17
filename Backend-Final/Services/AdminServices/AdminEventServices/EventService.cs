@@ -7,33 +7,34 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MimeKit;
+using System.ComponentModel.DataAnnotations;
 
 namespace Backend_Final.Services.AdminServices.AdminEventServices
 {
-    public class EventService
+    public class EventService : IEventService
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly EmailConfig _emailServices;
-        private ModelStateDictionary _modelState;
+        //private ModelStateDictionary _modelState;
 
-        public void AddModelError(string key, string errorMessage)
-        {
-            _modelState.AddModelError(key, errorMessage);
-        }
+        //public void AddModelError(string key, string errorMessage)
+        //{
+        //    _modelState.AddModelError(key, errorMessage);
+        //}
 
 
-        public EventService(AppDbContext context, IWebHostEnvironment webHostEnvironment, EmailConfig emailServices, ModelStateDictionary modelState)
+        public EventService(AppDbContext context, IWebHostEnvironment webHostEnvironment, EmailConfig emailServices)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
             _emailServices = emailServices;
-            _modelState = modelState;
+
         }
         public ActionResult Create(EventCreateVM eventCreateVM, int? id, List<int>? speakerIds,Controller controller)
         {
 
-            if (!_modelState.IsValid)
+            if (!controller.ModelState.IsValid)
             {
                 return controller.View();
             }
@@ -64,7 +65,7 @@ namespace Backend_Final.Services.AdminServices.AdminEventServices
             Event events = new();
             if (_context.Event.Any(s => s.Title == eventCreateVM.Title))
             {
-                _modelState.AddModelError("Title", "Bu adli evnet artiq var!");
+                controller.ModelState.AddModelError("Title", "Bu adli evnet artiq var!");
                 return controller.View();
             }
             events.Title = eventCreateVM.Title;
@@ -75,12 +76,12 @@ namespace Backend_Final.Services.AdminServices.AdminEventServices
             events.CategoryId = id;
             if (eventCreateVM.Image.CheckSize(10000))
             {
-                _modelState.AddModelError("Image", "Sheklin olcusu cox boyukdur!");
+                controller.ModelState.AddModelError("Image", "Sheklin olcusu cox boyukdur!");
                 return controller.View();
             }
             if (!eventCreateVM.Image.CheckImage())
             {
-                _modelState.AddModelError("Image", "Yalniz shekil!");
+                controller.ModelState.AddModelError("Image", "Yalniz shekil!");
                 return controller.View();
             }
             events.ImgUrl = eventCreateVM.Image.SaveImage("img/event", _webHostEnvironment);
@@ -115,14 +116,14 @@ namespace Backend_Final.Services.AdminServices.AdminEventServices
             if (id == null) return controller.NotFound();
             var events = _context.Event.FirstOrDefault(e => e.Id == id);
             if(events == null) return controller.NotFound();
-            if (!_modelState.IsValid)
+            if (!controller.ModelState.IsValid)
             {
-                _modelState.AddModelError("", "required!");
+                controller.ModelState.AddModelError("", "required!");
                 return controller.View();
             }
             if (_context.Event.Any(s => s.Title == eventUpdateVM.Title && s.Id != id))
             {
-                _modelState.AddModelError("Title", "Bu adli evnet artiq var!");
+                controller.ModelState.AddModelError("Title", "Bu adli evnet artiq var!");
                 return controller.View();
             }
             events.Title = eventUpdateVM.Title;
@@ -133,12 +134,12 @@ namespace Backend_Final.Services.AdminServices.AdminEventServices
             events.CategoryId = categoryId;
             if (eventUpdateVM.Image.CheckSize(10000))
             {
-                _modelState.AddModelError("Image", "Sheklin olcusu cox boyukdur!");
+                controller.ModelState.AddModelError("Image", "Sheklin olcusu cox boyukdur!");
                 return controller.View();
             }
             if (!eventUpdateVM.Image.CheckImage())
             {
-                _modelState.AddModelError("Image", "Yalniz shekil!");
+                controller.ModelState.AddModelError("Image", "Yalniz shekil!");
                 return controller.View();
             }
             events.ImgUrl = eventUpdateVM.Image.SaveImage("img/event", _webHostEnvironment);

@@ -23,6 +23,9 @@ namespace Backend_Final
 
             services.Configure<EmailConfig>(config.GetSection(nameof(EmailConfig)));
             services.AddScoped<EmailConfig>();
+
+            services.AddScoped<IEventService, EventService>();
+
             services.AddIdentity<AppUser, IdentityRole>(identityOptions =>
             {
                 identityOptions.SignIn.RequireConfirmedEmail = true;
