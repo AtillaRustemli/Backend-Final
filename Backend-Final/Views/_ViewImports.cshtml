@@ -1,4 +1,6 @@
 ﻿@using Backend_Final.Models
 @using Backend_Final.ViewModels
 @using Backend_Final.ViewModels.AccountVM
+@using Microsoft.Extensions.Options
+@inject IOptions<Backend_Final.DAL.StripeSettings> Stripe
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

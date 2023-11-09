@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+<form asp-controller="Payment" asp-action="Charge" method="post">
+    <article>
+        <label>amount: 500$</label>
+    </article>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+    //    Stripe.setPublishableKey();
+       
+    </script>
+
+    <script src="//checkout.stripe.com/v2/checkout.js"
+    class="stripe-button"
+            data-key="@Stripe.Value.PublishKey"
+    data-locale="auto"
+    data-description="Sample Charge"
+    >
+
+    </script>
+</form>

@@ -82,6 +82,10 @@ namespace Backend_Final.Controllers
         {
             AppUser user=await _userManager.FindByEmailAsync(email);
             if(user==null) return NotFound();
+            if (user.EmailConfirmed)
+            {
+                return Json(new {result="success"});
+            }
             await _userManager.ConfirmEmailAsync(user,token);
             await _signInManager.SignInAsync(user,true);
             return RedirectToAction("index","home");
@@ -102,7 +106,6 @@ namespace Backend_Final.Controllers
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-
         public async Task<IActionResult> Login(LoginVM loginVM,string ReturnUrl)
         {
             var user =await _userManager.FindByEmailAsync(loginVM.UsernameOrEmail);
@@ -182,7 +185,15 @@ namespace Backend_Final.Controllers
             return RedirectToAction("index","home");
         }
 
-        public IActionResult ResetPassword() 
+        public async Task<IActionResult> ResetPassword(string token,string email) 
+        {
+            AppUser user=await _userManager.FindByEmailAsync(email);
+            if (user == null) return BadRequest();
+            bool checkToken=await _userManager.VerifyUserTokenAsync(user,_userManager.Options.Tokens.PasswordResetTokenProvider,"ResetPassword",token);
+            if (checkToken) return RedirectToAction("UsedLink");
+            return View();
+        }
+        public IActionResult UsedLink()
         {
             return View();
         }
@@ -197,6 +208,7 @@ namespace Backend_Final.Controllers
             AppUser user=await _userManager.FindByEmailAsync(email);
             if (user == null)  return NotFound();
             await _userManager.ResetPasswordAsync(user, token, forgetPasswordVM.Password);
+            await _userManager.UpdateSecurityStampAsync(user);
             return RedirectToAction("index","home");
         }
 

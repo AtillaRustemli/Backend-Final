@@ -6,6 +6,7 @@ using Backend_Final.Services;
 using Backend_Final.Services.AdminServices.AdminEventServices;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 
 namespace Backend_Final
 {
@@ -13,6 +14,8 @@ namespace Backend_Final
     {
         public static void Register(this IServiceCollection services,IConfiguration config)
         {
+            StripeConfiguration.SetApiKey(config.GetConnectionString("PublishKey"));
+            services.Configure<StripeSettings>(config.GetSection("Stripe"));
             services.AddControllersWithViews();
 
             services.AddHttpContextAccessor();
@@ -24,7 +27,7 @@ namespace Backend_Final
             services.Configure<EmailConfig>(config.GetSection(nameof(EmailConfig)));
             services.AddScoped<EmailConfig>();
 
-            services.AddScoped<IEventService, EventService>();
+            services.AddScoped<IEventService, EventsService>();
 
             services.AddIdentity<AppUser, IdentityRole>(identityOptions =>
             {
@@ -43,6 +46,7 @@ namespace Backend_Final
                .AddDefaultTokenProviders()
                .AddEntityFrameworkStores<AppDbContext>()
                .AddErrorDescriber<CustomIdentityErrorDescriber>();
+           
 
 
         }
