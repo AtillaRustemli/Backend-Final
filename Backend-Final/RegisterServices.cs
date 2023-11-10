@@ -14,7 +14,8 @@ namespace Backend_Final
     {
         public static void Register(this IServiceCollection services,IConfiguration config)
         {
-            StripeConfiguration.SetApiKey(config.GetConnectionString("PublishKey"));
+            StripeConfiguration.ApiKey = "sk_test_51OAacTD8Iq5wIjaHLvsXtWdivpezezesic9qjBQwOdxEzibO4brHxVPnWPK0Y9DyVzOhXdiEbX0e9bUX30m8pDDq00x71bYBSY";
+            //StripeConfiguration.ApiKey = config.GetSection("Stripe")["SecretKey"];
             services.Configure<StripeSettings>(config.GetSection("Stripe"));
             services.AddControllersWithViews();
 

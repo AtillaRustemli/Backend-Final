@@ -23,7 +23,13 @@ namespace Backend_Final.Controllers
                 Amount=500,
                 Description="Hello",
                 Currency="usd",
-                Customer = customer.Id
+                Customer = customer.Id,
+                ReceiptEmail=stripeEmail,
+                Metadata=new Dictionary<string, string>()
+                {
+                    {"OrderId","111"},
+                    {"Postcode","LEE111"}
+                }
             });
             if (charge.Status == "Succeeded")
             {
@@ -34,7 +40,7 @@ namespace Backend_Final.Controllers
             {
 
             }
-            return View();
+            return RedirectToAction("index","home");
         }
     }
 }
