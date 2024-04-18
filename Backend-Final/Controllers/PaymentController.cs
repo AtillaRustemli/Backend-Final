@@ -9,7 +9,7 @@ namespace Backend_Final.Controllers
         {
             return View();
         }
-        public IActionResult Charge(string stripeEmail,string stripeToken)
+        public IActionResult Charge(string stripeEmail,string stripeToken,double amount=1)
         {
             var customers = new CustomerService();
             var charges=new ChargeService();
@@ -18,9 +18,10 @@ namespace Backend_Final.Controllers
               Email = stripeEmail,
               Source = stripeToken,
             });
+            
             var charge = charges.Create(new ChargeCreateOptions
             {
-                Amount=500,
+                Amount= (long)amount*100,
                 Description="Hello",
                 Currency="usd",
                 Customer = customer.Id,
@@ -31,16 +32,16 @@ namespace Backend_Final.Controllers
                     {"Postcode","LEE111"}
                 }
             });
-            if (charge.Status == "Succeeded")
+            if (charge.Status == "Successed")
             {
                 string balanceTransition=charge.BalanceTransactionId;
-                return View();
+                return RedirectToAction("index", "home");
             }
             else
             {
-
+                return RedirectToAction("index");
             }
-            return RedirectToAction("index","home");
+           
         }
     }
 }

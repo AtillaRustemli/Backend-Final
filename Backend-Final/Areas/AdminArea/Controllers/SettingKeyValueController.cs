@@ -58,7 +58,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
                     ModelState.AddModelError("image", "Sheklin olcusu cox boyukdur!!!");
                     return View();
                 }
-                settingsKeyValue.Value = createSettingVM.ImgValue.SaveImage("img/logo", _webHostEnvironment);
+                settingsKeyValue.Value = createSettingVM.ImgValue.SaveImage("img/logo", _webHostEnvironment)[0];
             }
             _context.SettingsKeyValue.Add(settingsKeyValue);
             _context.SaveChanges();

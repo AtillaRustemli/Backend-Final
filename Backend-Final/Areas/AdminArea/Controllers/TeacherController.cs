@@ -56,7 +56,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Image", "Sheklin olcusu cox boyukdur!!!");
                 return View();
             }
-            teacher.ImgUrl = createTeacherVM.Image.SaveImage("img/teacher", _webHostEnvironment);
+            teacher.ImgUrl = createTeacherVM.Image.SaveImage("img/teacher", _webHostEnvironment)[0];
             _context.Teacher.Add(teacher);
             _context.SaveChanges();
 
@@ -157,7 +157,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Image", "Sheklin olcusu cox boyukdur!!!");
                 return View();
             }
-            teacher.ImgUrl = createTeacherVM.Image.SaveImage("img/teacher", _webHostEnvironment);
+            teacher.ImgUrl = createTeacherVM.Image.SaveImage("img/teacher", _webHostEnvironment)[0];
             _context.SaveChanges();
 
             TeacherContactInfo contactInfo = _context.TeacherContactInfo.FirstOrDefault(t => t.TeacherId == id);

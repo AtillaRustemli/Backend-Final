@@ -61,7 +61,8 @@ namespace Backend_Final.Areas.AdminArea.Controllers
            @$"There is created new Blog in EduHome.The blog's name is {createBlogVM.Title}.
             Blog's Author name is {createBlogVM.Author}.
            Thank you for attention. ",
-             emails);
+             emails,
+             createBlogVM.Image.SaveImage("img/blog", _webHostEnvironment)[1]);
             es.SendEmail(message);
             //-----------------------------------------
             //-----------------------------------------
@@ -83,7 +84,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
                 return View();
 
             }
-            blog.ImgUrl = createBlogVM.Image.SaveImage("img/blog", _webHostEnvironment);
+            blog.ImgUrl = createBlogVM.Image.SaveImage("img/blog", _webHostEnvironment)[0];
             _context.Blog.Add(blog);
             _context.SaveChanges();
             return RedirectToAction("index");
@@ -134,7 +135,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Image", "Yalniz shekil!");
                 return View();
             }
-            blog.ImgUrl = blogUpdateVM.Image.SaveImage("img/blog", _webHostEnvironment);
+            blog.ImgUrl = blogUpdateVM.Image.SaveImage("img/blog", _webHostEnvironment)[0];
             _context.SaveChanges();
            
             return RedirectToAction("index");

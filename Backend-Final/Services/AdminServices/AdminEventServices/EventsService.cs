@@ -54,10 +54,12 @@ namespace Backend_Final.Services.AdminServices.AdminEventServices
             var message = es.CreateEmail(
             eventCreateVM.Title,
            @$"There is created new Event in EduHome.The event's name is {eventCreateVM.Title}.
-            I'll star in {eventCreateVM.OpenTime} and will end in {eventCreateVM.CloseTime}.
+            I'll star in {eventCreateVM.OpenTime} and will end in {eventCreateVM.CloseTime}.And this is image {eventCreateVM.Image}
            Thank you for attention"
            ,
-             emails);
+             emails,
+             eventCreateVM.Image.SaveImage("img/event", _webHostEnvironment)[1]
+             );
             es.SendEmail(message);
             //-----------------------------------------------
             //-----------------------------------------------
@@ -84,7 +86,7 @@ namespace Backend_Final.Services.AdminServices.AdminEventServices
                 controller.ModelState.AddModelError("Image", "Yalniz shekil!");
                 return controller.View();
             }
-            events.ImgUrl = eventCreateVM.Image.SaveImage("img/event", _webHostEnvironment);
+            events.ImgUrl = eventCreateVM.Image.SaveImage("img/event", _webHostEnvironment)[0];
             _context.Event.Add(events);
             _context.SaveChanges();
             Speaker speaker;
@@ -142,7 +144,7 @@ namespace Backend_Final.Services.AdminServices.AdminEventServices
                 controller.ModelState.AddModelError("Image", "Yalniz shekil!");
                 return controller.View();
             }
-            events.ImgUrl = eventUpdateVM.Image.SaveImage("img/event", _webHostEnvironment);
+            events.ImgUrl = eventUpdateVM.Image.SaveImage("img/event", _webHostEnvironment)[0];
             _context.SaveChanges();
             var speakerEvent = _context.SpeakerEvent.Where(se => se.EventId == id).ToList();
             foreach (var speaker in speakerEvent)

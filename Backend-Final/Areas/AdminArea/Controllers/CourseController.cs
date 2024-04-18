@@ -81,7 +81,9 @@ namespace Backend_Final.Areas.AdminArea.Controllers
 It'll star in {createCourseVM.CourseFeature.Starts} and will contunie  {createCourseVM.CourseFeature.Duration}.
 Every lesson will be {createCourseVM.CourseFeature.ClassDuration}.
 Thank you for attention",
-             emails);
+             emails,
+             createCourseVM.Image.SaveImage("img/course", _webHost)[1]
+             );
             es.SendEmail(message);
             //---------------------------
             //---------------------------
@@ -110,7 +112,7 @@ Thank you for attention",
                 ModelState.AddModelError("image", "Sheklin olcusu cox boyukdur!!!");
                 return View();
             }
-            course.ImgUrl = createCourseVM.Image.SaveImage("img/course", _webHost);
+            course.ImgUrl = createCourseVM.Image.SaveImage("img/course", _webHost)[0];
             _context.Course.Add(course);
             _context.SaveChanges();
            
@@ -185,7 +187,7 @@ Thank you for attention",
                 ModelState.AddModelError("image", "Sheklin olcusu cox boyukdur!!!");
                 return View();
             }
-            course.ImgUrl = updateCourseVM.Image.SaveImage("img/course", _webHost);
+            course.ImgUrl = updateCourseVM.Image.SaveImage("img/course", _webHost)[0];
             _context.SaveChanges();
 
             var newCourseDetail = _context.CourseDetail.FirstOrDefault(cd=>cd.CourseId==id);

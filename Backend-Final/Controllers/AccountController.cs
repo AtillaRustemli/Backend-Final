@@ -61,9 +61,10 @@ namespace Backend_Final.Controllers
             mailMessage.To.Add(appUser.Email);
             mailMessage.Subject="Verify your Email";
             string body=string.Empty;
-
-            using(StreamReader streamReader = new("wwwroot/Templates/VerifyEmail.html"))
+            string filePath = System.IO.Path.GetFullPath("TestFile.txt");
+            using (StreamReader streamReader = new("wwwroot/Templates/VerifyEmail.html"))
             {
+                Console.WriteLine(streamReader);
                 body= streamReader.ReadToEnd();
             }
             mailMessage.Body = body.Replace("{{link}}", url);

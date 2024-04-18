@@ -251,3 +251,4 @@ C:\Users\MSI\source\repos\Backend-Final\Backend-Final\obj\Debug\net6.0\Backend-F
 C:\Users\MSI\source\repos\Backend-Final\Backend-Final\obj\Debug\net6.0\Backend-Final.genruntimeconfig.cache
 C:\Users\MSI\source\repos\Backend-Final\Backend-Final\obj\Debug\net6.0\ref\Backend-Final.dll
 C:\Users\MSI\source\repos\Backend-Final\Backend-Final\bin\Debug\net6.0\Stripe.net.dll
+C:\Users\MSI\source\repos\Backend-Final\Backend-Final\obj\Debug\net6.0\Backend-Final.sourcelink.json

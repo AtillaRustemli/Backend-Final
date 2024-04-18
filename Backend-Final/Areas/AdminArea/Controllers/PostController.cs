@@ -50,7 +50,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
                 ModelState.AddModelError("image", "Sheklin olcusu cox boyuktur");
                 return View();
             }
-            post.ImgUrl = createPostVM.Image.SaveImage("img/post", _webEnvironment);
+            post.ImgUrl = createPostVM.Image.SaveImage("img/post", _webEnvironment)[0];
             _context.Post.Add(post);
             _context.SaveChanges();
             return RedirectToAction("index");
@@ -98,7 +98,7 @@ namespace Backend_Final.Areas.AdminArea.Controllers
                 ModelState.AddModelError("image", "Sheklin olcusu cox boyuktur");
                 return View();
             }
-            post.ImgUrl = updatePostVM.Image.SaveImage("img/post", _webEnvironment);
+            post.ImgUrl = updatePostVM.Image.SaveImage("img/post", _webEnvironment)[0];
             _context.SaveChanges();
             return RedirectToAction("index");
         }

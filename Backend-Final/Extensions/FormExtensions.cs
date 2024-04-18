@@ -10,7 +10,7 @@
         {
             return file.Length / size > 1024;
         }
-        public static string SaveImage(this IFormFile file, string folder, IWebHostEnvironment webHostEnvironment)
+        public static string[] SaveImage(this IFormFile file, string folder, IWebHostEnvironment webHostEnvironment)
         {
             string fileName = Guid.NewGuid() + file.FileName;
             string path = Path.Combine(webHostEnvironment.WebRootPath, folder, fileName);
@@ -18,7 +18,8 @@
             {
                 file.CopyTo(stream);
             }
-            return fileName;
+            string[] datas = { fileName, path };
+            return datas;
         }
     }
 }
